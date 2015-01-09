@@ -1,0 +1,104 @@
+package com.valterc.stevecrafts.data.model;
+
+import android.graphics.Bitmap;
+
+/**
+ * Created by Valter on 08/01/2015.
+ */
+public class Block {
+
+    private String id;
+    private int minecraftBlockId;
+    private int minecraftDataValue;
+    private String minecraftId;
+
+    /**
+     * @see com.valterc.stevecrafts.data.model.Block.Type
+     */
+    private int type;
+
+    /**
+     * @see com.valterc.stevecrafts.data.model.Block.Category
+     */
+    private int category;
+
+    /**
+     * 0 - No; 1 - Yes
+     */
+    private int physics;
+
+    /**
+     * 0 - No; 1 - Yes; 2 - Partial
+     */
+    private int transparency;
+
+    /**
+     * 0 - No; Other - Value
+     */
+    private int luminance;
+
+    /**
+     * 0 - No; Other - Value
+     */
+    private double blastResistance;
+
+    /**
+     * 0 - No; Other - Value
+     */
+    private int stackable;
+
+    /**
+     * 0 - No; 1 - Yes
+     */
+    private int flamable;
+    private Bitmap image;
+    private String name_en;
+    private String name_pt;
+    private String name_de;
+    private String name_es;
+    private String name_fr;
+    private String name_pl;
+    private long timestamp;
+
+
+
+    public static class Type {
+
+        private Type(){}
+
+        public static final int Solid = 0;
+        public static final int NonSolid = 1;
+        public static final int TileEntity = 2;
+        public static final int Food = 3;
+        public static final int Tool = 4;
+        public static final int Plant = 5;
+        public static final int Fluid = 6;
+
+    }
+
+    public static class Category {
+
+        private Category(){}
+
+        public static final int Natural = 0;
+        public static final int Manufactured = 1;
+        public static final int Ore = 2;
+        public static final int Mineral = 3;
+        public static final int Utility = 4;
+        public static final int Mechanism = 5;
+        public static final int Plant = 6;
+        public static final int Liquid = 7;
+        public static final int Nether = 8;
+        public static final int End = 9;
+        public static final int CreativeOnly = 10;
+        public static final int PocketEdition = 11;
+        public static final int ConsoleEditionOnly = 12;
+        public static final int Technical = 13;
+        public static final int PocketEditionOnly = 14;
+        public static final int Upcoming = 15;
+        public static final int Removed = 16;
+        public static final int Unimplemented = 17;
+
+    }
+
+}

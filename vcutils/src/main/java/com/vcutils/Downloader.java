@@ -1,11 +1,10 @@
 package com.vcutils;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.http.AndroidHttpClient;
+
+import com.vcutils.DownloadResponse.DownloadResult;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -27,11 +26,12 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.protocol.HttpContext;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.http.AndroidHttpClient;
-
-import com.vcutils.DownloadResponse.DownloadResult;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Downloader {
 
@@ -431,11 +431,11 @@ public class Downloader {
 		} catch (IOException e) {
 			return new DownloadResponse<Bitmap>(DownloadResult.ErrorInternet);
 		} catch (Exception e) {
-			WLog.logException("Downloader", "Error downloading image with url: " + url, e);
+            DebugLog.e("Downloader", "Error downloading image with url: " + url, e);
 			e.printStackTrace();
 			return new DownloadResponse<Bitmap>(DownloadResult.ErrorUnknown);
 		} catch (OutOfMemoryError e) {
-			WLog.logException("Downloader", "Out of Memory!", e);
+            DebugLog.e("Downloader", "Out of Memory!", e);
 			return new DownloadResponse<Bitmap>(DownloadResult.ErrorUnknown);
 		} finally {
 			if (httpClient != null)
@@ -462,11 +462,11 @@ public class Downloader {
         } catch (IOException e) {
             return new DownloadResponse<Bitmap>(DownloadResult.ErrorInternet);
         } catch (Exception e) {
-            WLog.logException("Downloader", "Error downloading image with url: " + url, e);
+            DebugLog.e("Downloader", "Error downloading image with url: " + url, e);
             e.printStackTrace();
             return new DownloadResponse<Bitmap>(DownloadResult.ErrorUnknown);
         } catch (OutOfMemoryError e) {
-            WLog.logException("Downloader", "Out of Memory!", e);
+            DebugLog.e("Downloader", "Out of Memory!", e);
             return new DownloadResponse<Bitmap>(DownloadResult.ErrorUnknown);
         } finally {
             if (httpClient != null)
@@ -475,7 +475,7 @@ public class Downloader {
 
         return new DownloadResponse<Bitmap>(DownloadResult.Ok, statusCode, bitmap, null);
     }
-	
+
 	
 	public static DownloadResponse<String> downloadGetGZip(String url, String cookieName, String userAgent, String referer) {
 		HttpGet httpget = new HttpGet(url);
