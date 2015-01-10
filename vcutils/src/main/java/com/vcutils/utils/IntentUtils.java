@@ -1,9 +1,4 @@
-package com.vcutils;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+package com.vcutils.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +7,11 @@ import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.AndroidRuntimeException;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class IntentUtils {
 

@@ -1,4 +1,4 @@
-package com.vcutils;
+package com.vcutils.utils;
 
 import java.util.LinkedList;
 import java.util.regex.Pattern;

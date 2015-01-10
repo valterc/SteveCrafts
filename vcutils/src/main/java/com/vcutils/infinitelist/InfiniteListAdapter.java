@@ -1,8 +1,5 @@
 package com.vcutils.infinitelist;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 import android.content.Context;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -13,7 +10,10 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.vcutils.WLog;
+import com.vcutils.DebugLog;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public abstract class InfiniteListAdapter<T> extends BaseAdapter implements OnScrollListener {
 
@@ -174,7 +174,7 @@ public abstract class InfiniteListAdapter<T> extends BaseAdapter implements OnSc
 		int wantedChild = position - firstPosition;
 		
 		if (wantedChild < 0 || wantedChild >= listView.getChildCount()) {
-		  WLog.logDebug(InfiniteListAdapter.class.getName(), "Unable to get view for desired position, because it's not being displayed on screen.");
+		  DebugLog.d(InfiniteListAdapter.class.getName(), "Unable to get view for desired position, because it's not being displayed on screen.");
 		  return null;
 		}
 		

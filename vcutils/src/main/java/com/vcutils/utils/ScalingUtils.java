@@ -1,4 +1,4 @@
-package com.vcutils;
+package com.vcutils.utils;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
