@@ -23,8 +23,7 @@ public class SteveCraftsData {
     private List<Potion> potions;
     private List<Smelting> smeltings;
 
-    SteveCraftsData(){
-
+    public SteveCraftsData(){
     }
 
 }

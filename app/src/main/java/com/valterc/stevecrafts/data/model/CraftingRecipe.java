@@ -37,7 +37,7 @@ public class CraftingRecipe {
         }
 
         /**
-         * 0 - Block; 1 - Item
+         * @return 0 - Block; 1 - Item
          */
         public int getType() {
             return type;

@@ -2,6 +2,15 @@ package com.valterc.stevecrafts.data.model;
 
 import android.graphics.Bitmap;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
+
 /**
  * Created by Valter on 08/01/2015.
  */
@@ -60,7 +69,47 @@ public class Block {
     private String name_pl;
     private long timestamp;
 
+    public Block(){
 
+    }
+
+    public Block(JSONObject json) throws JSONException {
+        this.id = json.getString("id");
+        this.minecraftBlockId = json.getInt("minecraft_blockid");
+        this.minecraftDataValue = json.getInt("minecraft_datavalue");
+        this.minecraftId = json.getString("minecraft_id");
+        this.type = json.getInt("type");
+        this.category = json.getInt("category");
+        this.physics = json.getInt("physics");
+        this.transparency = json.getInt("transparency");
+        this.luminance = json.getInt("luminance");
+        this.blastResistance = json.getInt("blast_resistance");
+        this.stackable = json.getInt("stackable");
+        this.flamable = json.getInt("flamable");
+        this.image = null; //TODO: Load bitmap
+        this.name_en = json.getString("name_en");
+        this.name_pt = json.getString("name_pt");
+        this.name_de = json.getString("name_de");
+        this.name_es = json.getString("name_es");
+        this.name_fr = json.getString("name_fr");
+        this.name_pl = json.getString("name_pl");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
+
+        try {
+            this.timestamp = dateFormat.parse(json.getString("timestamp")).getTime();
+        } catch (ParseException e) {
+            this.timestamp = Calendar.getInstance().getTimeInMillis();
+        }
+    }
+
+
+    /**
+     *
+     * Internal types
+     *
+     */
 
     public static class Type {
 

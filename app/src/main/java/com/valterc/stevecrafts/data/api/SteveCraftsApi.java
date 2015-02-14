@@ -2,6 +2,8 @@ package com.valterc.stevecrafts.data.api;
 
 import android.graphics.Bitmap;
 
+import com.valterc.stevecrafts.data.model.Block;
+import com.valterc.stevecrafts.data.model.Breaks;
 import com.vcutils.DownloadResponse;
 import com.vcutils.Downloader;
 
@@ -10,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -62,7 +65,33 @@ public class SteveCraftsApi {
         JSONArray potionsArray = jsonBase.getJSONArray("potions");
         JSONArray smeltingArray = jsonBase.getJSONArray("smelting");
 
+        ArrayList<Block> blocks = new ArrayList<>();
 
+        for (int i = 0; i < blocksArray.length(); i++){
+            JSONObject jsonBlock = blocksArray.getJSONObject(i);
+
+            try {
+                Block block = new Block(jsonBlock);
+                blocks.add(block);
+            } catch (JSONException e){
+                e.printStackTrace();
+                //ignored
+            }
+        }
+
+        ArrayList<Breaks> breaks = new ArrayList<>();
+
+        for (int i = 0; i < breaksArray.length(); i++){
+            JSONObject jsonBreaks = breaksArray.getJSONObject(i);
+
+            try {
+                Breaks breaks_ = new Breaks(jsonBreaks);
+                breaks.add(breaks_);
+            } catch (JSONException e){
+                e.printStackTrace();
+                //ignored
+            }
+        }
 
         return null;
     }
