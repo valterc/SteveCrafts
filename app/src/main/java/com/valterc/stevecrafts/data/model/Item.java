@@ -2,6 +2,15 @@ package com.valterc.stevecrafts.data.model;
 
 import android.graphics.Bitmap;
 
+import com.valterc.stevecrafts.data.api.SteveCraftsApi;
+import com.vcutils.utils.ImageUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.util.Calendar;
+
 /**
  * Created by Valter on 08/01/2015.
  */
@@ -31,6 +40,34 @@ public class Item {
     private String name_fr;
     private String name_pl;
     private long timestamp;
+
+    public Item() {
+
+    }
+
+    public Item(JSONObject json) throws JSONException {
+        this.id = json.getString("id");
+        this.minecraftId = json.getString("minecraft_id");
+        this.minecraftDataValue = json.getInt("minecraft_datavalue");
+        this.durability = json.getInt("durability");
+        this.stackable = json.getInt("stackable");
+        this.damage = json.getInt("damage");
+        this.armor = json.getInt("armor");
+        this.type = json.getInt("type");
+        this.image = ImageUtils.fromBase64String(json.getString("image"));
+        this.name_en = json.getString("name_en");
+        this.name_pt = json.getString("name_pt");
+        this.name_de = json.getString("name_de");
+        this.name_es = json.getString("name_es");
+        this.name_fr = json.getString("name_fr");
+        this.name_pl = json.getString("name_pl");
+
+        try {
+            this.timestamp = SteveCraftsApi.getDateFormat().parse(json.getString("timestamp")).getTime();
+        } catch (ParseException e) {
+            this.timestamp = Calendar.getInstance().getTimeInMillis();
+        }
+    }
 
     public static class Type{
         private Type(){}

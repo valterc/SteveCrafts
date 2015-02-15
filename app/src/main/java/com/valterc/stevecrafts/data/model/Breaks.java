@@ -1,13 +1,12 @@
 package com.valterc.stevecrafts.data.model;
 
+import com.valterc.stevecrafts.data.api.SteveCraftsApi;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
-import java.util.TimeZone;
 
 /**
  * Created by Valter on 09/01/2015.
@@ -54,11 +53,8 @@ public class Breaks {
         this.dropCountMin = json.getInt("drop_count_min");
         this.dropCountMax = json.getInt("drop_count_max");
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
-
         try {
-            this.timestamp = dateFormat.parse(json.getString("timestamp")).getTime();
+            this.timestamp = SteveCraftsApi.getDateFormat().parse(json.getString("timestamp")).getTime();
         } catch (ParseException e) {
             this.timestamp = Calendar.getInstance().getTimeInMillis();
         }

@@ -26,4 +26,13 @@ public class SteveCraftsData {
     public SteveCraftsData(){
     }
 
+    public SteveCraftsData(List<Block> blocks, List<Breaks> breaks, List<Brewing> brewings, List<CraftingRecipe> craftingRecipes, List<Item> items, List<Potion> potions, List<Smelting> smeltings) {
+        this.blocks = blocks;
+        this.breaks = breaks;
+        this.brewings = brewings;
+        this.craftingRecipes = craftingRecipes;
+        this.items = items;
+        this.potions = potions;
+        this.smeltings = smeltings;
+    }
 }

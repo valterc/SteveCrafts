@@ -2,14 +2,14 @@ package com.valterc.stevecrafts.data.model;
 
 import android.graphics.Bitmap;
 
+import com.valterc.stevecrafts.data.api.SteveCraftsApi;
+import com.vcutils.utils.ImageUtils;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
-import java.util.TimeZone;
 
 /**
  * Created by Valter on 08/01/2015.
@@ -86,7 +86,7 @@ public class Block {
         this.blastResistance = json.getInt("blast_resistance");
         this.stackable = json.getInt("stackable");
         this.flamable = json.getInt("flamable");
-        this.image = null; //TODO: Load bitmap
+        this.image = ImageUtils.fromBase64String(json.getString("image"));
         this.name_en = json.getString("name_en");
         this.name_pt = json.getString("name_pt");
         this.name_de = json.getString("name_de");
@@ -94,11 +94,8 @@ public class Block {
         this.name_fr = json.getString("name_fr");
         this.name_pl = json.getString("name_pl");
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+1"));
-
         try {
-            this.timestamp = dateFormat.parse(json.getString("timestamp")).getTime();
+            this.timestamp = SteveCraftsApi.getDateFormat().parse(json.getString("timestamp")).getTime();
         } catch (ParseException e) {
             this.timestamp = Calendar.getInstance().getTimeInMillis();
         }

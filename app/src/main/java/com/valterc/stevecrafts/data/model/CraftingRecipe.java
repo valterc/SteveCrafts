@@ -1,5 +1,13 @@
 package com.valterc.stevecrafts.data.model;
 
+import com.valterc.stevecrafts.data.api.SteveCraftsApi;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.util.Calendar;
+
 /**
  * Created by Valter on 09/01/2015.
  */
@@ -16,13 +24,44 @@ public class CraftingRecipe {
     private Slot[] slots;
     private long timestamp;
 
-    public static class Slot{
+    public CraftingRecipe() {
+
+    }
+
+    public CraftingRecipe(JSONObject json) throws JSONException {
+        this.id = json.getString("id");
+        this.type = json.getInt("type");
+        this.craftId = json.getString("craft_id");
+        this.count = json.getInt("count");
+
+        this.slots = new Slot[9];
+        for (int i = 0; i < 9; i++) {
+
+            if (!json.isNull(String.format("slot_%s_id", i))) {
+                this.slots[i] = new Slot(
+                        json.getString(String.format("slot_%s_id", i)),
+                        json.getInt(String.format("slot_%s_type", i)),
+                        json.getInt(String.format("slot_%s_count", i))
+                );
+            }
+
+
+        }
+
+        try {
+            this.timestamp = SteveCraftsApi.getDateFormat().parse(json.getString("timestamp")).getTime();
+        } catch (ParseException e) {
+            this.timestamp = Calendar.getInstance().getTimeInMillis();
+        }
+    }
+
+    public static class Slot {
 
         private String id;
         private int type;
         private int count;
 
-        public Slot(String id, int type, int count){
+        public Slot(String id, int type, int count) {
             this.setId(id);
             this.setType(type);
             this.setCount(count);
