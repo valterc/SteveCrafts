@@ -12,8 +12,6 @@ import com.valterc.stevecrafts.drawer.NavigationDrawerFragment;
 import com.vcutils.tasks.MultipurposeAsyncTask;
 import com.vcutils.tasks.MultipurposeAsyncTaskData;
 
-import org.json.JSONException;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -32,9 +30,9 @@ public class MainActivity extends ActionBarActivity {
                 SteveCraftsApi api = new SteveCraftsApi();
                 try {
                     Log.d("SC", "BEGIN API CALL");
-                    api.getData();
+                    //api.getData();
                     Log.d("SC", "END API CALL");
-                } catch (JSONException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

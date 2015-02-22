@@ -1,5 +1,7 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.database.Cursor;
+
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 
 import org.json.JSONException;
@@ -47,4 +49,18 @@ public class Smelting {
             this.timestamp = Calendar.getInstance().getTimeInMillis();
         }
     }
+
+    public Smelting(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex("id"));
+        this.ingredientType = cursor.getInt(cursor.getColumnIndex("ingredient_type"));
+        this.ingredientId = cursor.getString(cursor.getColumnIndex("ingredient_id"));
+        this.resultType = cursor.getInt(cursor.getColumnIndex("result_type"));
+        this.resultId = cursor.getString(cursor.getColumnIndex("result_id"));
+        this.resultCount = cursor.getInt(cursor.getColumnIndex("result_count"));
+        this.experience = cursor.getDouble(cursor.getColumnIndex("exp"));
+        this.dontRecommend = cursor.getInt(cursor.getColumnIndex("dont_recommend"));
+        this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
+
+    }
+
 }

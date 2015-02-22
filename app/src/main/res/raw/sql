@@ -1,0 +1,146 @@
+
+
+-- Table: blocks
+CREATE TABLE blocks (
+    id                      TEXT    PRIMARY KEY,
+    minecraft_block_id      INTEGER DEFAULT ( 0 ),
+    minecraft_data_value    INTEGER DEFAULT ( 0 ),
+    minecraft_id            TEXT,
+    type                    NUMERIC DEFAULT ( 0 ),
+    category                NUMERIC DEFAULT ( 0 ),
+    physics                 NUMERIC DEFAULT ( 0 ),
+    transparency            NUMERIC DEFAULT ( 0 ),
+    luminance               NUMERIC DEFAULT ( 0 ),
+    blast_resistance        NUMERIC DEFAULT ( 0 ),
+    stackable               NUMERIC DEFAULT ( 0 ),
+    flamable                NUMERIC DEFAULT ( 0 ),
+    image                   BLOB,
+    name_en                 TEXT,
+    name_pt                 TEXT,
+    name_de                 TEXT,
+    name_es                 TEXT,
+    name_fr                 TEXT,
+    name_pl                 TEXT,
+    timestamp               INTEGER DEFAULT ( 0 )
+);
+
+-- Table: breaks
+CREATE TABLE breaks (
+    id                      TEXT    PRIMARY KEY,
+    item_id                 TEXT,
+    block_id                TEXT,
+    silktouch               NUMERIC DEFAULT ( 0 ),
+    anytool                 NUMERIC DEFAULT ( 0 ),
+    drop_id                 TEXT,
+    drop_type               NUMERIC DEFAULT ( 0 ),
+    drop_count              NUMERIC DEFAULT ( 0 ),
+    drop_count_min          NUMERIC DEFAULT ( 0 ),
+    drop_count_max          NUMERIC DEFAULT ( 0 ),
+    timestamp               INTEGER DEFAULT ( 0 )
+);
+
+-- Table: brewings
+CREATE TABLE brewings (
+    id                      TEXT    PRIMARY KEY,
+    ingredient_id           TEXT,
+    begin_item_type         NUMERIC DEFAULT ( 0 ),
+    begin_item_id           TEXT,
+    result_item_id          TEXT,
+    timestamp               INTEGER DEFAULT ( 0 )
+);
+
+-- Table: crafting_recipes
+CREATE TABLE crafting_recipes (
+    id                      TEXT    PRIMARY KEY,
+    type                    NUMERIC DEFAULT ( 0 ),
+    craft_id                TEXT,
+    count                   NUMERIC DEFAULT ( 0 ),
+
+    slot_0_id               TEXT,
+    slot_0_type             NUMERIC DEFAULT ( 0 ),
+    slot_0_count            NUMERIC DEFAULT ( 0 ),
+
+    slot_1_id               TEXT,
+    slot_1_type             NUMERIC DEFAULT ( 0 ),
+    slot_1_count            NUMERIC DEFAULT ( 0 ),
+
+    slot_2_id               TEXT,
+    slot_2_type             NUMERIC DEFAULT ( 0 ),
+    slot_2_count            NUMERIC DEFAULT ( 0 ),
+
+    slot_3_id               TEXT,
+    slot_3_type             NUMERIC DEFAULT ( 0 ),
+    slot_3_count            NUMERIC DEFAULT ( 0 ),
+
+    slot_4_id               TEXT,
+    slot_4_type             NUMERIC DEFAULT ( 0 ),
+    slot_4_count            NUMERIC DEFAULT ( 0 ),
+
+    slot_5_id               TEXT,
+    slot_5_type             NUMERIC DEFAULT ( 0 ),
+    slot_5_count            NUMERIC DEFAULT ( 0 ),
+
+    slot_6_id               TEXT,
+    slot_6_type             NUMERIC DEFAULT ( 0 ),
+    slot_6_count            NUMERIC DEFAULT ( 0 ),
+
+    slot_7_id               TEXT,
+    slot_7_type             NUMERIC DEFAULT ( 0 ),
+    slot_7_count            NUMERIC DEFAULT ( 0 ),
+
+    slot_8_id               TEXT,
+    slot_8_type             NUMERIC DEFAULT ( 0 ),
+    slot_8_count            NUMERIC DEFAULT ( 0 ),
+
+    timestamp               INTEGER DEFAULT ( 0 )
+);
+
+-- Table: items
+CREATE TABLE items (
+    id                      TEXT    PRIMARY KEY,
+    minecraft_id            TEXT,
+    minecraft_data_value    INTEGER DEFAULT ( 0 ),
+    durability              NUMERIC DEFAULT ( 0 ),
+    stackable               NUMERIC DEFAULT ( 0 ),
+    damage                  NUMERIC DEFAULT ( 0 ),
+    armor                   NUMERIC DEFAULT ( 0 ),
+    type                    NUMERIC DEFAULT ( 0 ),
+    image                   BLOB,
+    name_en                 TEXT,
+    name_pt                 TEXT,
+    name_de                 TEXT,
+    name_es                 TEXT,
+    name_fr                 TEXT,
+    name_pl                 TEXT,
+    timestamp               INTEGER DEFAULT ( 0 )
+);
+
+-- Table: potions
+CREATE TABLE potions (
+    id                      TEXT    PRIMARY KEY,
+    duration                DOUBLE,
+    health                  NUMERIC DEFAULT ( 0 ),
+    speed                   NUMERIC DEFAULT ( 0 ),
+    attack                  NUMERIC DEFAULT ( 0 ),
+    image                   BLOB,
+    name_en                 TEXT,
+    name_pt                 TEXT,
+    name_de                 TEXT,
+    name_es                 TEXT,
+    name_fr                 TEXT,
+    name_pl                 TEXT,
+    timestamp               INTEGER DEFAULT ( 0 )
+);
+
+-- Table: smeltings
+CREATE TABLE smeltings (
+    id                      TEXT    PRIMARY KEY,
+    ingredient_type         NUMERIC DEFAULT ( 0 ),
+    ingredient_id           TEXT,
+    result_type             NUMERIC DEFAULT ( 0 ),
+    result_id               TEXT,
+    result_count            NUMERIC DEFAULT ( 0 ),
+    experience              DOUBLE,
+    dont_recommend          NUMERIC DEFAULT ( 0 ),
+    timestamp               INTEGER DEFAULT ( 0 )
+);

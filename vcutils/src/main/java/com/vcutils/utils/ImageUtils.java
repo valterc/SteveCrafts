@@ -91,6 +91,7 @@ public class ImageUtils {
     public static Bitmap byteArrayToBitmap(byte[] bytes) {
         if (bytes == null)
             return null;
+
         ByteArrayInputStream inputStream = null;
         Bitmap bitmap = null;
 

@@ -1,5 +1,7 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.database.Cursor;
+
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 
 import org.json.JSONException;
@@ -40,6 +42,15 @@ public class Brewing {
         } catch (ParseException e) {
             this.timestamp = Calendar.getInstance().getTimeInMillis();
         }
+    }
+
+    public Brewing(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex("id"));
+        this.ingredientId = cursor.getString(cursor.getColumnIndex("ingredient_id"));
+        this.beginItemType = cursor.getInt(cursor.getColumnIndex("begin_item_type"));
+        this.beginItemId = cursor.getString(cursor.getColumnIndex("begin_item_id"));
+        this.resultItemId = cursor.getString(cursor.getColumnIndex("result_item_id"));
+        this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
     }
 
 }

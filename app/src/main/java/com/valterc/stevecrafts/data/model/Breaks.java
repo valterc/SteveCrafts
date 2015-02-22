@@ -1,5 +1,7 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.database.Cursor;
+
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 
 import org.json.JSONException;
@@ -59,4 +61,19 @@ public class Breaks {
             this.timestamp = Calendar.getInstance().getTimeInMillis();
         }
     }
+
+    public Breaks(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex("id"));
+        this.itemId = cursor.getString(cursor.getColumnIndex("item_id"));
+        this.blockId = cursor.getString(cursor.getColumnIndex("block_id"));
+        this.silktouch = cursor.getInt(cursor.getColumnIndex("silktouch"));
+        this.anytool = cursor.getInt(cursor.getColumnIndex("anytool"));
+        this.dropId = cursor.getString(cursor.getColumnIndex("drop_id"));
+        this.dropType = cursor.getInt(cursor.getColumnIndex("drop_type"));
+        this.dropCount = cursor.getInt(cursor.getColumnIndex("drop_count"));
+        this.dropCountMin = cursor.getInt(cursor.getColumnIndex("drop_count_min"));
+        this.dropCountMax = cursor.getInt(cursor.getColumnIndex("drop_count_max"));
+        this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
+    }
+
 }

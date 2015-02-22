@@ -10,7 +10,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
-import com.vcutils.DebugLog;
+import com.vcutils.utils.DebugLog;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

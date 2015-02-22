@@ -1,5 +1,6 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.database.Cursor;
 import android.graphics.Bitmap;
 
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
@@ -62,4 +63,21 @@ public class Potion {
             this.timestamp = Calendar.getInstance().getTimeInMillis();
         }
     }
+
+    public Potion(Cursor cursor) throws JSONException {
+        this.id = cursor.getString(cursor.getColumnIndex("id"));
+        this.duration = cursor.getDouble(cursor.getColumnIndex("duration"));
+        this.health = cursor.getInt(cursor.getColumnIndex("health"));
+        this.speed = cursor.getInt(cursor.getColumnIndex("speed"));
+        this.attack = cursor.getInt(cursor.getColumnIndex("attack"));
+        this.image = ImageUtils.byteArrayToBitmap(cursor.getBlob(cursor.getColumnIndex("image")));
+        this.name_en = cursor.getString(cursor.getColumnIndex("name_en"));
+        this.name_pt = cursor.getString(cursor.getColumnIndex("name_pt"));
+        this.name_de = cursor.getString(cursor.getColumnIndex("name_de"));
+        this.name_es = cursor.getString(cursor.getColumnIndex("name_es"));
+        this.name_fr = cursor.getString(cursor.getColumnIndex("name_fr"));
+        this.name_pl = cursor.getString(cursor.getColumnIndex("name_pl"));
+        this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
+    }
+
 }

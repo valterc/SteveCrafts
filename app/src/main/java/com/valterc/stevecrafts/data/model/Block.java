@@ -1,5 +1,6 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.database.Cursor;
 import android.graphics.Bitmap;
 
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
@@ -101,12 +102,33 @@ public class Block {
         }
     }
 
+    public Block(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex("id"));
+        this.minecraftBlockId = cursor.getInt(cursor.getColumnIndex("minecraft_blockid"));
+        this.minecraftDataValue = cursor.getInt(cursor.getColumnIndex("minecraft_datavalue"));
+        this.minecraftId = cursor.getString(cursor.getColumnIndex("minecraft_id"));
+        this.type = cursor.getInt(cursor.getColumnIndex("type"));
+        this.category = cursor.getInt(cursor.getColumnIndex("category"));
+        this.physics = cursor.getInt(cursor.getColumnIndex("physics"));
+        this.transparency = cursor.getInt(cursor.getColumnIndex("transparency"));
+        this.luminance = cursor.getInt(cursor.getColumnIndex("luminance"));
+        this.blastResistance = cursor.getInt(cursor.getColumnIndex("blast_resistance"));
+        this.stackable = cursor.getInt(cursor.getColumnIndex("stackable"));
+        this.flamable = cursor.getInt(cursor.getColumnIndex("flamable"));
+        this.image = ImageUtils.byteArrayToBitmap(cursor.getBlob(cursor.getColumnIndex("image")));
+        this.name_en = cursor.getString(cursor.getColumnIndex("name_en"));
+        this.name_pt = cursor.getString(cursor.getColumnIndex("name_pt"));
+        this.name_de = cursor.getString(cursor.getColumnIndex("name_de"));
+        this.name_es = cursor.getString(cursor.getColumnIndex("name_es"));
+        this.name_fr = cursor.getString(cursor.getColumnIndex("name_fr"));
+        this.name_pl = cursor.getString(cursor.getColumnIndex("name_pl"));
+        this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
+    }
 
-    /**
-     *
-     * Internal types
-     *
-     */
+
+    // =====================
+    // Internal types
+    // =====================
 
     public static class Type {
 

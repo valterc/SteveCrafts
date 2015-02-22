@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.net.http.AndroidHttpClient;
 
 import com.vcutils.DownloadResponse.DownloadResult;
+import com.vcutils.utils.DebugLog;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;

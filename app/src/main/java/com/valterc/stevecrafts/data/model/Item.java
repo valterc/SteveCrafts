@@ -1,5 +1,6 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.database.Cursor;
 import android.graphics.Bitmap;
 
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
@@ -68,6 +69,30 @@ public class Item {
             this.timestamp = Calendar.getInstance().getTimeInMillis();
         }
     }
+
+    public Item(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex("id"));
+        this.minecraftId = cursor.getString(cursor.getColumnIndex("minecraft_id"));
+        this.minecraftDataValue = cursor.getInt(cursor.getColumnIndex("minecraft_datavalue"));
+        this.durability = cursor.getInt(cursor.getColumnIndex("durability"));
+        this.stackable = cursor.getInt(cursor.getColumnIndex("stackable"));
+        this.damage = cursor.getInt(cursor.getColumnIndex("damage"));
+        this.armor = cursor.getInt(cursor.getColumnIndex("armor"));
+        this.type = cursor.getInt(cursor.getColumnIndex("type"));
+        this.image = ImageUtils.byteArrayToBitmap(cursor.getBlob(cursor.getColumnIndex("image")));
+        this.name_en = cursor.getString(cursor.getColumnIndex("name_en"));
+        this.name_pt = cursor.getString(cursor.getColumnIndex("name_pt"));
+        this.name_de = cursor.getString(cursor.getColumnIndex("name_de"));
+        this.name_es = cursor.getString(cursor.getColumnIndex("name_es"));
+        this.name_fr = cursor.getString(cursor.getColumnIndex("name_fr"));
+        this.name_pl = cursor.getString(cursor.getColumnIndex("name_pl"));
+        this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
+    }
+
+
+    // =====================
+    // Internal types
+    // =====================
 
     public static class Type{
         private Type(){}

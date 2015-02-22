@@ -1,5 +1,7 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.database.Cursor;
+
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 
 import org.json.JSONException;
@@ -36,7 +38,6 @@ public class CraftingRecipe {
 
         this.slots = new Slot[9];
         for (int i = 0; i < 9; i++) {
-
             if (!json.isNull(String.format("slot_%s_id", i))) {
                 this.slots[i] = new Slot(
                         json.getString(String.format("slot_%s_id", i)),
@@ -44,8 +45,6 @@ public class CraftingRecipe {
                         json.getInt(String.format("slot_%s_count", i))
                 );
             }
-
-
         }
 
         try {
@@ -54,6 +53,31 @@ public class CraftingRecipe {
             this.timestamp = Calendar.getInstance().getTimeInMillis();
         }
     }
+
+    public CraftingRecipe(Cursor cursor) {
+        this.id = cursor.getString(cursor.getColumnIndex("id"));
+        this.type = cursor.getInt(cursor.getColumnIndex("type"));
+        this.craftId = cursor.getString(cursor.getColumnIndex("craft_id"));
+        this.count = cursor.getInt(cursor.getColumnIndex("count"));
+
+        this.slots = new Slot[9];
+        for (int i = 0; i < 9; i++) {
+            if (!cursor.isNull(cursor.getColumnIndex(String.format("slot_%s_id", i)))) {
+                this.slots[i] = new Slot(
+                        cursor.getString(cursor.getColumnIndex(String.format("slot_%s_id", i))),
+                        cursor.getInt(cursor.getColumnIndex(String.format("slot_%s_type", i))),
+                        cursor.getInt(cursor.getColumnIndex(String.format("slot_%s_count", i)))
+                );
+            }
+        }
+
+        this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
+    }
+
+
+    // =====================
+    // Internal types
+    // =====================
 
     public static class Slot {
 
