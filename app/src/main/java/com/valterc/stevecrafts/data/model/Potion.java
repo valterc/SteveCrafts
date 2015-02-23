@@ -64,7 +64,7 @@ public class Potion {
         }
     }
 
-    public Potion(Cursor cursor) throws JSONException {
+    public Potion(Cursor cursor) {
         this.id = cursor.getString(cursor.getColumnIndex("id"));
         this.duration = cursor.getDouble(cursor.getColumnIndex("duration"));
         this.health = cursor.getInt(cursor.getColumnIndex("health"));
