@@ -8,25 +8,25 @@ import com.valterc.stevecrafts.data.model.Item;
 import com.valterc.stevecrafts.data.model.Potion;
 import com.valterc.stevecrafts.data.model.Smelting;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Valter on 12/01/2015.
  */
 public class SteveCraftsData {
 
-    private List<Block> blocks;
-    private List<Breaks> breaks;
-    private List<Brewing> brewings;
-    private List<CraftingRecipe> craftingRecipes;
-    private List<Item> items;
-    private List<Potion> potions;
-    private List<Smelting> smeltings;
+    private ArrayList<Block> blocks;
+    private ArrayList<Breaks> breaks;
+    private ArrayList<Brewing> brewings;
+    private ArrayList<CraftingRecipe> craftingRecipes;
+    private ArrayList<Item> items;
+    private ArrayList<Potion> potions;
+    private ArrayList<Smelting> smeltings;
 
-    public SteveCraftsData(){
+    public SteveCraftsData() {
     }
 
-    public SteveCraftsData(List<Block> blocks, List<Breaks> breaks, List<Brewing> brewings, List<CraftingRecipe> craftingRecipes, List<Item> items, List<Potion> potions, List<Smelting> smeltings) {
+    public SteveCraftsData(ArrayList<Block> blocks, ArrayList<Breaks> breaks, ArrayList<Brewing> brewings, ArrayList<CraftingRecipe> craftingRecipes, ArrayList<Item> items, ArrayList<Potion> potions, ArrayList<Smelting> smeltings) {
         this.blocks = blocks;
         this.breaks = breaks;
         this.brewings = brewings;
@@ -35,4 +35,33 @@ public class SteveCraftsData {
         this.potions = potions;
         this.smeltings = smeltings;
     }
+
+    public ArrayList<Block> getBlocks() {
+        return blocks;
+    }
+
+    public ArrayList<Breaks> getBreaks() {
+        return breaks;
+    }
+
+    public ArrayList<Brewing> getBrewings() {
+        return brewings;
+    }
+
+    public ArrayList<CraftingRecipe> getCraftingRecipes() {
+        return craftingRecipes;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public ArrayList<Potion> getPotions() {
+        return potions;
+    }
+
+    public ArrayList<Smelting> getSmeltings() {
+        return smeltings;
+    }
+
 }

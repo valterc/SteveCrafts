@@ -9,8 +9,8 @@ import com.valterc.stevecrafts.data.DataManager;
  */
 public class SteveCraftsApp extends Application {
 
-    private DataManager dataManager;
-    public DataManager getDataManager(){
+    private static DataManager dataManager;
+    public static DataManager getDataManager(){
         return dataManager;
     }
 

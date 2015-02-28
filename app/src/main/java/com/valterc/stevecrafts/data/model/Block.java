@@ -50,7 +50,7 @@ public class Block {
     /**
      * 0 - No; Other - Value
      */
-    private double blastResistance;
+    private int blastResistance;
 
     /**
      * 0 - No; Other - Value
@@ -124,6 +124,169 @@ public class Block {
         this.name_pl = cursor.getString(cursor.getColumnIndex("name_pl"));
         this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
     }
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getMinecraftBlockId() {
+        return minecraftBlockId;
+    }
+
+    public void setMinecraftBlockId(int minecraftBlockId) {
+        this.minecraftBlockId = minecraftBlockId;
+    }
+
+    public int getMinecraftDataValue() {
+        return minecraftDataValue;
+    }
+
+    public void setMinecraftDataValue(int minecraftDataValue) {
+        this.minecraftDataValue = minecraftDataValue;
+    }
+
+    public String getMinecraftId() {
+        return minecraftId;
+    }
+
+    public void setMinecraftId(String minecraftId) {
+        this.minecraftId = minecraftId;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    public int getPhysics() {
+        return physics;
+    }
+
+    public void setPhysics(int physics) {
+        this.physics = physics;
+    }
+
+    public int getTransparency() {
+        return transparency;
+    }
+
+    public void setTransparency(int transparency) {
+        this.transparency = transparency;
+    }
+
+    public int getLuminance() {
+        return luminance;
+    }
+
+    public void setLuminance(int luminance) {
+        this.luminance = luminance;
+    }
+
+    public int getBlastResistance() {
+        return blastResistance;
+    }
+
+    public void setBlastResistance(int blastResistance) {
+        this.blastResistance = blastResistance;
+    }
+
+    public int getStackable() {
+        return stackable;
+    }
+
+    public void setStackable(int stackable) {
+        this.stackable = stackable;
+    }
+
+    public int getFlamable() {
+        return flamable;
+    }
+
+    public void setFlamable(int flamable) {
+        this.flamable = flamable;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
+    }
+
+    public String getNameEn() {
+        return name_en;
+    }
+
+    public void setNameEn(String name_en) {
+        this.name_en = name_en;
+    }
+
+    public String getNamePt() {
+        return name_pt;
+    }
+
+    public void setNamePt(String name_pt) {
+        this.name_pt = name_pt;
+    }
+
+    public String getNameDe() {
+        return name_de;
+    }
+
+    public void setNameDe(String name_de) {
+        this.name_de = name_de;
+    }
+
+    public String getNameEs() {
+        return name_es;
+    }
+
+    public void setNameEs(String name_es) {
+        this.name_es = name_es;
+    }
+
+    public String getNameFr() {
+        return name_fr;
+    }
+
+    public void setNameFr(String name_fr) {
+        this.name_fr = name_fr;
+    }
+
+    public String getNamePl() {
+        return name_pl;
+    }
+
+    public void setNamePl(String name_pl) {
+        this.name_pl = name_pl;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+
 
 
     // =====================

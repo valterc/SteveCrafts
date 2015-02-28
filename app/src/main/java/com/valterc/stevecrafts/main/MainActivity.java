@@ -7,7 +7,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
 import com.valterc.stevecrafts.R;
+import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
+import com.valterc.stevecrafts.data.api.SteveCraftsData;
 import com.valterc.stevecrafts.drawer.NavigationDrawerFragment;
 import com.vcutils.tasks.MultipurposeAsyncTask;
 import com.vcutils.tasks.MultipurposeAsyncTaskData;
@@ -30,8 +32,10 @@ public class MainActivity extends ActionBarActivity {
                 SteveCraftsApi api = new SteveCraftsApi();
                 try {
                     Log.d("SC", "BEGIN API CALL");
-                    //api.getData();
-                    Log.d("SC", "END API CALL");
+                    SteveCraftsData data = api.getData();
+                    Log.d("SC", "END API CALL -- SAVING DATA");
+                    SteveCraftsApp.getDataManager().saveData(data);
+                    Log.d("SC", "END SAVE DATA");
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

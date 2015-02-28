@@ -38,7 +38,7 @@ public class DataSQLiteHelper {
 
     public DataSQLiteHelper(Context c) {
         this.context = c;
-        mDataPath = c.getApplicationContext().getFilesDir().getPath() + "/";
+        mDataPath = c.getApplicationContext().getExternalFilesDir(null) + "/";//c.getApplicationContext().getFilesDir().getPath() + "/";
 
         try {
             openDatabaseReadWrite(mDataPath);

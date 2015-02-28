@@ -305,9 +305,7 @@ public class DataSource {
 
     public void insertBlocks(ArrayList<Block> blocks) {
 
-        Boolean result = true;
-
-        SQLiteStatement statement = getDatabase().compileStatement("INSERT INTO mindcrackers VALUES ( " +
+        SQLiteStatement statement = getDatabase().compileStatement("INSERT INTO blocks VALUES ( " +
                 "?, " + /*id*/
                 "?, " + /*minecraft_block_id*/
                 "?, " + /*minecraft_data_value*/
@@ -339,57 +337,66 @@ public class DataSource {
                 statement.clearBindings();
 
                 int index = 1;
-                statement.bindLong(index++, block.id);
-                statement.bindString(index++, m.getId());
+                statement.bindString(index++, block.getId());
+                statement.bindLong(index++, block.getMinecraftBlockId());
+                statement.bindLong(index++, block.getMinecraftDataValue());
+                statement.bindString(index++, block.getMinecraftId());
+                statement.bindLong(index++, block.getType());
+                statement.bindLong(index++, block.getCategory());
+                statement.bindLong(index++, block.getPhysics());
+                statement.bindLong(index++, block.getTransparency());
+                statement.bindLong(index++, block.getLuminance());
+                statement.bindLong(index++, block.getBlastResistance());
+                statement.bindLong(index++, block.getStackable());
+                statement.bindLong(index++, block.getFlamable());
 
-                statement.executeInsert();
-            }
-
-            for (int i = 0; i < mindcrackers.size(); i++) {
-                Mindcracker m = mindcrackers.get(i);
-
-
-
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.ENGLISH);
-
-                int index = 1;
-                statement.bindString(index++, m.getName());
-                statement.bindString(index++, m.getYoutubeName());
-                statement.bindString(index++, m.getYoutubeId());
-                statement.bindString(index++, m.getYoutubePlaylistId());
-                statement.bindString(index++, m.getTwitchId());
-                statement.bindLong(index++, m.getShowTitleOnList() ? 1 : 0);
-                statement.bindLong(index++, m.getNotificationsEnabled() ? 1 : 0);
-                statement.bindLong(index++, m.getUnseenVideoCount());
-                statement.bindLong(index++, m.getHits());
-
-                if (m.getLastVideoId() != null) {
-                    statement.bindString(index++, m.getLastVideoId());
+                if (block.getImage() != null) {
+                    statement.bindBlob(index++, ImageUtils.bitmapToByteArray(block.getImage()));
                 } else {
                     statement.bindNull(index++);
                 }
 
-                if (m.getLastVideoDate() != null) {
-                    statement.bindString(index++, sdf.format(m.getLastVideoDate()));
+                statement.bindString(index++, block.getNameEn());
+
+                if (block.getNamePt() != null){
+                    statement.bindString(index++, block.getNamePt());
                 } else {
                     statement.bindNull(index++);
                 }
 
-                statement.bindString(index++, m.getId());
+                if (block.getNameDe() != null){
+                    statement.bindString(index++, block.getNameDe());
+                } else {
+                    statement.bindNull(index++);
+                }
 
+                if (block.getNameEs() != null){
+                    statement.bindString(index++, block.getNameEs());
+                } else {
+                    statement.bindNull(index++);
+                }
 
-                if (android.os.Build.VERSION.SDK_INT >= 11)
-                    statement.executeUpdateDelete();
-                else
-                    statement.execute();
+                if (block.getNameFr() != null){
+                    statement.bindString(index++, block.getNameFr());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                if (block.getNamePl() != null){
+                    statement.bindString(index++, block.getNamePl());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                statement.bindLong(index++, block.getTimestamp());
+
+                long result = statement.executeInsert();
+                DebugLog.d("Block inserted into DB, result: " + result);
             }
 
         } catch (Exception e) {
             DebugLog.d(e.getMessage());
-            result = false;
         }
-
-        return result;
     }
 
 
