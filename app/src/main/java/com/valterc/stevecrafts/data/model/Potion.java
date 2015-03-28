@@ -80,4 +80,55 @@ public class Potion {
         this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public double getDuration() {
+        return duration;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public String getNameEn() {
+        return name_en;
+    }
+
+    public String getNamePt() {
+        return name_pt;
+    }
+
+    public String getNameDe() {
+        return name_de;
+    }
+
+    public String getNameEs() {
+        return name_es;
+    }
+
+    public String getNameFr() {
+        return name_fr;
+    }
+
+    public String getNamePl() {
+        return name_pl;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
 }

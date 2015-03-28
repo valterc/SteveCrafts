@@ -22,8 +22,32 @@ public class DataManager {
 
     public void saveData(SteveCraftsData data) {
 
-        if (data.getBlocks() != null){
+        if (data.getBlocks() != null) {
             dataSource.insertBlocks(data.getBlocks());
+        }
+
+        if (data.getBreaks() != null) {
+            dataSource.insertBreaks(data.getBreaks());
+        }
+
+        if (data.getBrewings() != null) {
+            dataSource.insertBrewings(data.getBrewings());
+        }
+
+        if (data.getCraftingRecipes() != null) {
+            dataSource.insertCraftingRecipes(data.getCraftingRecipes());
+        }
+
+        if (data.getItems() != null) {
+            dataSource.insertItems(data.getItems());
+        }
+
+        if (data.getPotions() != null) {
+            dataSource.insertPotions(data.getPotions());
+        }
+
+        if (data.getSmeltings() != null) {
+            dataSource.insertSmeltings(data.getSmeltings());
         }
 
     }

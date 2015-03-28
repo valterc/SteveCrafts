@@ -76,4 +76,47 @@ public class Breaks {
         this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public String getBlockId() {
+        return blockId;
+    }
+
+    public int getSilktouch() {
+        return silktouch;
+    }
+
+    public int getAnytool() {
+        return anytool;
+    }
+
+    public String getDropId() {
+        return dropId;
+    }
+
+    public int getDropType() {
+        return dropType;
+    }
+
+    public int getDropCount() {
+        return dropCount;
+    }
+
+    public int getDropCountMin() {
+        return dropCountMin;
+    }
+
+    public int getDropCountMax() {
+        return dropCountMax;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
 }

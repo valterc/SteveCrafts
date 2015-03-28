@@ -89,6 +89,70 @@ public class Item {
         this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getMinecraftId() {
+        return minecraftId;
+    }
+
+    public int getMinecraftDataValue() {
+        return minecraftDataValue;
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public int getStackable() {
+        return stackable;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public int getArmor() {
+        return armor;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public String getNameEn() {
+        return name_en;
+    }
+
+    public String getNamePt() {
+        return name_pt;
+    }
+
+    public String getNameDe() {
+        return name_de;
+    }
+
+    public String getNameEs() {
+        return name_es;
+    }
+
+    public String getNameFr() {
+        return name_fr;
+    }
+
+    public String getNamePl() {
+        return name_pl;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
 
     // =====================
     // Internal types

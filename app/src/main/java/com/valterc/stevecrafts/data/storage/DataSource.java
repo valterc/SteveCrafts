@@ -37,6 +37,7 @@ public class DataSource {
         dataSQLiteHelper.disposeDatabase();
     }
 
+
     public ArrayList<Block> getBlocks() {
 
         ArrayList<Block> blocks = new ArrayList<Block>();
@@ -303,9 +304,12 @@ public class DataSource {
         return getImage("potions", potionId);
     }
 
+
     public void insertBlocks(ArrayList<Block> blocks) {
 
-        SQLiteStatement statement = getDatabase().compileStatement("INSERT INTO blocks VALUES ( " +
+        getDatabase().beginTransaction();
+
+        SQLiteStatement statement = getDatabase().compileStatement("INSERT OR REPLACE INTO blocks VALUES ( " +
                 "?, " + /*id*/
                 "?, " + /*minecraft_block_id*/
                 "?, " + /*minecraft_data_value*/
@@ -358,31 +362,31 @@ public class DataSource {
 
                 statement.bindString(index++, block.getNameEn());
 
-                if (block.getNamePt() != null){
+                if (block.getNamePt() != null) {
                     statement.bindString(index++, block.getNamePt());
                 } else {
                     statement.bindNull(index++);
                 }
 
-                if (block.getNameDe() != null){
+                if (block.getNameDe() != null) {
                     statement.bindString(index++, block.getNameDe());
                 } else {
                     statement.bindNull(index++);
                 }
 
-                if (block.getNameEs() != null){
+                if (block.getNameEs() != null) {
                     statement.bindString(index++, block.getNameEs());
                 } else {
                     statement.bindNull(index++);
                 }
 
-                if (block.getNameFr() != null){
+                if (block.getNameFr() != null) {
                     statement.bindString(index++, block.getNameFr());
                 } else {
                     statement.bindNull(index++);
                 }
 
-                if (block.getNamePl() != null){
+                if (block.getNamePl() != null) {
                     statement.bindString(index++, block.getNamePl());
                 } else {
                     statement.bindNull(index++);
@@ -397,6 +401,422 @@ public class DataSource {
         } catch (Exception e) {
             DebugLog.d(e.getMessage());
         }
+
+        getDatabase().setTransactionSuccessful();
+        getDatabase().endTransaction();
+    }
+
+    public void insertBreaks(ArrayList<Breaks> breaks) {
+
+        getDatabase().beginTransaction();
+
+        SQLiteStatement statement = getDatabase().compileStatement("INSERT OR REPLACE INTO breaks VALUES ( " +
+                "?, " + /*id*/
+                "?, " + /*item_id*/
+                "?, " + /*block_id*/
+                "?, " + /*silktouch*/
+                "?, " + /*anytool*/
+                "?, " + /*drop_id*/
+                "?, " + /*drop_type*/
+                "?, " + /*drop_count*/
+                "?, " + /*drop_count_min*/
+                "?, " + /*drop_count_max*/
+                "? " +  /*timestamp*/
+                ")");
+
+
+        try {
+
+            for (int i = 0; i < breaks.size(); i++) {
+                Breaks break_ = breaks.get(i);
+
+                statement.clearBindings();
+
+                int index = 1;
+                statement.bindString(index++, break_.getId());
+                statement.bindString(index++, break_.getItemId());
+                statement.bindString(index++, break_.getBlockId());
+                statement.bindLong(index++, break_.getSilktouch());
+                statement.bindLong(index++, break_.getAnytool());
+                statement.bindString(index++, break_.getDropId());
+                statement.bindLong(index++, break_.getDropType());
+                statement.bindLong(index++, break_.getDropCount());
+                statement.bindLong(index++, break_.getDropCountMin());
+                statement.bindLong(index++, break_.getDropCountMax());
+                statement.bindLong(index++, break_.getTimestamp());
+
+                long result = statement.executeInsert();
+                DebugLog.d("Breaks inserted into DB, result: " + result);
+            }
+
+        } catch (Exception e) {
+            DebugLog.d(e.getMessage());
+        }
+
+        getDatabase().setTransactionSuccessful();
+        getDatabase().endTransaction();
+    }
+
+    public void insertBrewings(ArrayList<Brewing> brewings) {
+
+        getDatabase().beginTransaction();
+
+        SQLiteStatement statement = getDatabase().compileStatement("INSERT OR REPLACE INTO brewings VALUES ( " +
+                "?, " + /*id*/
+                "?, " + /*ingredient_id*/
+                "?, " + /*begin_item_type*/
+                "?, " + /*begin_item_id*/
+                "?, " + /*result_item_id*/
+                "? " +  /*timestamp*/
+                ")");
+
+
+        try {
+
+            for (int i = 0; i < brewings.size(); i++) {
+                Brewing brewing = brewings.get(i);
+
+                statement.clearBindings();
+
+                int index = 1;
+                statement.bindString(index++, brewing.getId());
+                statement.bindString(index++, brewing.getIngredientId());
+                statement.bindLong(index++, brewing.getBeginItemType());
+                statement.bindString(index++, brewing.getBeginItemId());
+                statement.bindString(index++, brewing.getResultItemId());
+                statement.bindLong(index++, brewing.getTimestamp());
+
+                long result = statement.executeInsert();
+                DebugLog.d("Brewing inserted into DB, result: " + result);
+            }
+
+        } catch (Exception e) {
+            DebugLog.d(e.getMessage());
+        }
+
+        getDatabase().setTransactionSuccessful();
+        getDatabase().endTransaction();
+    }
+
+    public void insertCraftingRecipes(ArrayList<CraftingRecipe> craftingRecipes) {
+
+        getDatabase().beginTransaction();
+
+        SQLiteStatement statement = getDatabase().compileStatement("INSERT OR REPLACE INTO crafting_recipes VALUES ( " +
+                "?, " + /*id*/
+                "?, " + /*type*/
+                "?, " + /*craft_id*/
+                "?, " + /*count*/
+
+                "?, " + /*slot_0_id*/
+                "?, " + /*slot_0_type*/
+                "?, " + /*slot_0_count*/
+
+                "?, " + /*slot_1_id*/
+                "?, " + /*slot_1_type*/
+                "?, " + /*slot_1_count*/
+
+                "?, " + /*slot_2_id*/
+                "?, " + /*slot_2_type*/
+                "?, " + /*slot_2_count*/
+
+                "?, " + /*slot_3_id*/
+                "?, " + /*slot_3_type*/
+                "?, " + /*slot_3_count*/
+
+                "?, " + /*slot_4_id*/
+                "?, " + /*slot_4_type*/
+                "?, " + /*slot_4_count*/
+
+                "?, " + /*slot_5_id*/
+                "?, " + /*slot_5_type*/
+                "?, " + /*slot_5_count*/
+
+                "?, " + /*slot_6_id*/
+                "?, " + /*slot_6_type*/
+                "?, " + /*slot_6_count*/
+
+                "?, " + /*slot_7_id*/
+                "?, " + /*slot_7_type*/
+                "?, " + /*slot_7_count*/
+
+                "?, " + /*slot_8_id*/
+                "?, " + /*slot_8_type*/
+                "?, " + /*slot_8_count*/
+
+                "? " +  /*timestamp*/
+                ")");
+
+
+        try {
+
+            for (int i = 0; i < craftingRecipes.size(); i++) {
+                CraftingRecipe craftingRecipe = craftingRecipes.get(i);
+
+                statement.clearBindings();
+
+                int index = 1;
+                statement.bindString(index++, craftingRecipe.getId());
+                statement.bindLong(index++, craftingRecipe.getType());
+                statement.bindString(index++, craftingRecipe.getCraftId());
+                statement.bindLong(index++, craftingRecipe.getCount());
+
+                for (int j = 0; j < craftingRecipe.getSlots().length; j++) {
+                    CraftingRecipe.Slot slot = craftingRecipe.getSlots()[j];
+                    if (slot == null) {
+                        statement.bindNull(index++);
+                        statement.bindNull(index++);
+                        statement.bindNull(index++);
+                    } else {
+                        statement.bindString(index++, slot.getId());
+                        statement.bindLong(index++, slot.getType());
+                        statement.bindLong(index++, slot.getCount());
+                    }
+                }
+
+                statement.bindLong(index++, craftingRecipe.getTimestamp());
+
+                long result = statement.executeInsert();
+                DebugLog.d("Crafting recipe inserted into DB, result: " + result);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            DebugLog.d(e.getMessage());
+        }
+
+        getDatabase().setTransactionSuccessful();
+        getDatabase().endTransaction();
+    }
+
+    public void insertItems(ArrayList<Item> items){
+
+        getDatabase().beginTransaction();
+
+        SQLiteStatement statement = getDatabase().compileStatement("INSERT OR REPLACE INTO items VALUES ( " +
+                "?, " + /*id*/
+                "?, " + /*minecraft_id*/
+                "?, " + /*minecraft_data_value*/
+                "?, " + /*durability*/
+                "?, " + /*stackable*/
+                "?, " + /*damage*/
+                "?, " + /*armor*/
+                "?, " + /*type*/
+                "?, " +  /*image*/
+                "?, " +  /*name_en*/
+                "?, " +  /*name_pt*/
+                "?, " +  /*name_de*/
+                "?, " +  /*name_es*/
+                "?, " +  /*name_fr*/
+                "?, " +  /*name_pl*/
+                "? " +  /*timestamp*/
+                ")");
+
+
+        try {
+
+            for (int i = 0; i < items.size(); i++) {
+                Item item = items.get(i);
+
+                statement.clearBindings();
+
+                int index = 1;
+                statement.bindString(index++, item.getId());
+                statement.bindString(index++, item.getMinecraftId());
+                statement.bindLong(index++, item.getMinecraftDataValue());
+                statement.bindLong(index++, item.getDurability());
+                statement.bindLong(index++, item.getStackable());
+                statement.bindLong(index++, item.getDamage());
+                statement.bindLong(index++, item.getArmor());
+                statement.bindLong(index++, item.getType());
+
+                if (item.getImage() != null) {
+                    statement.bindBlob(index++, ImageUtils.bitmapToByteArray(item.getImage()));
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                statement.bindString(index++, item.getNameEn());
+
+                if (item.getNamePt() != null) {
+                    statement.bindString(index++, item.getNamePt());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                if (item.getNameDe() != null) {
+                    statement.bindString(index++, item.getNameDe());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                if (item.getNameEs() != null) {
+                    statement.bindString(index++, item.getNameEs());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                if (item.getNameFr() != null) {
+                    statement.bindString(index++, item.getNameFr());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                if (item.getNamePl() != null) {
+                    statement.bindString(index++, item.getNamePl());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                statement.bindLong(index++, item.getTimestamp());
+
+                long result = statement.executeInsert();
+                DebugLog.d("Item inserted into DB, result: " + result);
+            }
+
+        } catch (Exception e) {
+            DebugLog.d(e.getMessage());
+        }
+
+        getDatabase().setTransactionSuccessful();
+        getDatabase().endTransaction();
+
+    }
+
+    public void insertPotions(ArrayList<Potion> potions){
+
+        getDatabase().beginTransaction();
+
+        SQLiteStatement statement = getDatabase().compileStatement("INSERT OR REPLACE INTO potions VALUES ( " +
+                "?, " + /*id*/
+                "?, " + /*duration*/
+                "?, " + /*health*/
+                "?, " + /*speed*/
+                "?, " + /*attack*/
+                "?, " +  /*image*/
+                "?, " +  /*name_en*/
+                "?, " +  /*name_pt*/
+                "?, " +  /*name_de*/
+                "?, " +  /*name_es*/
+                "?, " +  /*name_fr*/
+                "?, " +  /*name_pl*/
+                "? " +  /*timestamp*/
+                ")");
+
+
+        try {
+
+            for (int i = 0; i < potions.size(); i++) {
+                Potion potion = potions.get(i);
+
+                statement.clearBindings();
+
+                int index = 1;
+                statement.bindString(index++, potion.getId());
+                statement.bindDouble(index++, potion.getDuration());
+                statement.bindLong(index++, potion.getHealth());
+                statement.bindLong(index++, potion.getSpeed());
+                statement.bindLong(index++, potion.getAttack());
+
+                if (potion.getImage() != null) {
+                    statement.bindBlob(index++, ImageUtils.bitmapToByteArray(potion.getImage()));
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                statement.bindString(index++, potion.getNameEn());
+
+                if (potion.getNamePt() != null) {
+                    statement.bindString(index++, potion.getNamePt());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                if (potion.getNameDe() != null) {
+                    statement.bindString(index++, potion.getNameDe());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                if (potion.getNameEs() != null) {
+                    statement.bindString(index++, potion.getNameEs());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                if (potion.getNameFr() != null) {
+                    statement.bindString(index++, potion.getNameFr());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                if (potion.getNamePl() != null) {
+                    statement.bindString(index++, potion.getNamePl());
+                } else {
+                    statement.bindNull(index++);
+                }
+
+                statement.bindLong(index++, potion.getTimestamp());
+
+                long result = statement.executeInsert();
+                DebugLog.d("Potion inserted into DB, result: " + result);
+            }
+
+        } catch (Exception e) {
+            DebugLog.d(e.getMessage());
+        }
+
+        getDatabase().setTransactionSuccessful();
+        getDatabase().endTransaction();
+
+    }
+
+    public void insertSmeltings(ArrayList<Smelting> smeltings){
+
+        getDatabase().beginTransaction();
+
+        SQLiteStatement statement = getDatabase().compileStatement("INSERT OR REPLACE INTO smeltings VALUES ( " +
+                "?, " + /*id*/
+                "?, " + /*ingredient_type*/
+                "?, " + /*ingredient_id*/
+                "?, " + /*result_type*/
+                "?, " + /*result_id*/
+                "?, " + /*result_count*/
+                "?, " + /*experience*/
+                "?, " + /*dont_recommend*/
+                "? " +  /*timestamp*/
+                ")");
+
+
+        try {
+
+            for (int i = 0; i < smeltings.size(); i++) {
+                Smelting smelting = smeltings.get(i);
+
+                statement.clearBindings();
+
+                int index = 1;
+                statement.bindString(index++, smelting.getId());
+                statement.bindLong(index++, smelting.getIngredientType());
+                statement.bindString(index++, smelting.getIngredientId());
+                statement.bindLong(index++, smelting.getResultType());
+                statement.bindString(index++, smelting.getResultId());
+                statement.bindLong(index++, smelting.getResultCount());
+                statement.bindDouble(index++, smelting.getExperience());
+                statement.bindLong(index++, smelting.getDontRecommend());
+                statement.bindLong(index++, smelting.getTimestamp());
+
+                long result = statement.executeInsert();
+                DebugLog.d("Smelting inserted into DB, result: " + result);
+            }
+
+        } catch (Exception e) {
+            DebugLog.d(e.getMessage());
+        }
+
+        getDatabase().setTransactionSuccessful();
+        getDatabase().endTransaction();
+
     }
 
 

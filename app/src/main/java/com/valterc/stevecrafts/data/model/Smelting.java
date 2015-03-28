@@ -63,4 +63,39 @@ public class Smelting {
 
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public int getIngredientType() {
+        return ingredientType;
+    }
+
+    public String getIngredientId() {
+        return ingredientId;
+    }
+
+    public int getResultType() {
+        return resultType;
+    }
+
+    public String getResultId() {
+        return resultId;
+    }
+
+    public int getResultCount() {
+        return resultCount;
+    }
+
+    public double getExperience() {
+        return experience;
+    }
+
+    public int getDontRecommend() {
+        return dontRecommend;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
 }

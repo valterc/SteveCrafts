@@ -74,6 +74,29 @@ public class CraftingRecipe {
         this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public String getCraftId() {
+        return craftId;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public Slot[] getSlots() {
+        return slots;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
 
     // =====================
     // Internal types

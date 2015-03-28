@@ -53,4 +53,27 @@ public class Brewing {
         this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getIngredientId() {
+        return ingredientId;
+    }
+
+    public int getBeginItemType() {
+        return beginItemType;
+    }
+
+    public String getBeginItemId() {
+        return beginItemId;
+    }
+
+    public String getResultItemId() {
+        return resultItemId;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
 }
