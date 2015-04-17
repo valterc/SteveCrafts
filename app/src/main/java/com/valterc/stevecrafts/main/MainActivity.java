@@ -11,6 +11,7 @@ import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 import com.valterc.stevecrafts.data.api.SteveCraftsData;
 import com.valterc.stevecrafts.drawer.NavigationDrawerFragment;
+import com.valterc.stevecrafts.main.fragment.MainFragment;
 import com.vcutils.tasks.MultipurposeAsyncTask;
 import com.vcutils.tasks.MultipurposeAsyncTaskData;
 
@@ -53,6 +54,8 @@ public class MainActivity extends ActionBarActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mActionBarToolbar);
+
+        getFragmentManager().beginTransaction().add(R.id.container, MainFragment.newInstance()).commit();
 
     }
 
