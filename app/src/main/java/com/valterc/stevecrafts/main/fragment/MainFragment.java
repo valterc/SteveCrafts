@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,9 @@ import com.valterc.stevecrafts.R;
 public class MainFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private RecyclerView recyclerView;
+    private View layoutLoading;
+    private View layoutErrorLoading;
 
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
@@ -35,15 +40,23 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View baseView = inflater.inflate(R.layout.fragment_main, null);
+        View baseView = inflater.inflate(R.layout.fragment_main, container);
+
+        layoutLoading = baseView.findViewById(R.id.relativeLayoutLoading);
+        layoutErrorLoading = baseView.findViewById(R.id.relativeLayoutErrorLoading);
+
+        recyclerView = (RecyclerView) baseView.findViewById(R.id.recyclerViewMinecraftUpdates);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return baseView;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+
     }
 
     @Override

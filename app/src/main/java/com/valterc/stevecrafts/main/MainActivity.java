@@ -4,12 +4,10 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
+import com.valterc.external.tumblr.TumblrAPI;
 import com.valterc.stevecrafts.R;
-import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
-import com.valterc.stevecrafts.data.api.SteveCraftsData;
 import com.valterc.stevecrafts.drawer.NavigationDrawerFragment;
 import com.valterc.stevecrafts.main.fragment.MainFragment;
 import com.vcutils.tasks.MultipurposeAsyncTask;
@@ -32,11 +30,15 @@ public class MainActivity extends ActionBarActivity {
             public Void runOnBackground() {
                 SteveCraftsApi api = new SteveCraftsApi();
                 try {
-                    Log.d("SC", "BEGIN API CALL");
-                    SteveCraftsData data = api.getData();
-                    Log.d("SC", "END API CALL -- SAVING DATA");
-                    SteveCraftsApp.getDataManager().saveData(data);
-                    Log.d("SC", "END SAVE DATA");
+                    //Log.d("SC", "BEGIN API CALL");
+                    //SteveCraftsData data = api.getData();
+                    //Log.d("SC", "END API CALL -- SAVING DATA");
+                    //SteveCraftsApp.getDataManager().saveData(data);
+                    //Log.d("SC", "END SAVE DATA");
+
+                    TumblrAPI tumblrAPI = new TumblrAPI(getString(R.string.key_tumblr_api));
+                    tumblrAPI.GetPostsText("mcupdate.tumblr.com");
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

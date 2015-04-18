@@ -13,5 +13,9 @@
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="loading">Loading...</string>
+    <string name="unable_to_load_title">Unable to load</string>
+    <string name="unable_to_load_text">Your internet connection may be disabled or the server is offline.</string>
+    <string name="try_again">Try again</string>
 
 </resources>

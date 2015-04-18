@@ -1,39 +1,89 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewMinecraftUpdates"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#AAFFFFFF"
-        android:padding="15dp"
-        android:id="@+id/relativeLayoutUpdating">
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/updating"
-            android:textSize="10pt"
-            android:fontFamily="sans-serif-light"
-            android:layout_centerVertical="true"/>
+    <RelativeLayout
+        android:id="@+id/relativeLayoutLoading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+
 
         <ProgressBar
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:indeterminate="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"/>
+            android:id="@+id/progressBarLoading"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true" />
 
+        <TextView
+            android:id="@+id/textViewLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progressBarLoading"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="@string/loading"
+            android:textSize="16sp"
+            android:textColor="#666" />
 
     </RelativeLayout>
 
-    <RecyclerView
+    <RelativeLayout
+        android:id="@+id/relativeLayoutErrorLoading"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:visibility="gone">
 
+        <TextView
+            android:id="@+id/textViewErrorTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19sp"
+            android:gravity="center"
+            android:text="@string/unable_to_load_title"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@+id/textViewErrorText"
+            android:textStyle="bold" />
 
-    </RecyclerView>
+        <TextView
+            android:id="@+id/textViewErrorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/unable_to_load_text"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:textColor="#666" />
 
+        <Button
+            android:id="@+id/buttonTryAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewErrorText"
+            android:layout_centerHorizontal="true"
+            android:text="@string/try_again"
+            android:textSize="18sp"
+            android:layout_marginTop="20dp" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/container_updating_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_updating_data"/>
 
 
 </RelativeLayout>
