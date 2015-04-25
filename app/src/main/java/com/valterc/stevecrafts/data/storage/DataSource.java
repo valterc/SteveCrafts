@@ -306,6 +306,119 @@ public class DataSource {
     }
 
 
+    public ArrayList<Block> getMostRecentBlocks() {
+
+        ArrayList<Block> blocks = new ArrayList<Block>();
+
+        Cursor c = getDatabase().query(
+                "blocks",
+                new String[]{
+                        "id",
+                        "minecraft_block_id",
+                        "minecraft_data_value",
+                        "minecraft_id",
+                        "type",
+                        "category",
+                        "physics",
+                        "transparency",
+                        "luminance",
+                        "blast_resistance",
+                        "stackable",
+                        "flamable",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, null, null, null, null, "timestamp DESC", "5");
+
+        if (c.moveToFirst()) {
+            do {
+                Block block = new Block(c);
+                blocks.add(block);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return blocks;
+    }
+
+    public ArrayList<Item> getMostRecentItems() {
+
+        ArrayList<Item> items = new ArrayList<Item>();
+
+        Cursor c = getDatabase().query(
+                "items",
+                new String[]{
+                        "id",
+                        "minecraft_id",
+                        "minecraft_data_value",
+                        "durability",
+                        "stackable",
+                        "damage",
+                        "armor",
+                        "type",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, null, null, null, null, "timestamp DESC", "5");
+
+        if (c.moveToFirst()) {
+            do {
+                Item item = new Item(c);
+                items.add(item);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return items;
+    }
+
+    public ArrayList<Potion> getMostRecentPotions() {
+
+        ArrayList<Potion> potions = new ArrayList<Potion>();
+
+        Cursor c = getDatabase().query(
+                "potions",
+                new String[]{
+                        "id",
+                        "duration",
+                        "health",
+                        "speed",
+                        "attack",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, null, null, null, null, "timestamp DESC", "5");
+
+        if (c.moveToFirst()) {
+            do {
+                Potion potion = new Potion(c);
+                potions.add(potion);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return potions;
+    }
+
+
     public Block getBlock(String id) {
 
         Block block = null;

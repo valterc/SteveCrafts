@@ -30,11 +30,11 @@ public class MainActivity extends ActionBarActivity {
             public Void runOnBackground() {
                 SteveCraftsApi api = new SteveCraftsApi();
                 try {
-                    //Log.d("SC", "BEGIN API CALL");
+                    //DebugLog.d("BEGIN API CALL");
                     //SteveCraftsData data = api.getData();
-                    //Log.d("SC", "END API CALL -- SAVING DATA");
+                    //DebugLog.d("END API CALL -- SAVING DATA");
                     //SteveCraftsApp.getDataManager().saveData(data);
-                    //Log.d("SC", "END SAVE DATA");
+                    //DebugLog.d("END SAVE DATA");
 
                     TumblrAPI tumblrAPI = new TumblrAPI(getString(R.string.key_tumblr_api));
                     tumblrAPI.GetPostsText("mcupdate.tumblr.com");

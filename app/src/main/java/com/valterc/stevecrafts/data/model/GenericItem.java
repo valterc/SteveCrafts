@@ -15,15 +15,41 @@ public class GenericItem {
     private String name;
     private int type;
     private Bitmap image;
+    private long timestamp;
 
     public GenericItem() {
     }
 
-    public GenericItem(String id, String name, int type, Bitmap image) {
+    public GenericItem(Block block) {
+        this.id = block.getId();
+        this.name = block.getNameEn(); //TODO: Localize app
+        this.type = TYPE_BLOCK;
+        this.image = block.getImage();
+        this.timestamp = block.getTimestamp();
+    }
+
+    public GenericItem(Item item) {
+        this.id = item.getId();
+        this.name = item.getNameEn(); //TODO: Localize app
+        this.type = TYPE_ITEM;
+        this.image = item.getImage();
+        this.timestamp = item.getTimestamp();
+    }
+
+    public GenericItem(Potion potion) {
+        this.id = potion.getId();
+        this.name = potion.getNameEn(); //TODO: Localize app
+        this.type = TYPE_POTION;
+        this.image = potion.getImage();
+        this.timestamp = potion.getTimestamp();
+    }
+
+    public GenericItem(String id, String name, int type, Bitmap image, long timestamp) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.image = image;
+        this.timestamp = timestamp;
     }
 
     public String getId() {
@@ -58,4 +84,11 @@ public class GenericItem {
         this.image = image;
     }
 
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
 }

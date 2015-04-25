@@ -11,6 +11,8 @@ import com.valterc.stevecrafts.data.model.Potion;
 import com.valterc.stevecrafts.data.storage.DataSource;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by Valter on 08/01/2015.
@@ -60,7 +62,32 @@ public class DataManager {
     }
 
     public ArrayList<GenericItem> getMostRecentItems() {
-        return null;
+        ArrayList<Block> blocks = dataSource.getMostRecentBlocks();
+        ArrayList<Item> items = dataSource.getMostRecentItems();
+        ArrayList<Potion> potions = dataSource.getMostRecentPotions();
+
+        ArrayList<GenericItem> genericItems = new ArrayList<>();
+
+        for (Block block : blocks){
+            genericItems.add(new GenericItem(block));
+        }
+
+        for (Item item : items){
+            genericItems.add(new GenericItem(item));
+        }
+
+        for (Potion potion : potions){
+            genericItems.add(new GenericItem(potion));
+        }
+
+        Collections.sort(genericItems, new Comparator<GenericItem>() {
+            @Override
+            public int compare(GenericItem lhs, GenericItem rhs) {
+                return (int) (rhs.getTimestamp() - lhs.getTimestamp());
+            }
+        });
+
+        return new ArrayList<>(genericItems.subList(0, 5 > genericItems.size() ? genericItems.size() : 5));
     }
 
     public GenericItem searchForItem(String query) {
