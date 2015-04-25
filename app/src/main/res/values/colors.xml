@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- TEXT -->
+    <color name="titleColor">#121212</color>
+    <color name="subTitleColor">#6A6A6A</color>
+    <color name="subsubTitleColor">#9F9F9F</color>
+    <color name="textColor">#5F5F5F</color>
+
+    <!-- BACKGROUND -->
+    <color name="minecraftItemGuiColor">#8e8e8e</color>
+
+</resources>

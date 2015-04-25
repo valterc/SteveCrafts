@@ -1,9 +1,16 @@
 package com.valterc.stevecrafts.data;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.valterc.stevecrafts.data.api.SteveCraftsData;
+import com.valterc.stevecrafts.data.model.Block;
+import com.valterc.stevecrafts.data.model.GenericItem;
+import com.valterc.stevecrafts.data.model.Item;
+import com.valterc.stevecrafts.data.model.Potion;
 import com.valterc.stevecrafts.data.storage.DataSource;
+
+import java.util.ArrayList;
 
 /**
  * Created by Valter on 08/01/2015.
@@ -50,6 +57,65 @@ public class DataManager {
             dataSource.insertSmeltings(data.getSmeltings());
         }
 
+    }
+
+    public ArrayList<GenericItem> getMostRecentItems() {
+        return null;
+    }
+
+    public GenericItem searchForItem(String query) {
+        return null;
+    }
+
+
+    public Item getItem(String id) {
+        return dataSource.getItem(id);
+    }
+
+    public Block getBlock(String id) {
+        return dataSource.getBlock(id);
+    }
+
+    public Potion getPotion(String id) {
+        return dataSource.getPotion(id);
+    }
+
+
+    public ArrayList<Item> getItems() {
+        return dataSource.getItems();
+    }
+
+    public ArrayList<Block> getBlocks() {
+        return dataSource.getBlocks();
+    }
+
+    public ArrayList<Potion> getPotions() {
+        return dataSource.getPotions();
+    }
+
+
+    public Bitmap getGenericItemImage(GenericItem item) {
+        switch (item.getType()) {
+            case GenericItem.TYPE_BLOCK:
+                return getBlockImage(item.getId());
+            case GenericItem.TYPE_ITEM:
+                return getItemImage(item.getId());
+            case GenericItem.TYPE_POTION:
+                return getPotionImage(item.getId());
+        }
+        return null;
+    }
+
+    public Bitmap getItemImage(String id) {
+        return dataSource.getItemImage(id);
+    }
+
+    public Bitmap getBlockImage(String id) {
+        return dataSource.getBlockImage(id);
+    }
+
+    public Bitmap getPotionImage(String id) {
+        return dataSource.getPotionImage(id);
     }
 
 }

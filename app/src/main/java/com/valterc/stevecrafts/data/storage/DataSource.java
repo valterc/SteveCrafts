@@ -292,6 +292,7 @@ public class DataSource {
         return smeltings;
     }
 
+
     public Bitmap getBlockImage(String blockId) {
         return getImage("blocks", blockId);
     }
@@ -303,6 +304,691 @@ public class DataSource {
     public Bitmap getPotionImage(String potionId) {
         return getImage("potions", potionId);
     }
+
+
+    public Block getBlock(String id) {
+
+        Block block = null;
+
+        Cursor c = getDatabase().query(
+                "blocks",
+                new String[]{
+                        "id",
+                        "minecraft_block_id",
+                        "minecraft_data_value",
+                        "minecraft_id",
+                        "type",
+                        "category",
+                        "physics",
+                        "transparency",
+                        "luminance",
+                        "blast_resistance",
+                        "stackable",
+                        "flamable",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, "id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            block = new Block(c);
+        }
+
+        c.close();
+
+        return block;
+    }
+
+    public Item getItem(String id) {
+
+        Item item = null;
+
+        Cursor c = getDatabase().query(
+                "items",
+                new String[]{
+                        "id",
+                        "minecraft_id",
+                        "minecraft_data_value",
+                        "durability",
+                        "stackable",
+                        "damage",
+                        "armor",
+                        "type",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, "id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            item = new Item(c);
+        }
+
+        c.close();
+
+        return item;
+    }
+
+    public Potion getPotion(String id) {
+
+        Potion potion = null;
+
+        Cursor c = getDatabase().query(
+                "potions",
+                new String[]{
+                        "id",
+                        "duration",
+                        "health",
+                        "speed",
+                        "attack",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, "id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            potion = new Potion(c);
+        }
+
+        c.close();
+
+        return potion;
+    }
+
+
+    public ArrayList<CraftingRecipe> getCraftingRecipesForBlock(String id) {
+        ArrayList<CraftingRecipe> craftingRecipes = new ArrayList<CraftingRecipe>();
+
+        Cursor c = getDatabase().query(
+                "crafting_recipes",
+                new String[]{
+                        "id",
+                        "type",
+                        "craft_id",
+                        "count",
+                        "slot_0_id",
+                        "slot_0_type",
+                        "slot_0_count",
+                        "slot_1_id",
+                        "slot_1_type",
+                        "slot_1_count",
+                        "slot_2_id",
+                        "slot_2_type",
+                        "slot_2_count",
+                        "slot_3_id",
+                        "slot_3_type",
+                        "slot_3_count",
+                        "slot_4_id",
+                        "slot_4_type",
+                        "slot_4_count",
+                        "slot_5_id",
+                        "slot_5_type",
+                        "slot_5_count",
+                        "slot_6_id",
+                        "slot_6_type",
+                        "slot_6_count",
+                        "slot_7_id",
+                        "slot_7_type",
+                        "slot_7_count",
+                        "slot_8_id",
+                        "slot_8_type",
+                        "slot_8_count",
+                        "timestamp",
+                }, "type = 0 AND craft_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                CraftingRecipe craftingRecipe = new CraftingRecipe(c);
+                craftingRecipes.add(craftingRecipe);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return craftingRecipes;
+    }
+
+    public ArrayList<CraftingRecipe> getCraftingRecipesForItem(String id) {
+        ArrayList<CraftingRecipe> craftingRecipes = new ArrayList<CraftingRecipe>();
+
+        Cursor c = getDatabase().query(
+                "crafting_recipes",
+                new String[]{
+                        "id",
+                        "type",
+                        "craft_id",
+                        "count",
+                        "slot_0_id",
+                        "slot_0_type",
+                        "slot_0_count",
+                        "slot_1_id",
+                        "slot_1_type",
+                        "slot_1_count",
+                        "slot_2_id",
+                        "slot_2_type",
+                        "slot_2_count",
+                        "slot_3_id",
+                        "slot_3_type",
+                        "slot_3_count",
+                        "slot_4_id",
+                        "slot_4_type",
+                        "slot_4_count",
+                        "slot_5_id",
+                        "slot_5_type",
+                        "slot_5_count",
+                        "slot_6_id",
+                        "slot_6_type",
+                        "slot_6_count",
+                        "slot_7_id",
+                        "slot_7_type",
+                        "slot_7_count",
+                        "slot_8_id",
+                        "slot_8_type",
+                        "slot_8_count",
+                        "timestamp",
+                }, "type = 1 AND craft_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                CraftingRecipe craftingRecipe = new CraftingRecipe(c);
+                craftingRecipes.add(craftingRecipe);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return craftingRecipes;
+    }
+
+    public ArrayList<CraftingRecipe> getCraftingRecipesThatUseBlock(String id) {
+        ArrayList<CraftingRecipe> craftingRecipes = new ArrayList<CraftingRecipe>();
+
+        Cursor c = getDatabase().query(
+                "crafting_recipes",
+                new String[]{
+                        "id",
+                        "type",
+                        "craft_id",
+                        "count",
+                        "slot_0_id",
+                        "slot_0_type",
+                        "slot_0_count",
+                        "slot_1_id",
+                        "slot_1_type",
+                        "slot_1_count",
+                        "slot_2_id",
+                        "slot_2_type",
+                        "slot_2_count",
+                        "slot_3_id",
+                        "slot_3_type",
+                        "slot_3_count",
+                        "slot_4_id",
+                        "slot_4_type",
+                        "slot_4_count",
+                        "slot_5_id",
+                        "slot_5_type",
+                        "slot_5_count",
+                        "slot_6_id",
+                        "slot_6_type",
+                        "slot_6_count",
+                        "slot_7_id",
+                        "slot_7_type",
+                        "slot_7_count",
+                        "slot_8_id",
+                        "slot_8_type",
+                        "slot_8_count",
+                        "timestamp",
+                }, "slot_0_type = 0 AND slot_0_id = ? OR" +
+                        "slot_1_type = 0 AND slot_1_id = ? OR" +
+                        "slot_2_type = 0 AND slot_2_id = ? OR" +
+                        "slot_3_type = 0 AND slot_3_id = ? OR" +
+                        "slot_4_type = 0 AND slot_4_id = ? OR" +
+                        "slot_5_type = 0 AND slot_5_id = ? OR" +
+                        "slot_6_type = 0 AND slot_6_id = ? OR" +
+                        "slot_7_type = 0 AND slot_7_id = ? OR" +
+                        "slot_8_type = 0 AND slot_8_id = ?",
+                new String[]{id, id, id, id, id, id, id, id, id},
+                null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                CraftingRecipe craftingRecipe = new CraftingRecipe(c);
+                craftingRecipes.add(craftingRecipe);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return craftingRecipes;
+    }
+
+    public ArrayList<CraftingRecipe> getCraftingRecipesThatUseItem(String id) {
+        ArrayList<CraftingRecipe> craftingRecipes = new ArrayList<CraftingRecipe>();
+
+        Cursor c = getDatabase().query(
+                "crafting_recipes",
+                new String[]{
+                        "id",
+                        "type",
+                        "craft_id",
+                        "count",
+                        "slot_0_id",
+                        "slot_0_type",
+                        "slot_0_count",
+                        "slot_1_id",
+                        "slot_1_type",
+                        "slot_1_count",
+                        "slot_2_id",
+                        "slot_2_type",
+                        "slot_2_count",
+                        "slot_3_id",
+                        "slot_3_type",
+                        "slot_3_count",
+                        "slot_4_id",
+                        "slot_4_type",
+                        "slot_4_count",
+                        "slot_5_id",
+                        "slot_5_type",
+                        "slot_5_count",
+                        "slot_6_id",
+                        "slot_6_type",
+                        "slot_6_count",
+                        "slot_7_id",
+                        "slot_7_type",
+                        "slot_7_count",
+                        "slot_8_id",
+                        "slot_8_type",
+                        "slot_8_count",
+                        "timestamp",
+                }, "slot_0_type = 1 AND slot_0_id = ? OR" +
+                        "slot_1_type = 1 AND slot_1_id = ? OR" +
+                        "slot_2_type = 1 AND slot_2_id = ? OR" +
+                        "slot_3_type = 1 AND slot_3_id = ? OR" +
+                        "slot_4_type = 1 AND slot_4_id = ? OR" +
+                        "slot_5_type = 1 AND slot_5_id = ? OR" +
+                        "slot_6_type = 1 AND slot_6_id = ? OR" +
+                        "slot_7_type = 1 AND slot_7_id = ? OR" +
+                        "slot_8_type = 1 AND slot_8_id = ?",
+                new String[]{id, id, id, id, id, id, id, id, id},
+                null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                CraftingRecipe craftingRecipe = new CraftingRecipe(c);
+                craftingRecipes.add(craftingRecipe);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return craftingRecipes;
+    }
+
+
+    public ArrayList<Breaks> getBreaksDoneWithItem(String id){
+        ArrayList<Breaks> breaks = new ArrayList<Breaks>();
+
+        Cursor c = getDatabase().query(
+                "breaks",
+                new String[]{
+                        "id",
+                        "item_id",
+                        "block_id",
+                        "silktouch",
+                        "anytool",
+                        "drop_id",
+                        "drop_type",
+                        "drop_count",
+                        "drop_count_min",
+                        "drop_count_max",
+                        "timestamp",
+                }, "item_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Breaks breaks_ = new Breaks(c);
+                breaks.add(breaks_);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return breaks;
+    }
+
+    public ArrayList<Breaks> getBreaksDoneOfBlock(String id){
+        ArrayList<Breaks> breaks = new ArrayList<Breaks>();
+
+        Cursor c = getDatabase().query(
+                "breaks",
+                new String[]{
+                        "id",
+                        "item_id",
+                        "block_id",
+                        "silktouch",
+                        "anytool",
+                        "drop_id",
+                        "drop_type",
+                        "drop_count",
+                        "drop_count_min",
+                        "drop_count_max",
+                        "timestamp",
+                }, "block_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Breaks breaks_ = new Breaks(c);
+                breaks.add(breaks_);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return breaks;
+    }
+
+    public ArrayList<Breaks> getBreaksThatDropItem(String id){
+        ArrayList<Breaks> breaks = new ArrayList<Breaks>();
+
+        Cursor c = getDatabase().query(
+                "breaks",
+                new String[]{
+                        "id",
+                        "item_id",
+                        "block_id",
+                        "silktouch",
+                        "anytool",
+                        "drop_id",
+                        "drop_type",
+                        "drop_count",
+                        "drop_count_min",
+                        "drop_count_max",
+                        "timestamp",
+                }, "drop_type = 1 AND drop_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Breaks breaks_ = new Breaks(c);
+                breaks.add(breaks_);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return breaks;
+    }
+
+    public ArrayList<Breaks> getBreaksThatDropBlock(String id){
+        ArrayList<Breaks> breaks = new ArrayList<Breaks>();
+
+        Cursor c = getDatabase().query(
+                "breaks",
+                new String[]{
+                        "id",
+                        "item_id",
+                        "block_id",
+                        "silktouch",
+                        "anytool",
+                        "drop_id",
+                        "drop_type",
+                        "drop_count",
+                        "drop_count_min",
+                        "drop_count_max",
+                        "timestamp",
+                }, "drop_type = 0 AND drop_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Breaks breaks_ = new Breaks(c);
+                breaks.add(breaks_);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return breaks;
+    }
+
+
+    public ArrayList<Brewing> getBrewingsWithIngredient(String id){
+        ArrayList<Brewing> brewings = new ArrayList<Brewing>();
+
+        Cursor c = getDatabase().query(
+                "brewings",
+                new String[]{
+                        "id",
+                        "ingredient_id",
+                        "begin_item_type",
+                        "begin_item_id",
+                        "result_item_id",
+                        "timestamp",
+                }, "ingredient_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Brewing brewing = new Brewing(c);
+                brewings.add(brewing);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return brewings;
+    }
+
+    public ArrayList<Brewing> getBrewingsWithBaseItem(String id){
+        ArrayList<Brewing> brewings = new ArrayList<Brewing>();
+
+        Cursor c = getDatabase().query(
+                "brewings",
+                new String[]{
+                        "id",
+                        "ingredient_id",
+                        "begin_item_type",
+                        "begin_item_id",
+                        "result_item_id",
+                        "timestamp",
+                }, "begin_item_type = 1 AND begin_item_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Brewing brewing = new Brewing(c);
+                brewings.add(brewing);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return brewings;
+    }
+
+    public ArrayList<Brewing> getBrewingsWithBasePotion(String id){
+        ArrayList<Brewing> brewings = new ArrayList<Brewing>();
+
+        Cursor c = getDatabase().query(
+                "brewings",
+                new String[]{
+                        "id",
+                        "ingredient_id",
+                        "begin_item_type",
+                        "begin_item_id",
+                        "result_item_id",
+                        "timestamp",
+                }, "begin_item_type = 2 AND begin_item_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Brewing brewing = new Brewing(c);
+                brewings.add(brewing);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return brewings;
+    }
+
+    public ArrayList<Brewing> getBrewingsForPotion(String id){
+        ArrayList<Brewing> brewings = new ArrayList<Brewing>();
+
+        Cursor c = getDatabase().query(
+                "brewings",
+                new String[]{
+                        "id",
+                        "ingredient_id",
+                        "begin_item_type",
+                        "begin_item_id",
+                        "result_item_id",
+                        "timestamp",
+                }, "result_item_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Brewing brewing = new Brewing(c);
+                brewings.add(brewing);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return brewings;
+    }
+
+
+    public ArrayList<Smelting> getSmeltingsWithItem(String id) {
+
+        ArrayList<Smelting> smeltings = new ArrayList<Smelting>();
+
+        Cursor c = getDatabase().query(
+                "smeltings",
+                new String[]{
+                        "id",
+                        "ingredient_type",
+                        "ingredient_id",
+                        "result_type",
+                        "result_id",
+                        "result_count",
+                        "experience",
+                        "dont_recommend",
+                        "timestamp",
+                }, "ingredient_type = 1 AND ingredient_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Smelting smelting = new Smelting(c);
+                smeltings.add(smelting);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return smeltings;
+    }
+
+    public ArrayList<Smelting> getSmeltingsWithBlock(String id) {
+
+        ArrayList<Smelting> smeltings = new ArrayList<Smelting>();
+
+        Cursor c = getDatabase().query(
+                "smeltings",
+                new String[]{
+                        "id",
+                        "ingredient_type",
+                        "ingredient_id",
+                        "result_type",
+                        "result_id",
+                        "result_count",
+                        "experience",
+                        "dont_recommend",
+                        "timestamp",
+                }, "ingredient_type = 0 AND ingredient_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Smelting smelting = new Smelting(c);
+                smeltings.add(smelting);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return smeltings;
+    }
+
+    public ArrayList<Smelting> getSmeltingsForItem(String id) {
+
+        ArrayList<Smelting> smeltings = new ArrayList<Smelting>();
+
+        Cursor c = getDatabase().query(
+                "smeltings",
+                new String[]{
+                        "id",
+                        "ingredient_type",
+                        "ingredient_id",
+                        "result_type",
+                        "result_id",
+                        "result_count",
+                        "experience",
+                        "dont_recommend",
+                        "timestamp",
+                }, "result_type = 1 AND result_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Smelting smelting = new Smelting(c);
+                smeltings.add(smelting);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return smeltings;
+    }
+
+    public ArrayList<Smelting> getSmeltingsForBlock(String id) {
+
+        ArrayList<Smelting> smeltings = new ArrayList<Smelting>();
+
+        Cursor c = getDatabase().query(
+                "smeltings",
+                new String[]{
+                        "id",
+                        "ingredient_type",
+                        "ingredient_id",
+                        "result_type",
+                        "result_id",
+                        "result_count",
+                        "experience",
+                        "dont_recommend",
+                        "timestamp",
+                }, "result_type = 0 AND result_id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            do {
+                Smelting smelting = new Smelting(c);
+                smeltings.add(smelting);
+            } while (c.moveToNext());
+        }
+
+        c.close();
+
+        return smeltings;
+    }
+
 
 
     public void insertBlocks(ArrayList<Block> blocks) {
@@ -589,7 +1275,7 @@ public class DataSource {
         getDatabase().endTransaction();
     }
 
-    public void insertItems(ArrayList<Item> items){
+    public void insertItems(ArrayList<Item> items) {
 
         getDatabase().beginTransaction();
 
@@ -683,7 +1369,7 @@ public class DataSource {
 
     }
 
-    public void insertPotions(ArrayList<Potion> potions){
+    public void insertPotions(ArrayList<Potion> potions) {
 
         getDatabase().beginTransaction();
 
@@ -771,7 +1457,7 @@ public class DataSource {
 
     }
 
-    public void insertSmeltings(ArrayList<Smelting> smeltings){
+    public void insertSmeltings(ArrayList<Smelting> smeltings) {
 
         getDatabase().beginTransaction();
 
@@ -828,7 +1514,7 @@ public class DataSource {
                 new String[]{
                         "id",
                         "image"
-                }, "id == ?", new String[]{blockId}, null, null, null, null);
+                }, "id = ?", new String[]{blockId}, null, null, null, null);
 
         if (c.moveToFirst()) {
             image = ImageUtils.byteArrayToBitmap(c.getBlob(c.getColumnIndex("image")));

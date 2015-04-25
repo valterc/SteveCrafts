@@ -18,9 +18,20 @@ public class MainFragmentItem {
     private String title;
     private TumblrPost tumblrPost;
 
-    public MainFragmentItem() {
-
+    public MainFragmentItem(String title) {
+        this.type = TYPE_TITLE;
+        this.title = title;
     }
+
+    public MainFragmentItem(TumblrPost post) {
+        this.type = TYPE_MINECRAFT_UPDATE;
+        this.tumblrPost = post;
+    }
+
+    public MainFragmentItem() {
+        this.type = TYPE_NEW_UPDATE;
+    }
+
 
     public int getType() {
         return type;

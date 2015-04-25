@@ -2,7 +2,6 @@ package com.valterc.external.tumblr;
 
 import com.vcutils.DownloadResponse;
 import com.vcutils.Downloader;
-import com.vcutils.utils.DebugLog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,9 +25,7 @@ public class TumblrAPI {
 
     public ArrayList<TumblrPost> GetPostsText(String hostname) {
 
-        DebugLog.d("before api");
         DownloadResponse<String> apiResponse = Downloader.downloadGet(String.format(URI_GET_POSTS_TEXT, hostname, this.key));
-        DebugLog.d("after api");
 
         if (apiResponse.getResult() != DownloadResponse.DownloadResult.Ok || apiResponse.getResponse() == null) {
             return null;
@@ -57,7 +54,6 @@ public class TumblrAPI {
 
                 posts.add(post);
             }
-            DebugLog.d("return posts");
             return posts;
         } catch (JSONException e) {
             //Ignore exceptions

@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Example Update Title"
+        android:textColor="@color/subTitleColor"
+        android:textSize="10pt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginStart="15dp"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif"
+        android:maxLines="5"
+        android:text="jasdhkja hfkjashd flahd jahldjhfajkh dajshkjfdah jfha jdh kjsahl dkjhhf kjsah ljfhsadfh aisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadflihf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadflihf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadflihf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadflihf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadfli hf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadfli hf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadfli hf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadfli hf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadfli hf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadflihf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadfli hf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadfli hf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadflivasfhasjkdhf kjsah ljfhsadfhaisçdjf ijsaifj çsialjdf liasjdf lijsadlfi jsadifj asdifjlisadofjliasdjflisadflio hadfi haif haf haih fduiahdf ahdf uah flah lfhalf ua sdfs fsf sd fsdf sd gs dgh dgh dgh dgh d"
+        android:textColor="@color/subsubTitleColor"
+        android:textSize="7pt"
+        />
 
 </LinearLayout>

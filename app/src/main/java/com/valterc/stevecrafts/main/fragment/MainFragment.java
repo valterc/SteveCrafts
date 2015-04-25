@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.valterc.external.tumblr.TumblrPost;
 import com.valterc.stevecrafts.R;
+
+import java.util.ArrayList;
 
 public class MainFragment extends Fragment {
 
@@ -40,13 +43,29 @@ public class MainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View baseView = inflater.inflate(R.layout.fragment_main, container);
+        View baseView = inflater.inflate(R.layout.fragment_main, container, false);
 
         layoutLoading = baseView.findViewById(R.id.relativeLayoutLoading);
         layoutErrorLoading = baseView.findViewById(R.id.relativeLayoutErrorLoading);
 
         recyclerView = (RecyclerView) baseView.findViewById(R.id.recyclerViewMinecraftUpdates);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        ArrayList<MainFragmentItem> mainFragmentItems = new ArrayList<>();
+        mainFragmentItems.add(new MainFragmentItem("Text"));
+        mainFragmentItems.add(new MainFragmentItem("Latest updates"));
+        mainFragmentItems.add(new MainFragmentItem());
+        mainFragmentItems.add(new MainFragmentItem());
+        mainFragmentItems.add(new MainFragmentItem());
+        mainFragmentItems.add(new MainFragmentItem());
+        mainFragmentItems.add(new MainFragmentItem("Latest Minecraft updates"));
+        mainFragmentItems.add(new MainFragmentItem(new TumblrPost()));
+        mainFragmentItems.add(new MainFragmentItem(new TumblrPost()));
+        mainFragmentItems.add(new MainFragmentItem(new TumblrPost()));
+
+        recyclerView.setAdapter(new MainFragmentRecyclerAdapter(getActivity(), mainFragmentItems));
+
+        layoutLoading.setVisibility(View.INVISIBLE);
 
         return baseView;
     }
