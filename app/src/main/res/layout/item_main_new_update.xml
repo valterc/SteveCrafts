@@ -14,7 +14,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
-        android:background="#00a1a1a1"
+        android:background="@drawable/item_gui"
         android:padding="5dp" />
 
     <TextView

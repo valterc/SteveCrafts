@@ -9,7 +9,6 @@ import com.valterc.external.tumblr.TumblrAPI;
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
-import com.valterc.stevecrafts.data.api.SteveCraftsData;
 import com.valterc.stevecrafts.drawer.NavigationDrawerFragment;
 import com.valterc.stevecrafts.main.fragment.MainFragment;
 import com.vcutils.tasks.MultipurposeAsyncTask;
@@ -33,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
             public Void runOnBackground() {
                 SteveCraftsApi api = new SteveCraftsApi();
                 try {
+                    /*
                     DebugLog.d("BEGIN API CALL");
                     SteveCraftsData data = api.getData();
                     DebugLog.d("END API CALL -- SAVING DATA");
@@ -40,6 +40,7 @@ public class MainActivity extends ActionBarActivity {
                     DebugLog.d("END SAVE DATA");
                     SteveCraftsApp.getDataManager().backupDatabase();
                     DebugLog.d("END BACKUP DATABASE");
+                    */
 
                     DebugLog.d(SteveCraftsApp.getDataManager().getBlock("69").getNameEn());
                     DebugLog.d(SteveCraftsApp.getDataManager().getItem("69").getNameEn());
