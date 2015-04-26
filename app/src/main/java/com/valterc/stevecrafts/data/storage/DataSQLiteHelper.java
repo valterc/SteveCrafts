@@ -27,7 +27,7 @@ public class DataSQLiteHelper {
     private final static String DB_GET_VERSION = "pragma user_version;";
     private final static String DB_SET_VERSION = "pragma user_version = " + DB_VERSION + ";";
     private final static Boolean FORCE_UPDATE = true;
-    private final static Boolean USE_DATABASE_FILE = false;
+    private final static Boolean USE_DATABASE_FILE = true;
 
     // ===========================================================
     // Fields
