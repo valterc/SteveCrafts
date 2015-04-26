@@ -5,7 +5,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.vcutils.utils.DebugLog;
+
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
@@ -23,6 +27,7 @@ public class DataSQLiteHelper {
     private final static String DB_GET_VERSION = "pragma user_version;";
     private final static String DB_SET_VERSION = "pragma user_version = " + DB_VERSION + ";";
     private final static Boolean FORCE_UPDATE = true;
+    private final static Boolean USE_DATABASE_FILE = false;
 
     // ===========================================================
     // Fields
@@ -105,9 +110,14 @@ public class DataSQLiteHelper {
         File f = new File(path);
         f.mkdirs();
 
-        database = SQLiteDatabase.openOrCreateDatabase(path + DB_FILE_NAME, null);
-        DatabaseCreator.CreateDatabase(context, database);
-        database.execSQL(DB_SET_VERSION);
+        if (USE_DATABASE_FILE) {
+            DatabaseCreator.CopyDatabase(context, path + DB_FILE_NAME);
+            database = SQLiteDatabase.openOrCreateDatabase(path + DB_FILE_NAME, null);
+        } else {
+            database = SQLiteDatabase.openOrCreateDatabase(path + DB_FILE_NAME, null);
+            DatabaseCreator.CreateDatabase(context, database);
+            database.execSQL(DB_SET_VERSION);
+        }
 
         Log.d(getClass().getSimpleName(), "Database created!");
     }
@@ -146,6 +156,29 @@ public class DataSQLiteHelper {
     public void disposeDatabase() {
         closeDatabase();
         context = null;
+    }
+
+    public void backupDatabaseTo(String path){
+
+        FileInputStream fileInputStream = null;
+        byte[] buffer = new byte[1024];
+        FileOutputStream fileOutputStream = null;
+
+        try {
+
+            fileInputStream = new FileInputStream(mDataPath + DB_FILE_NAME);
+            fileOutputStream = new FileOutputStream(path, false);
+            int read = fileInputStream.read(buffer);
+            while(read > 0){
+                fileOutputStream.write(buffer);
+                read = fileInputStream.read(buffer);
+            }
+            fileOutputStream.close();
+            fileInputStream.close();
+
+        } catch (Exception e) {
+            DebugLog.e(e.getMessage());
+        }
     }
 
 }

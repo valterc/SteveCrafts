@@ -61,6 +61,10 @@ public class DataManager {
 
     }
 
+    public void backupDatabase(){
+        dataSource.backupDatabase();
+    }
+
     public ArrayList<GenericItem> getMostRecentItems() {
         ArrayList<Block> blocks = dataSource.getMostRecentBlocks();
         ArrayList<Item> items = dataSource.getMostRecentItems();

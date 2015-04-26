@@ -23,7 +23,8 @@ public class UpdateViewHolder extends MainViewHolder {
 
     @Override
     public void update(MainFragmentItem item) {
-
+        textViewName.setText(item.getGenericItem().getName());
+        imageView.setImageBitmap(item.getGenericItem().getImage());
     }
 
 }

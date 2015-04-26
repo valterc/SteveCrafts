@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.valterc.external.tumblr.TumblrPost;
 import com.valterc.stevecrafts.R;
+import com.valterc.stevecrafts.SteveCraftsApp;
+import com.valterc.stevecrafts.data.model.GenericItem;
 
 import java.util.ArrayList;
 
@@ -54,10 +56,13 @@ public class MainFragment extends Fragment {
         ArrayList<MainFragmentItem> mainFragmentItems = new ArrayList<>();
         mainFragmentItems.add(new MainFragmentItem("Text"));
         mainFragmentItems.add(new MainFragmentItem("Latest updates"));
-        mainFragmentItems.add(new MainFragmentItem());
-        mainFragmentItems.add(new MainFragmentItem());
-        mainFragmentItems.add(new MainFragmentItem());
-        mainFragmentItems.add(new MainFragmentItem());
+
+        ArrayList<GenericItem> mostRecentItems = SteveCraftsApp.getDataManager().getMostRecentItems();
+
+        for (GenericItem item : mostRecentItems){
+            mainFragmentItems.add(new MainFragmentItem(item));
+        }
+
         mainFragmentItems.add(new MainFragmentItem("Latest Minecraft updates"));
         mainFragmentItems.add(new MainFragmentItem(new TumblrPost()));
         mainFragmentItems.add(new MainFragmentItem(new TumblrPost()));

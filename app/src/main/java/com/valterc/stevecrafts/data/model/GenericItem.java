@@ -2,6 +2,8 @@ package com.valterc.stevecrafts.data.model;
 
 import android.graphics.Bitmap;
 
+import com.valterc.stevecrafts.SteveCraftsApp;
+
 /**
  * Created by Valter on 25/04/2015.
  */
@@ -77,6 +79,9 @@ public class GenericItem {
     }
 
     public Bitmap getImage() {
+        if (image == null){
+            image = SteveCraftsApp.getDataManager().getGenericItemImage(this);
+        }
         return image;
     }
 

@@ -35,7 +35,7 @@ public class ImageUtils {
 
         File file = new File(f, name);
         FileOutputStream os = new FileOutputStream(file, false);
-        image.compress(CompressFormat.JPEG, 100, os);
+        image.compress(CompressFormat.PNG, 100, os);
         os.flush();
         os.close();
 
@@ -69,7 +69,7 @@ public class ImageUtils {
 
         try {
             outputStream = new ByteArrayOutputStream();
-            b.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+            b.compress(CompressFormat.PNG, 100, outputStream);
             bytes = outputStream.toByteArray();
 
         } catch (Error | Exception e) {

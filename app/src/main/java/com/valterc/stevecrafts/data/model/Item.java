@@ -79,7 +79,9 @@ public class Item {
         this.damage = cursor.getInt(cursor.getColumnIndex("damage"));
         this.armor = cursor.getInt(cursor.getColumnIndex("armor"));
         this.type = cursor.getInt(cursor.getColumnIndex("type"));
-        this.image = ImageUtils.byteArrayToBitmap(cursor.getBlob(cursor.getColumnIndex("image")));
+        if (cursor.getColumnIndex("image") != -1) {
+            this.image = ImageUtils.byteArrayToBitmap(cursor.getBlob(cursor.getColumnIndex("image")));
+        }
         this.name_en = cursor.getString(cursor.getColumnIndex("name_en"));
         this.name_pt = cursor.getString(cursor.getColumnIndex("name_pt"));
         this.name_de = cursor.getString(cursor.getColumnIndex("name_de"));

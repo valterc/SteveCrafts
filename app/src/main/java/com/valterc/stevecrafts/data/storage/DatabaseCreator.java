@@ -3,10 +3,11 @@ package com.valterc.stevecrafts.data.storage;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import com.valterc.stevecrafts.R;
+import com.vcutils.utils.DebugLog;
 
+import java.io.FileOutputStream;
 import java.io.InputStream;
 
 /**
@@ -48,10 +49,32 @@ public class DatabaseCreator {
             sql = new String(b);
             inputStream.close();
         } catch (Exception e) {
-            Log.e("DatabaseCreator", e.getMessage());
+            DebugLog.e(e.getMessage());
         }
 
         return sql;
     }
 
+    public static void CopyDatabase(Context context, String path) {
+        Resources res = context.getResources();
+        InputStream inputStream = res.openRawResource(R.raw.data);
+        byte[] buffer = new byte[1024];
+        FileOutputStream fileOutputStream = null;
+
+        try {
+
+            fileOutputStream = new FileOutputStream(path, false);
+            int read = inputStream.read(buffer);
+            while(read > 0){
+                fileOutputStream.write(buffer);
+                read = inputStream.read(buffer);
+            }
+            fileOutputStream.close();
+            inputStream.close();
+
+        } catch (Exception e) {
+            DebugLog.e(e.getMessage());
+        }
+
+    }
 }

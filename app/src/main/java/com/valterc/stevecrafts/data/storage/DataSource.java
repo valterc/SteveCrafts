@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
+import android.os.Environment;
 
 import com.valterc.stevecrafts.data.model.Block;
 import com.valterc.stevecrafts.data.model.Breaks;
@@ -37,6 +38,9 @@ public class DataSource {
         dataSQLiteHelper.disposeDatabase();
     }
 
+    public void backupDatabase() {
+        dataSQLiteHelper.backupDatabaseTo(Environment.getExternalStorageDirectory().getPath() + "/data");
+    }
 
     public ArrayList<Block> getBlocks() {
 
@@ -46,8 +50,8 @@ public class DataSource {
                 "blocks",
                 new String[]{
                         "id",
-                        "minecraft_block_id",
-                        "minecraft_data_value",
+                        "minecraft_blockid",
+                        "minecraft_datavalue",
                         "minecraft_id",
                         "type",
                         "category",
@@ -200,7 +204,7 @@ public class DataSource {
                 new String[]{
                         "id",
                         "minecraft_id",
-                        "minecraft_data_value",
+                        "minecraft_datavalue",
                         "durability",
                         "stackable",
                         "damage",
@@ -314,8 +318,8 @@ public class DataSource {
                 "blocks",
                 new String[]{
                         "id",
-                        "minecraft_block_id",
-                        "minecraft_data_value",
+                        "minecraft_blockid",
+                        "minecraft_datavalue",
                         "minecraft_id",
                         "type",
                         "category",
@@ -356,7 +360,7 @@ public class DataSource {
                 new String[]{
                         "id",
                         "minecraft_id",
-                        "minecraft_data_value",
+                        "minecraft_datavalue",
                         "durability",
                         "stackable",
                         "damage",
@@ -427,8 +431,8 @@ public class DataSource {
                 "blocks",
                 new String[]{
                         "id",
-                        "minecraft_block_id",
-                        "minecraft_data_value",
+                        "minecraft_blockid",
+                        "minecraft_datavalue",
                         "minecraft_id",
                         "type",
                         "category",
@@ -466,7 +470,7 @@ public class DataSource {
                 new String[]{
                         "id",
                         "minecraft_id",
-                        "minecraft_data_value",
+                        "minecraft_datavalue",
                         "durability",
                         "stackable",
                         "damage",
@@ -1110,8 +1114,8 @@ public class DataSource {
 
         SQLiteStatement statement = getDatabase().compileStatement("INSERT OR REPLACE INTO blocks VALUES ( " +
                 "?, " + /*id*/
-                "?, " + /*minecraft_block_id*/
-                "?, " + /*minecraft_data_value*/
+                "?, " + /*minecraft_blockid*/
+                "?, " + /*minecraft_datavalue*/
                 "?, " + /*minecraft_id*/
                 "?, " + /*type*/
                 "?, " + /*category*/
@@ -1395,7 +1399,7 @@ public class DataSource {
         SQLiteStatement statement = getDatabase().compileStatement("INSERT OR REPLACE INTO items VALUES ( " +
                 "?, " + /*id*/
                 "?, " + /*minecraft_id*/
-                "?, " + /*minecraft_data_value*/
+                "?, " + /*minecraft_datavalue*/
                 "?, " + /*durability*/
                 "?, " + /*stackable*/
                 "?, " + /*damage*/
@@ -1637,7 +1641,6 @@ public class DataSource {
 
         return image;
     }
-
 
 
     /*

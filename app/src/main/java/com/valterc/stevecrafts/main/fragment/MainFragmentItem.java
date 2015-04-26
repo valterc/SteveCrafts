@@ -2,6 +2,7 @@ package com.valterc.stevecrafts.main.fragment;
 
 import com.valterc.external.tumblr.TumblrPost;
 import com.valterc.stevecrafts.R;
+import com.valterc.stevecrafts.data.model.GenericItem;
 
 /**
  * Created by Valter on 18/04/2015.
@@ -17,6 +18,7 @@ public class MainFragmentItem {
     private int type;
     private String title;
     private TumblrPost tumblrPost;
+    private GenericItem genericItem;
 
     public MainFragmentItem(String title) {
         this.type = TYPE_TITLE;
@@ -26,6 +28,11 @@ public class MainFragmentItem {
     public MainFragmentItem(TumblrPost post) {
         this.type = TYPE_MINECRAFT_UPDATE;
         this.tumblrPost = post;
+    }
+
+    public MainFragmentItem(GenericItem genericItem) {
+        this.type = TYPE_NEW_UPDATE;
+        this.genericItem = genericItem;
     }
 
     public MainFragmentItem() {
@@ -55,5 +62,13 @@ public class MainFragmentItem {
 
     public void setTumblrPost(TumblrPost tumblrPost) {
         this.tumblrPost = tumblrPost;
+    }
+
+    public GenericItem getGenericItem() {
+        return genericItem;
+    }
+
+    public void setGenericItem(GenericItem genericItem) {
+        this.genericItem = genericItem;
     }
 }

@@ -3,8 +3,8 @@
 -- Table: blocks
 CREATE TABLE blocks (
     id                      TEXT    PRIMARY KEY,
-    minecraft_block_id      INTEGER DEFAULT ( 0 ),
-    minecraft_data_value    INTEGER DEFAULT ( 0 ),
+    minecraft_blockid      INTEGER DEFAULT ( 0 ),
+    minecraft_datavalue    INTEGER DEFAULT ( 0 ),
     minecraft_id            TEXT,
     type                    NUMERIC DEFAULT ( 0 ),
     category                NUMERIC DEFAULT ( 0 ),
@@ -99,7 +99,7 @@ CREATE TABLE crafting_recipes (
 CREATE TABLE items (
     id                      TEXT    PRIMARY KEY,
     minecraft_id            TEXT,
-    minecraft_data_value    INTEGER DEFAULT ( 0 ),
+    minecraft_datavalue    INTEGER DEFAULT ( 0 ),
     durability              NUMERIC DEFAULT ( 0 ),
     stackable               NUMERIC DEFAULT ( 0 ),
     damage                  NUMERIC DEFAULT ( 0 ),

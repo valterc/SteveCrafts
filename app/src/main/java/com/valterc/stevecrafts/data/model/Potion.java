@@ -70,7 +70,9 @@ public class Potion {
         this.health = cursor.getInt(cursor.getColumnIndex("health"));
         this.speed = cursor.getInt(cursor.getColumnIndex("speed"));
         this.attack = cursor.getInt(cursor.getColumnIndex("attack"));
-        this.image = ImageUtils.byteArrayToBitmap(cursor.getBlob(cursor.getColumnIndex("image")));
+        if (cursor.getColumnIndex("image") != -1) {
+            this.image = ImageUtils.byteArrayToBitmap(cursor.getBlob(cursor.getColumnIndex("image")));
+        }
         this.name_en = cursor.getString(cursor.getColumnIndex("name_en"));
         this.name_pt = cursor.getString(cursor.getColumnIndex("name_pt"));
         this.name_de = cursor.getString(cursor.getColumnIndex("name_de"));
