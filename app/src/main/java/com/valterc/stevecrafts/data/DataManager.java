@@ -9,10 +9,13 @@ import com.valterc.stevecrafts.data.model.GenericItem;
 import com.valterc.stevecrafts.data.model.Item;
 import com.valterc.stevecrafts.data.model.Potion;
 import com.valterc.stevecrafts.data.storage.DataSource;
+import com.vcutils.utils.DebugLog;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
 
 /**
  * Created by Valter on 08/01/2015.
@@ -61,7 +64,7 @@ public class DataManager {
 
     }
 
-    public void backupDatabase(){
+    public void backupDatabase() {
         dataSource.backupDatabase();
     }
 
@@ -72,15 +75,15 @@ public class DataManager {
 
         ArrayList<GenericItem> genericItems = new ArrayList<>();
 
-        for (Block block : blocks){
+        for (Block block : blocks) {
             genericItems.add(new GenericItem(block));
         }
 
-        for (Item item : items){
+        for (Item item : items) {
             genericItems.add(new GenericItem(item));
         }
 
-        for (Potion potion : potions){
+        for (Potion potion : potions) {
             genericItems.add(new GenericItem(potion));
         }
 
@@ -92,6 +95,40 @@ public class DataManager {
         });
 
         return new ArrayList<>(genericItems.subList(0, 5 > genericItems.size() ? genericItems.size() : 5));
+    }
+
+    public GenericItem getRandomItem() {
+
+        int seed = Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        Random random = new Random(seed);
+
+        DebugLog.d("seed: " + seed);
+        GenericItem genericItem = null;
+
+        do {
+            switch (random.nextInt(3)) {
+                case 0:
+                    Item item = dataSource.getItem(Integer.toString(random.nextInt(dataSource.getLastItemId())));
+                    if (item != null) {
+                        genericItem = new GenericItem(item);
+                    }
+                    break;
+                case 1:
+                    Block block = dataSource.getBlock(Integer.toString(random.nextInt(dataSource.getLastBlockId())));
+                    if (block != null) {
+                        genericItem = new GenericItem(block);
+                    }
+                    break;
+                case 2:
+                    Potion potion = dataSource.getPotion(Integer.toString(random.nextInt(dataSource.getLastPotionId())));
+                    if (potion != null) {
+                        genericItem = new GenericItem(potion);
+                    }
+                    break;
+            }
+        } while (genericItem == null);
+
+        return genericItem;
     }
 
     public GenericItem searchForItem(String query) {

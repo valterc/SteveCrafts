@@ -54,7 +54,7 @@ public class MainFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         ArrayList<MainFragmentItem> mainFragmentItems = new ArrayList<>();
-        mainFragmentItems.add(new MainFragmentItem("Text"));
+        mainFragmentItems.add(new MainFragmentItem(SteveCraftsApp.getDataManager().getRandomItem(), true));
         mainFragmentItems.add(new MainFragmentItem("Latest updates"));
 
         ArrayList<GenericItem> mostRecentItems = SteveCraftsApp.getDataManager().getMostRecentItems();

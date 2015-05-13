@@ -526,6 +526,33 @@ public class DataSource {
         return potion;
     }
 
+    public int getLastId(String table){
+        int maxId = 0;
+
+        Cursor c = getDatabase().rawQuery("SELECT MAX(id) FROM " + table, null);
+
+        if (c.moveToFirst()) {
+            maxId = c.getInt(0);
+        }
+
+        c.close();
+
+        return maxId;
+    }
+
+    public int getLastItemId(){
+        return getLastId("items");
+    }
+
+    public int getLastBlockId(){
+        return getLastId("blocks");
+    }
+
+    public int getLastPotionId(){
+        return getLastId("potions");
+    }
+
+
 
     public ArrayList<CraftingRecipe> getCraftingRecipesForBlock(String id) {
         ArrayList<CraftingRecipe> craftingRecipes = new ArrayList<CraftingRecipe>();

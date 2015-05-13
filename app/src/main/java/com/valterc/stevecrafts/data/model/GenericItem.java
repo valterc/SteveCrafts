@@ -1,7 +1,9 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 
+import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 
 /**
@@ -79,7 +81,7 @@ public class GenericItem {
     }
 
     public Bitmap getImage() {
-        if (image == null){
+        if (image == null) {
             image = SteveCraftsApp.getDataManager().getGenericItemImage(this);
         }
         return image;
@@ -96,4 +98,17 @@ public class GenericItem {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
+
+    public String getTypeName(Context context) {
+        switch (type) {
+            case TYPE_BLOCK:
+                return context.getString(R.string.model_block);
+            case TYPE_ITEM:
+                return context.getString(R.string.model_item);
+            case TYPE_POTION:
+                return context.getString(R.string.model_potion);
+        }
+        return "";
+    }
+
 }

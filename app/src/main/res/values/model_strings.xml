@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="model_block">Block</string>
+    <string name="model_item">Item</string>
+    <string name="model_potion">Potion</string>
+
+</resources>

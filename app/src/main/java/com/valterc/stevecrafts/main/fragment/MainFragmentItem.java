@@ -35,6 +35,14 @@ public class MainFragmentItem {
         this.genericItem = genericItem;
     }
 
+    public MainFragmentItem(GenericItem genericItem, boolean itemOfDay) {
+        this();
+        if (itemOfDay) {
+            this.type = TYPE_BLOCK;
+            this.genericItem = genericItem;
+        }
+    }
+
     public MainFragmentItem() {
         this.type = TYPE_NEW_UPDATE;
     }
