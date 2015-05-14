@@ -16,7 +16,7 @@
         android:textColor="@color/subTitleColor"
         android:textSize="11pt" />
 
-    <ImageView
+    <com.vcutils.views.PixelImageView
         android:id="@+id/imageView"
         android:layout_width="180dp"
         android:layout_height="180dp"

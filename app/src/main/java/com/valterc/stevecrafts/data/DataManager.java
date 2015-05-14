@@ -9,7 +9,6 @@ import com.valterc.stevecrafts.data.model.GenericItem;
 import com.valterc.stevecrafts.data.model.Item;
 import com.valterc.stevecrafts.data.model.Potion;
 import com.valterc.stevecrafts.data.storage.DataSource;
-import com.vcutils.utils.DebugLog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -99,10 +98,9 @@ public class DataManager {
 
     public GenericItem getRandomItem() {
 
-        int seed = Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        int seed = Calendar.getInstance().get(Calendar.YEAR) + Calendar.getInstance().get(Calendar.DAY_OF_YEAR) + Calendar.getInstance().get(Calendar.DAY_OF_MONTH) * 356;
         Random random = new Random(seed);
 
-        DebugLog.d("seed: " + seed);
         GenericItem genericItem = null;
 
         do {

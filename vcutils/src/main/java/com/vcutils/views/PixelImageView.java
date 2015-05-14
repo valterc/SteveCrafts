@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
@@ -16,11 +15,13 @@ public class PixelImageView extends ImageView {
     private int realWidth;
     private int realHeight;
     private int lastImageResource;
+    private Bitmap lastImageBitmap;
+    private boolean useFilter;
 
     public PixelImageView(Context context) {
         super(context);
         ViewTreeObserver vto = getViewTreeObserver();
-        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener(){
+        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
                 ViewTreeObserver vto = getViewTreeObserver();
@@ -38,7 +39,7 @@ public class PixelImageView extends ImageView {
     public PixelImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         ViewTreeObserver vto = getViewTreeObserver();
-        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener(){
+        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
                 ViewTreeObserver vto = getViewTreeObserver();
@@ -46,7 +47,11 @@ public class PixelImageView extends ImageView {
                 realWidth = getMeasuredHeight();
                 realHeight = getMeasuredWidth();
 
-                setImageResource(lastImageResource);
+                if (lastImageResource != -1) {
+                    setImageResource(lastImageResource);
+                } else {
+                    setImageBitmap(lastImageBitmap);
+                }
 
                 return true;
             }
@@ -56,7 +61,7 @@ public class PixelImageView extends ImageView {
     public PixelImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         ViewTreeObserver vto = getViewTreeObserver();
-        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener(){
+        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
                 ViewTreeObserver vto = getViewTreeObserver();
@@ -64,7 +69,11 @@ public class PixelImageView extends ImageView {
                 realWidth = getMeasuredHeight();
                 realHeight = getMeasuredWidth();
 
-                setImageResource(lastImageResource);
+                if (lastImageResource != -1) {
+                    setImageResource(lastImageResource);
+                } else {
+                    setImageBitmap(lastImageBitmap);
+                }
 
                 return true;
             }
@@ -76,8 +85,9 @@ public class PixelImageView extends ImageView {
     public void setImageResource(int resId) {
 
         lastImageResource = resId;
+        lastImageBitmap = null;
 
-        if (realHeight <= 0 || realWidth <= 0) {
+        if (useFilter || realHeight <= 0 || realWidth <= 0) {
             super.setImageResource(resId);
             return;
         }
@@ -90,18 +100,49 @@ public class PixelImageView extends ImageView {
         if (bmp == null)
             return;
 
-        float scaleWidth = realWidth / (float)bmp.getWidth();
-        float scaleHeight = realHeight / (float)bmp.getHeight();
+        float scaleWidth = realWidth / (float) bmp.getWidth();
+        float scaleHeight = realHeight / (float) bmp.getHeight();
 
         float scale = scaleWidth > scaleHeight ? scaleWidth : scaleHeight;
 
         float finalWidth = bmp.getWidth() * scale;
         float finalHeight = bmp.getHeight() * scale;
 
-        Bitmap scaledbmp = Bitmap.createScaledBitmap(bmp, (int)finalWidth, (int)finalHeight, false);
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bmp, (int) finalWidth, (int) finalHeight, false);
         bmp.recycle();
         bmp = null;
 
-        setImageBitmap(scaledbmp);
+        super.setImageBitmap(scaledBitmap);
+    }
+
+    @Override
+    public void setImageBitmap(Bitmap bitmap) {
+
+        lastImageResource = -1;
+        lastImageBitmap = bitmap;
+
+        if (useFilter || realHeight <= 0 || realWidth <= 0) {
+            super.setImageBitmap(bitmap);
+            return;
+        }
+
+        float scaleWidth = realWidth / (float) bitmap.getWidth();
+        float scaleHeight = realHeight / (float) bitmap.getHeight();
+
+        float scale = scaleWidth > scaleHeight ? scaleWidth : scaleHeight;
+
+        float finalWidth = bitmap.getWidth() * scale;
+        float finalHeight = bitmap.getHeight() * scale;
+
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) finalWidth, (int) finalHeight, false);
+        super.setImageBitmap(scaledBitmap);
+    }
+
+    public boolean isUseFilter() {
+        return useFilter;
+    }
+
+    public void setUseFilter(boolean useFilter) {
+        this.useFilter = useFilter;
     }
 }

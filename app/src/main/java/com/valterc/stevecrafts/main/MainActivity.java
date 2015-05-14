@@ -47,8 +47,6 @@ public class MainActivity extends ActionBarActivity {
                     DebugLog.d(SteveCraftsApp.getDataManager().getPotion("10").getNameEn());
 
                     DebugLog.d(SteveCraftsApp.getDataManager().getRandomItem().getName());
-                    DebugLog.d(SteveCraftsApp.getDataManager().getRandomItem().getName());
-                    DebugLog.d(SteveCraftsApp.getDataManager().getRandomItem().getName());
 
 
                     TumblrAPI tumblrAPI = new TumblrAPI(getString(R.string.key_tumblr_api));
