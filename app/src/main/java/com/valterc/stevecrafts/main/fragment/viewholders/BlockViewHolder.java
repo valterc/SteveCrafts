@@ -7,12 +7,13 @@ import android.widget.TextView;
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.data.model.GenericItem;
 import com.valterc.stevecrafts.main.fragment.MainFragmentItem;
+import com.vcutils.utils.DebugLog;
 import com.vcutils.views.PixelImageView;
 
 /**
  * Created by Valter on 18/04/2015.
  */
-public class BlockViewHolder extends MainViewHolder{
+public class BlockViewHolder extends MainViewHolder implements View.OnClickListener {
 
     private Context context;
     private TextView textViewItemName;
@@ -25,6 +26,8 @@ public class BlockViewHolder extends MainViewHolder{
         this.imageViewItem = (PixelImageView) itemView.findViewById(R.id.imageView);
         this.textViewItemType = (TextView) itemView.findViewById(R.id.textViewItemDescription);
         this.context = itemView.getContext();
+
+        itemView.setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +36,11 @@ public class BlockViewHolder extends MainViewHolder{
         this.textViewItemType.setText(genericItem.getTypeName(this.context));
         this.textViewItemName.setText(genericItem.getName());
         this.imageViewItem.setImageBitmap(genericItem.getImage());
+    }
+
+    @Override
+    public void onClick(View v) {
+        DebugLog.d("Block click");
     }
 
 }

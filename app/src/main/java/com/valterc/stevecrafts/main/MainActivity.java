@@ -70,7 +70,7 @@ public class MainActivity extends ActionBarActivity {
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mActionBarToolbar);
 
-        getFragmentManager().beginTransaction().add(R.id.container, MainFragment.newInstance()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.container, MainFragment.newInstance()).commit();
 
     }
 

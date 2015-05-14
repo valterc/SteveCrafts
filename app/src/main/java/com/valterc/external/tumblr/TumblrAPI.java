@@ -47,7 +47,7 @@ public class TumblrAPI {
                 post.setUrl(jsonPost.getString("post_url"));
                 post.setSlug(jsonPost.getString("slug"));
                 post.setType(jsonPost.getString("type"));
-                post.setTimestamp(jsonPost.getLong("timestamp"));
+                post.setTimestamp(jsonPost.getLong("timestamp") * 1000);
                 post.setShortUrl(jsonPost.getString("short_url"));
                 post.setTitle(jsonPost.getString("title"));
                 post.setBody(jsonPost.getString("body"));

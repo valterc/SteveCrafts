@@ -44,4 +44,9 @@ public class MainFragmentRecyclerAdapter extends RecyclerView.Adapter<MainViewHo
     public int getItemCount() {
         return items.size();
     }
+
+    public void addItem(MainFragmentItem item) {
+        this.items.add(item);
+    }
+
 }

@@ -11,18 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.valterc.external.tumblr.TumblrPost;
+import com.valterc.external.tumblr.minecraft.GetMinecraftUpdatesAsyncTask;
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.model.GenericItem;
 
 import java.util.ArrayList;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements GetMinecraftUpdatesAsyncTask.GetMinecraftUpdatesListener {
 
     private OnFragmentInteractionListener mListener;
     private RecyclerView recyclerView;
     private View layoutLoading;
     private View layoutErrorLoading;
+    private MainFragmentRecyclerAdapter recyclerAdapter;
 
     public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
@@ -56,19 +58,14 @@ public class MainFragment extends Fragment {
         ArrayList<MainFragmentItem> mainFragmentItems = new ArrayList<>();
         mainFragmentItems.add(new MainFragmentItem(SteveCraftsApp.getDataManager().getRandomItem(), true));
         mainFragmentItems.add(new MainFragmentItem("Latest updates"));
-
-        ArrayList<GenericItem> mostRecentItems = SteveCraftsApp.getDataManager().getMostRecentItems();
-
-        for (GenericItem item : mostRecentItems){
+        for (GenericItem item : SteveCraftsApp.getDataManager().getMostRecentItems()){
             mainFragmentItems.add(new MainFragmentItem(item));
         }
 
-        mainFragmentItems.add(new MainFragmentItem("Latest Minecraft updates"));
-        mainFragmentItems.add(new MainFragmentItem(new TumblrPost()));
-        mainFragmentItems.add(new MainFragmentItem(new TumblrPost()));
-        mainFragmentItems.add(new MainFragmentItem(new TumblrPost()));
+        recyclerAdapter = new MainFragmentRecyclerAdapter(getActivity(), mainFragmentItems);
+        recyclerView.setAdapter(recyclerAdapter);
 
-        recyclerView.setAdapter(new MainFragmentRecyclerAdapter(getActivity(), mainFragmentItems));
+        new GetMinecraftUpdatesAsyncTask().execute(new GetMinecraftUpdatesAsyncTask.GetMinecraftUpdatesInfo(getActivity(), this));
 
         layoutLoading.setVisibility(View.INVISIBLE);
 
@@ -78,9 +75,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
-
     }
 
     @Override
@@ -97,6 +91,17 @@ public class MainFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onGetMinecraftUpdatesComplete(ArrayList<TumblrPost> posts) {
+        if (posts != null){
+            recyclerAdapter.addItem(new MainFragmentItem("Latest Minecraft updates"));
+            for (TumblrPost post : posts){
+                recyclerAdapter.addItem(new MainFragmentItem(post));
+            }
+            recyclerAdapter.notifyItemRangeInserted(recyclerAdapter.getItemCount() - posts.size() - 1, posts.size() + 1);
+        }
     }
 
     public interface OnFragmentInteractionListener {
