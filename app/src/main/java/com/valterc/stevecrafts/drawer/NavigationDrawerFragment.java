@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 
 import com.valterc.stevecrafts.R;
 
+import java.util.ArrayList;
+
 
 /**
  * Created by Valter on 07/01/2015.
@@ -68,9 +70,18 @@ public class NavigationDrawerFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_drawer, container, false);
         mRecyclerView = (RecyclerView) v.findViewById(android.R.id.list);
         mRecyclerView.setClipToPadding(false);
-        mAdapter = new NavigationDrawerAdapter(getActivity());
+
+        ArrayList<NavigationDrawerItem> recyclerViewItems = new ArrayList<>();
+        recyclerViewItems.add(new NavigationDrawerItem());
+        recyclerViewItems.add(new NavigationDrawerItem("Blocks"));
+        recyclerViewItems.add(new NavigationDrawerItem("Items"));
+        recyclerViewItems.add(new NavigationDrawerItem("Potions"));
+        recyclerViewItems.add(new NavigationDrawerItem("Settings"));
+        recyclerViewItems.add(new NavigationDrawerItem("About"));
+
+        mAdapter = new NavigationDrawerAdapter(getActivity(), recyclerViewItems);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter);
         return v;
     }
 
