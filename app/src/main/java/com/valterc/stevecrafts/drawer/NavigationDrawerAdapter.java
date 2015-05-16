@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.valterc.stevecrafts.data.model.GenericItem;
 import com.valterc.stevecrafts.drawer.viewholders.NavigationDrawerItemViewHolder;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     public NavigationDrawerItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         //viewType is equal to layout ID
         View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(viewType, viewGroup, false);
-        return NavigationDrawerItemViewHolder.createViewHolder(viewType, itemView);
+        return NavigationDrawerItemViewHolder.createViewHolder(viewType, itemView, this);
     }
 
     @Override
@@ -49,4 +50,29 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         this.items.add(item);
     }
 
+    public void clearSearchResults() {
+        int count = this.items.size();
+
+        for (int i = 0; i < this.items.size(); i++) {
+            if (this.items.get(i).getType() == NavigationDrawerItem.TYPE_SEARCH_RESULT || this.items.get(i).getType() == NavigationDrawerItem.TYPE_SEARCH_NO_RESULTS) {
+                this.items.remove(i--);
+            }
+        }
+
+        count -= this.items.size();
+        notifyItemRangeRemoved(1, count);
+    }
+
+    public void addSearchResults(ArrayList<GenericItem> searchResultItems){
+        int index = 0;
+        for (GenericItem item : searchResultItems){
+            this.items.add(++index, new NavigationDrawerItem(item));
+        }
+        notifyItemRangeInserted(1, index);
+    }
+
+    public void addSearchNoResults(){
+        this.items.add(1, new NavigationDrawerItem(true));
+        notifyItemInserted(1);
+    }
 }

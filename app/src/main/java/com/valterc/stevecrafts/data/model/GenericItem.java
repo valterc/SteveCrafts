@@ -17,6 +17,7 @@ public class GenericItem {
 
     private String id;
     private String name;
+    private String localizedName;
     private int type;
     private Bitmap image;
     private long timestamp;
@@ -26,7 +27,8 @@ public class GenericItem {
 
     public GenericItem(Block block) {
         this.id = block.getId();
-        this.name = block.getNameEn(); //TODO: Localize app
+        this.name = block.getNameEn();
+        this.localizedName = block.getLocalizedName();
         this.type = TYPE_BLOCK;
         this.image = block.getImage();
         this.timestamp = block.getTimestamp();
@@ -34,7 +36,8 @@ public class GenericItem {
 
     public GenericItem(Item item) {
         this.id = item.getId();
-        this.name = item.getNameEn(); //TODO: Localize app
+        this.name = item.getNameEn();
+        this.localizedName = item.getLocalizedName();
         this.type = TYPE_ITEM;
         this.image = item.getImage();
         this.timestamp = item.getTimestamp();
@@ -42,7 +45,8 @@ public class GenericItem {
 
     public GenericItem(Potion potion) {
         this.id = potion.getId();
-        this.name = potion.getNameEn(); //TODO: Localize app
+        this.name = potion.getNameEn();
+        this.localizedName = potion.getLocalizedName();
         this.type = TYPE_POTION;
         this.image = potion.getImage();
         this.timestamp = potion.getTimestamp();
@@ -70,6 +74,14 @@ public class GenericItem {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLocalizedName() {
+        return localizedName;
+    }
+
+    public void setLocalizedName(String localizedName) {
+        this.localizedName = localizedName;
     }
 
     public int getType() {

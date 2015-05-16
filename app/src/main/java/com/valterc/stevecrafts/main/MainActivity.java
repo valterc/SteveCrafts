@@ -1,9 +1,11 @@
 package com.valterc.stevecrafts.main;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 
 import com.valterc.external.tumblr.TumblrAPI;
 import com.valterc.stevecrafts.R;
@@ -26,6 +28,13 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getActionBarToolbar();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            //Window window = getWindow();
+            //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            //window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //window.setStatusBarColor(getResources().getColor(R.color.red));
+        }
 
         MultipurposeAsyncTask<Void> multipurposeAsyncTask = new MultipurposeAsyncTask<Void>(new MultipurposeAsyncTaskData<Void>() {
             @Override
@@ -72,6 +81,15 @@ public class MainActivity extends ActionBarActivity {
 
         getFragmentManager().beginTransaction().replace(R.id.container, MainFragment.newInstance()).commit();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
+            mDrawerLayout.closeDrawer(Gravity.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     protected Toolbar getActionBarToolbar() {

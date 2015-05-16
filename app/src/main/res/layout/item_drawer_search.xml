@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:layout_margin="10dp">
 
-    <TextView
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="0px"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:ignore="UselessLeaf"/>
+
+    <EditText
+        android:id="@+id/editTextSearch"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:text="SEARCH"/>
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/search_here"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textSize="8pt"
+        />
 
 </LinearLayout>

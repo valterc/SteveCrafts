@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by Valter on 08/01/2015.
@@ -70,7 +71,7 @@ public class Block {
     private String name_pl;
     private long timestamp;
 
-    public Block(){
+    public Block() {
 
     }
 
@@ -132,96 +133,48 @@ public class Block {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public int getMinecraftBlockId() {
         return minecraftBlockId;
-    }
-
-    public void setMinecraftBlockId(int minecraftBlockId) {
-        this.minecraftBlockId = minecraftBlockId;
     }
 
     public int getMinecraftDataValue() {
         return minecraftDataValue;
     }
 
-    public void setMinecraftDataValue(int minecraftDataValue) {
-        this.minecraftDataValue = minecraftDataValue;
-    }
-
     public String getMinecraftId() {
         return minecraftId;
-    }
-
-    public void setMinecraftId(String minecraftId) {
-        this.minecraftId = minecraftId;
     }
 
     public int getType() {
         return type;
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
-
     public int getCategory() {
         return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
     }
 
     public int getPhysics() {
         return physics;
     }
 
-    public void setPhysics(int physics) {
-        this.physics = physics;
-    }
-
     public int getTransparency() {
         return transparency;
-    }
-
-    public void setTransparency(int transparency) {
-        this.transparency = transparency;
     }
 
     public int getLuminance() {
         return luminance;
     }
 
-    public void setLuminance(int luminance) {
-        this.luminance = luminance;
-    }
-
     public int getBlastResistance() {
         return blastResistance;
-    }
-
-    public void setBlastResistance(int blastResistance) {
-        this.blastResistance = blastResistance;
     }
 
     public int getStackable() {
         return stackable;
     }
 
-    public void setStackable(int stackable) {
-        this.stackable = stackable;
-    }
-
     public int getFlamable() {
         return flamable;
-    }
-
-    public void setFlamable(int flamable) {
-        this.flamable = flamable;
     }
 
     public Bitmap getImage() {
@@ -236,59 +189,49 @@ public class Block {
         return name_en;
     }
 
-    public void setNameEn(String name_en) {
-        this.name_en = name_en;
-    }
-
     public String getNamePt() {
-        return name_pt;
-    }
-
-    public void setNamePt(String name_pt) {
-        this.name_pt = name_pt;
+        return (name_pt == null || name_pt.isEmpty()) ? name_en : name_pt;
     }
 
     public String getNameDe() {
-        return name_de;
-    }
-
-    public void setNameDe(String name_de) {
-        this.name_de = name_de;
+        return (name_de == null || name_de.isEmpty()) ? name_en : name_de;
     }
 
     public String getNameEs() {
-        return name_es;
-    }
-
-    public void setNameEs(String name_es) {
-        this.name_es = name_es;
+        return (name_es == null || name_es.isEmpty()) ? name_en : name_es;
     }
 
     public String getNameFr() {
-        return name_fr;
-    }
-
-    public void setNameFr(String name_fr) {
-        this.name_fr = name_fr;
+        return (name_fr == null || name_fr.isEmpty()) ? name_en : name_fr;
     }
 
     public String getNamePl() {
-        return name_pl;
-    }
-
-    public void setNamePl(String name_pl) {
-        this.name_pl = name_pl;
+        return (name_pl == null || name_pl.isEmpty()) ? name_en : name_pl;
     }
 
     public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
+    public String getLocalizedName() {
+        switch (Locale.getDefault().getISO3Language()) {
+            case "eng":
+                return getNameEn();
+            case "por":
+                return getNamePt();
+            case "deu":
+            case "ger":
+                return getNameDe();
+            case "spa":
+                return getNameEs();
+            case "fra":
+            case "fre":
+                return getNameFr();
+            case "pol":
+                return getNamePl();
+        }
+        return getNameEn();
     }
-
-
 
 
     // =====================
@@ -297,7 +240,8 @@ public class Block {
 
     public static class Type {
 
-        private Type(){}
+        private Type() {
+        }
 
         public static final int Solid = 0;
         public static final int NonSolid = 1;
@@ -311,7 +255,8 @@ public class Block {
 
     public static class Category {
 
-        private Category(){}
+        private Category() {
+        }
 
         public static final int Natural = 0;
         public static final int Manufactured = 1;

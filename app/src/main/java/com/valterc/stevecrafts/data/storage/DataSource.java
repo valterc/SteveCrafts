@@ -18,6 +18,7 @@ import com.vcutils.utils.DebugLog;
 import com.vcutils.utils.ImageUtils;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Valter on 18/05/2014.
@@ -41,6 +42,131 @@ public class DataSource {
     public void backupDatabase() {
         dataSQLiteHelper.backupDatabaseTo(Environment.getExternalStorageDirectory().getPath() + "/data");
     }
+
+    public String getLocalizedTableName() {
+        switch (Locale.getDefault().getISO3Language()) {
+            case "eng":
+                return "name_en";
+            case "por":
+                return "name_pt";
+            case "deu":
+            case "ger":
+                return "name_de";
+            case "spa":
+                return "name_es";
+            case "fra":
+            case "fre":
+                return "name_fr";
+            case "pol":
+                return "name_pl";
+        }
+        return "name_en";
+    }
+
+
+    public ArrayList<Block> searchBlock(String query) {
+        String processedQuery = String.format("%%%s%%", query);
+        ArrayList<Block> blocks = new ArrayList<>();
+
+        Cursor c = getDatabase().query(
+                "blocks",
+                new String[]{
+                        "id",
+                        "minecraft_blockid",
+                        "minecraft_datavalue",
+                        "minecraft_id",
+                        "type",
+                        "category",
+                        "physics",
+                        "transparency",
+                        "luminance",
+                        "blast_resistance",
+                        "stackable",
+                        "flamable",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedTableName() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
+
+        while (c.moveToNext()) {
+            blocks.add(new Block(c));
+        }
+
+        c.close();
+
+        return blocks;
+    }
+
+    public ArrayList<Item> searchItem(String query) {
+        String processedQuery = String.format("%%%s%%", query);
+        ArrayList<Item> items = new ArrayList<>();
+
+        Cursor c = getDatabase().query(
+                "items",
+                new String[]{
+                        "id",
+                        "minecraft_id",
+                        "minecraft_datavalue",
+                        "durability",
+                        "stackable",
+                        "damage",
+                        "armor",
+                        "type",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedTableName() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
+
+        while (c.moveToNext()) {
+            items.add(new Item(c));
+        }
+
+        c.close();
+
+        return items;
+    }
+
+    public ArrayList<Potion> searchPotion(String query) {
+        String processedQuery = String.format("%%%s%%", query);
+        ArrayList<Potion> potions = new ArrayList<>();
+
+        Cursor c = getDatabase().query(
+                "potions",
+                new String[]{
+                        "id",
+                        "duration",
+                        "health",
+                        "speed",
+                        "attack",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedTableName() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
+
+        while (c.moveToNext()) {
+            potions.add(new Potion(c));
+        }
+
+        c.close();
+
+        return potions;
+    }
+
 
     public ArrayList<Block> getBlocks() {
 
@@ -526,7 +652,7 @@ public class DataSource {
         return potion;
     }
 
-    public int getLastId(String table){
+    public int getLastId(String table) {
         int maxId = 0;
 
         Cursor c = getDatabase().rawQuery("SELECT MAX(id) FROM " + table, null);
@@ -540,18 +666,17 @@ public class DataSource {
         return maxId;
     }
 
-    public int getLastItemId(){
+    public int getLastItemId() {
         return getLastId("items");
     }
 
-    public int getLastBlockId(){
+    public int getLastBlockId() {
         return getLastId("blocks");
     }
 
-    public int getLastPotionId(){
+    public int getLastPotionId() {
         return getLastId("potions");
     }
-
 
 
     public ArrayList<CraftingRecipe> getCraftingRecipesForBlock(String id) {
@@ -783,7 +908,7 @@ public class DataSource {
     }
 
 
-    public ArrayList<Breaks> getBreaksDoneWithItem(String id){
+    public ArrayList<Breaks> getBreaksDoneWithItem(String id) {
         ArrayList<Breaks> breaks = new ArrayList<Breaks>();
 
         Cursor c = getDatabase().query(
@@ -814,7 +939,7 @@ public class DataSource {
         return breaks;
     }
 
-    public ArrayList<Breaks> getBreaksDoneOfBlock(String id){
+    public ArrayList<Breaks> getBreaksDoneOfBlock(String id) {
         ArrayList<Breaks> breaks = new ArrayList<Breaks>();
 
         Cursor c = getDatabase().query(
@@ -845,7 +970,7 @@ public class DataSource {
         return breaks;
     }
 
-    public ArrayList<Breaks> getBreaksThatDropItem(String id){
+    public ArrayList<Breaks> getBreaksThatDropItem(String id) {
         ArrayList<Breaks> breaks = new ArrayList<Breaks>();
 
         Cursor c = getDatabase().query(
@@ -876,7 +1001,7 @@ public class DataSource {
         return breaks;
     }
 
-    public ArrayList<Breaks> getBreaksThatDropBlock(String id){
+    public ArrayList<Breaks> getBreaksThatDropBlock(String id) {
         ArrayList<Breaks> breaks = new ArrayList<Breaks>();
 
         Cursor c = getDatabase().query(
@@ -908,7 +1033,7 @@ public class DataSource {
     }
 
 
-    public ArrayList<Brewing> getBrewingsWithIngredient(String id){
+    public ArrayList<Brewing> getBrewingsWithIngredient(String id) {
         ArrayList<Brewing> brewings = new ArrayList<Brewing>();
 
         Cursor c = getDatabase().query(
@@ -934,7 +1059,7 @@ public class DataSource {
         return brewings;
     }
 
-    public ArrayList<Brewing> getBrewingsWithBaseItem(String id){
+    public ArrayList<Brewing> getBrewingsWithBaseItem(String id) {
         ArrayList<Brewing> brewings = new ArrayList<Brewing>();
 
         Cursor c = getDatabase().query(
@@ -960,7 +1085,7 @@ public class DataSource {
         return brewings;
     }
 
-    public ArrayList<Brewing> getBrewingsWithBasePotion(String id){
+    public ArrayList<Brewing> getBrewingsWithBasePotion(String id) {
         ArrayList<Brewing> brewings = new ArrayList<Brewing>();
 
         Cursor c = getDatabase().query(
@@ -986,7 +1111,7 @@ public class DataSource {
         return brewings;
     }
 
-    public ArrayList<Brewing> getBrewingsForPotion(String id){
+    public ArrayList<Brewing> getBrewingsForPotion(String id) {
         ArrayList<Brewing> brewings = new ArrayList<Brewing>();
 
         Cursor c = getDatabase().query(
@@ -1132,7 +1257,6 @@ public class DataSource {
 
         return smeltings;
     }
-
 
 
     public void insertBlocks(ArrayList<Block> blocks) {

@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by Valter on 08/01/2015.
@@ -132,27 +133,47 @@ public class Item {
     }
 
     public String getNamePt() {
-        return name_pt;
+        return (name_pt == null || name_pt.isEmpty()) ? name_en : name_pt;
     }
 
     public String getNameDe() {
-        return name_de;
+        return (name_de == null || name_de.isEmpty()) ? name_en : name_de;
     }
 
     public String getNameEs() {
-        return name_es;
+        return (name_es == null || name_es.isEmpty()) ? name_en : name_es;
     }
 
     public String getNameFr() {
-        return name_fr;
+        return (name_fr == null || name_fr.isEmpty()) ? name_en : name_fr;
     }
 
     public String getNamePl() {
-        return name_pl;
+        return (name_pl == null || name_pl.isEmpty()) ? name_en : name_pl;
     }
 
     public long getTimestamp() {
         return timestamp;
+    }
+
+    public String getLocalizedName() {
+        switch (Locale.getDefault().getISO3Language()) {
+            case "eng":
+                return getNameEn();
+            case "por":
+                return getNamePt();
+            case "deu":
+            case "ger":
+                return getNameDe();
+            case "spa":
+                return getNameEs();
+            case "fra":
+            case "fre":
+                return getNameFr();
+            case "pol":
+                return getNamePl();
+        }
+        return getNameEn();
     }
 
 
@@ -160,8 +181,9 @@ public class Item {
     // Internal types
     // =====================
 
-    public static class Type{
-        private Type(){}
+    public static class Type {
+        private Type() {
+        }
 
         public static final int RawMaterial = 0;
         public static final int Manufactured = 1;

@@ -10,6 +10,7 @@ public class NavigationDrawerItem {
 
     public static final int TYPE_SEARCH = R.layout.item_drawer_search;
     public static final int TYPE_SEARCH_RESULT = R.layout.item_drawer_search_result;
+    public static final int TYPE_SEARCH_NO_RESULTS = R.layout.item_drawer_search_no_results;
     public static final int TYPE_MENU_ITEM = R.layout.item_drawer_menu_item;
 
     private int type;
@@ -18,6 +19,14 @@ public class NavigationDrawerItem {
 
     public NavigationDrawerItem() {
         this.type = TYPE_SEARCH;
+    }
+
+    public NavigationDrawerItem(Boolean noResults) {
+        if (noResults) {
+            this.type = TYPE_SEARCH_NO_RESULTS;
+        } else {
+            this.type = TYPE_SEARCH;
+        }
     }
 
     public NavigationDrawerItem(GenericItem item) {

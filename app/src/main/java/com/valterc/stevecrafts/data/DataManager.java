@@ -129,8 +129,61 @@ public class DataManager {
         return genericItem;
     }
 
-    public GenericItem searchForItem(String query) {
-        return null;
+    public ArrayList<GenericItem> search(String query) {
+
+        final String processedQuery = query.toLowerCase();
+
+        ArrayList<Block> blocks = dataSource.searchBlock(processedQuery);
+        ArrayList<Item> items = dataSource.searchItem(processedQuery);
+        ArrayList<Potion> potions = dataSource.searchPotion(processedQuery);
+
+        ArrayList<GenericItem> results = new ArrayList<>();
+
+        for (Block block : blocks) {
+            results.add(new GenericItem(block));
+        }
+
+        for (Item item : items) {
+            results.add(new GenericItem(item));
+        }
+
+        for (Potion potion : potions) {
+            results.add(new GenericItem(potion));
+        }
+
+        Collections.sort(results, new Comparator<GenericItem>() {
+            @Override
+            public int compare(GenericItem lhs /*-1*/, GenericItem rhs /*1*/) {
+
+                String lhsLocalizedName = lhs.getLocalizedName().toLowerCase();
+                String rhsLocalizedName = rhs.getLocalizedName().toLowerCase();
+
+                String lhsName = lhs.getName().toLowerCase();
+                String rhsName = rhs.getName().toLowerCase();
+
+                if (lhsLocalizedName.startsWith(processedQuery) && !rhsLocalizedName.startsWith(processedQuery)) {
+                    return -1;
+                } else if (!lhsLocalizedName.startsWith(processedQuery) && rhsLocalizedName.startsWith(processedQuery)) {
+                    return 1;
+                }
+
+                if (lhsLocalizedName.contains(processedQuery) && !rhsLocalizedName.contains(processedQuery)) {
+                    return -1;
+                } else if (!lhsLocalizedName.contains(processedQuery) && rhsLocalizedName.contains(processedQuery)) {
+                    return 1;
+                }
+
+                if (lhsName.startsWith(processedQuery) && !rhsName.startsWith(processedQuery)) {
+                    return -1;
+                } else if (!lhsName.startsWith(processedQuery) && rhsName.startsWith(processedQuery)) {
+                    return 1;
+                }
+
+                return 0;
+            }
+        });
+
+        return results;
     }
 
 
