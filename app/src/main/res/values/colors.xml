@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="primary">#ff4ba34e</color>
+    <color name="primary_dark">#388e3c</color>
+    <color name="accent">#00c853</color>
+
     <!-- TEXT -->
-    <color name="titleColor">#121212</color>
-    <color name="subTitleColor">#6A6A6A</color>
-    <color name="subsubTitleColor">#9F9F9F</color>
-    <color name="textColor">#5F5F5F</color>
+    <color name="titleColor">#020202</color>
+    <color name="subTitleColor">#616161</color>
+    <color name="subsubTitleColor">#929292</color>
+    <color name="textColor">#525252</color>
 
     <!-- BACKGROUND -->
+    <color name="background_white">#eee</color>
     <color name="minecraftItemGuiColor">#8e8e8e</color>
     <color name="colorHighlight">#8e8e8e</color>
 

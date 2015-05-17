@@ -1,4 +1,4 @@
-package com.valterc.stevecrafts.data.tasks.search;
+package com.valterc.stevecrafts.data.tasks;
 
 import android.os.AsyncTask;
 

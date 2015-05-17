@@ -199,7 +199,6 @@ public class DataManager {
         return dataSource.getPotion(id);
     }
 
-
     public ArrayList<Item> getItems() {
         return dataSource.getItems();
     }
@@ -211,7 +210,6 @@ public class DataManager {
     public ArrayList<Potion> getPotions() {
         return dataSource.getPotions();
     }
-
 
     public Bitmap getGenericItemImage(GenericItem item) {
         switch (item.getType()) {

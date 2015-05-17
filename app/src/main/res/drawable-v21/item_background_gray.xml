@@ -11,7 +11,7 @@
     </item>
     <item>
         <shape>
-            <solid android:color="#CACACA" />
+            <solid android:color="#DFDFDF" />
         </shape>
     </item>
 </ripple>

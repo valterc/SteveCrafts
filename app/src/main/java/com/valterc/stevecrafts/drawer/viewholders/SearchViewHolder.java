@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.data.model.GenericItem;
-import com.valterc.stevecrafts.data.tasks.search.SearchAsyncTask;
+import com.valterc.stevecrafts.data.tasks.SearchAsyncTask;
 import com.valterc.stevecrafts.drawer.NavigationDrawerAdapter;
 import com.valterc.stevecrafts.drawer.NavigationDrawerItem;
 
