@@ -16,6 +16,7 @@ public class NavigationDrawerItem {
     private int type;
     private GenericItem genericItem;
     private String menuItemTitle;
+    private int menuItemImageResource;
 
     public NavigationDrawerItem() {
         this.type = TYPE_SEARCH;
@@ -34,9 +35,10 @@ public class NavigationDrawerItem {
         this.genericItem = item;
     }
 
-    public NavigationDrawerItem(String menuItemTitle) {
+    public NavigationDrawerItem(String menuItemTitle, int imageResource) {
         this.type = TYPE_MENU_ITEM;
         this.menuItemTitle = menuItemTitle;
+        this.menuItemImageResource = imageResource;
     }
 
     public int getType() {
@@ -62,4 +64,13 @@ public class NavigationDrawerItem {
     public void setMenuItemTitle(String menuItemTitle) {
         this.menuItemTitle = menuItemTitle;
     }
+
+    public int getMenuItemImageResource() {
+        return menuItemImageResource;
+    }
+
+    public void setMenuItemImageResource(int menuItemImageResource) {
+        this.menuItemImageResource = menuItemImageResource;
+    }
+
 }

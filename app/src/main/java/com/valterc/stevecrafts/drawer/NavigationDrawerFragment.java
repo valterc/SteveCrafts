@@ -73,11 +73,11 @@ public class NavigationDrawerFragment extends Fragment {
 
         ArrayList<NavigationDrawerItem> recyclerViewItems = new ArrayList<>();
         recyclerViewItems.add(new NavigationDrawerItem());
-        recyclerViewItems.add(new NavigationDrawerItem("Blocks"));
-        recyclerViewItems.add(new NavigationDrawerItem("Items"));
-        recyclerViewItems.add(new NavigationDrawerItem("Potions"));
-        recyclerViewItems.add(new NavigationDrawerItem("Settings"));
-        recyclerViewItems.add(new NavigationDrawerItem("About"));
+        recyclerViewItems.add(new NavigationDrawerItem("Blocks", R.drawable.stone));
+        recyclerViewItems.add(new NavigationDrawerItem("Items", R.drawable.stone_pick));
+        recyclerViewItems.add(new NavigationDrawerItem("Potions", R.drawable.potion));
+        recyclerViewItems.add(new NavigationDrawerItem("Settings", R.drawable.settings));
+        recyclerViewItems.add(new NavigationDrawerItem("About", R.drawable.info));
 
         mAdapter = new NavigationDrawerAdapter(getActivity(), recyclerViewItems);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
