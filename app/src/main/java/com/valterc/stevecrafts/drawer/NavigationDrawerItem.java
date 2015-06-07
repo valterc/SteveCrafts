@@ -1,5 +1,7 @@
 package com.valterc.stevecrafts.drawer;
 
+import android.view.View;
+
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.data.model.GenericItem;
 
@@ -17,6 +19,7 @@ public class NavigationDrawerItem {
     private GenericItem genericItem;
     private String menuItemTitle;
     private int menuItemImageResource;
+    private View.OnClickListener clickListener;
 
     public NavigationDrawerItem() {
         this.type = TYPE_SEARCH;
@@ -36,9 +39,14 @@ public class NavigationDrawerItem {
     }
 
     public NavigationDrawerItem(String menuItemTitle, int imageResource) {
+       this(menuItemTitle, imageResource, null);
+    }
+
+    public NavigationDrawerItem(String menuItemTitle, int imageResource, View.OnClickListener clickListener) {
         this.type = TYPE_MENU_ITEM;
         this.menuItemTitle = menuItemTitle;
         this.menuItemImageResource = imageResource;
+        this.clickListener = clickListener;
     }
 
     public int getType() {
@@ -71,6 +79,14 @@ public class NavigationDrawerItem {
 
     public void setMenuItemImageResource(int menuItemImageResource) {
         this.menuItemImageResource = menuItemImageResource;
+    }
+
+    public View.OnClickListener getClickListener() {
+        return clickListener;
+    }
+
+    public void setClickListener(View.OnClickListener clickListener) {
+        this.clickListener = clickListener;
     }
 
 }

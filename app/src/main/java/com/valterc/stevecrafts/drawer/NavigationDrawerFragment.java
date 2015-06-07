@@ -73,7 +73,14 @@ public class NavigationDrawerFragment extends Fragment {
 
         ArrayList<NavigationDrawerItem> recyclerViewItems = new ArrayList<>();
         recyclerViewItems.add(new NavigationDrawerItem());
-        recyclerViewItems.add(new NavigationDrawerItem("Blocks", R.drawable.stone));
+
+        recyclerViewItems.add(new NavigationDrawerItem("Blocks", R.drawable.stone, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        }));
+
         recyclerViewItems.add(new NavigationDrawerItem("Items", R.drawable.stone_pick));
         recyclerViewItems.add(new NavigationDrawerItem("Potions", R.drawable.potion));
         recyclerViewItems.add(new NavigationDrawerItem("Settings", R.drawable.settings));

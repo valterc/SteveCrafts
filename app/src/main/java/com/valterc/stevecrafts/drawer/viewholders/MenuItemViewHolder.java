@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.drawer.NavigationDrawerItem;
-import com.vcutils.utils.DebugLog;
 
 /**
  * Created by Valter on 15/05/2015.
@@ -15,6 +14,7 @@ public class MenuItemViewHolder extends NavigationDrawerItemViewHolder implement
 
     private TextView textView;
     private ImageView imageView;
+    private View.OnClickListener clickListener;
 
     public MenuItemViewHolder(View itemView) {
         super(itemView);
@@ -27,10 +27,13 @@ public class MenuItemViewHolder extends NavigationDrawerItemViewHolder implement
     public void update(NavigationDrawerItem item) {
         this.textView.setText(item.getMenuItemTitle());
         this.imageView.setImageResource(item.getMenuItemImageResource());
+        this.clickListener = item.getClickListener();
     }
 
     @Override
     public void onClick(View v) {
-        DebugLog.d("Click menu item");
+        if (this.clickListener != null) {
+            this.clickListener.onClick(v);
+        }
     }
 }
