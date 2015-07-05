@@ -123,4 +123,8 @@ public class GenericItem {
         return "";
     }
 
+    @Override
+    public String toString() {
+        return getName() + " - " + getType();
+    }
 }

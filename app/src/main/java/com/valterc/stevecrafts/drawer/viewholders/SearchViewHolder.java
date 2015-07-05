@@ -20,6 +20,7 @@ public class SearchViewHolder extends NavigationDrawerItemViewHolder implements 
 
     private NavigationDrawerAdapter adapter;
     private String query;
+    private View.OnClickListener clickListener;
 
     public SearchViewHolder(View itemView, NavigationDrawerAdapter adapter) {
         super(itemView);
@@ -30,7 +31,7 @@ public class SearchViewHolder extends NavigationDrawerItemViewHolder implements 
 
     @Override
     public void update(NavigationDrawerItem item) {
-
+        this.clickListener = item.getClickListener();
     }
 
     @Override
@@ -60,7 +61,7 @@ public class SearchViewHolder extends NavigationDrawerItemViewHolder implements 
             if (items.isEmpty()) {
                 adapter.addSearchNoResults();
             } else {
-                adapter.addSearchResults(items);
+                adapter.addSearchResults(items, this.clickListener);
             }
         }
     }

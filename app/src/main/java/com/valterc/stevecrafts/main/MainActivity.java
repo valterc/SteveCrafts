@@ -1,5 +1,6 @@
 package com.valterc.stevecrafts.main;
 
+import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -18,7 +19,7 @@ import com.vcutils.tasks.MultipurposeAsyncTaskData;
 import com.vcutils.utils.DebugLog;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements IMainFragmentController {
 
     private DrawerLayout mDrawerLayout;
     private Toolbar mActionBarToolbar;
@@ -79,8 +80,7 @@ public class MainActivity extends ActionBarActivity {
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mActionBarToolbar);
 
-        getFragmentManager().beginTransaction().replace(R.id.container, MainFragment.newInstance()).commit();
-
+        openFragment(MainFragment.newInstance());
     }
 
     @Override
@@ -103,4 +103,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
+    @Override
+    public void openFragment(Fragment fragment) {
+        getFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+    }
 }

@@ -21,8 +21,9 @@ public class NavigationDrawerItem {
     private int menuItemImageResource;
     private View.OnClickListener clickListener;
 
-    public NavigationDrawerItem() {
+    public NavigationDrawerItem(View.OnClickListener clickListener) {
         this.type = TYPE_SEARCH;
+        this.clickListener = clickListener;
     }
 
     public NavigationDrawerItem(Boolean noResults) {
@@ -33,9 +34,10 @@ public class NavigationDrawerItem {
         }
     }
 
-    public NavigationDrawerItem(GenericItem item) {
+    public NavigationDrawerItem(GenericItem item, View.OnClickListener clickListener) {
         this.type = TYPE_SEARCH_RESULT;
         this.genericItem = item;
+        this.clickListener = clickListener;
     }
 
     public NavigationDrawerItem(String menuItemTitle, int imageResource) {

@@ -1,5 +1,6 @@
 package com.valterc.stevecrafts.drawer;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,6 +17,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.valterc.stevecrafts.R;
+import com.valterc.stevecrafts.about.AboutFragment;
+import com.valterc.stevecrafts.data.model.GenericItem;
+import com.valterc.stevecrafts.main.IMainFragmentController;
+import com.vcutils.utils.DebugLog;
 
 import java.util.ArrayList;
 
@@ -33,6 +38,7 @@ public class NavigationDrawerFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private NavigationDrawerAdapter mAdapter;
     private View mFragmentContainerView;
+    private IMainFragmentController mainFragmentController;
 
     private int mCurrentSelectedPosition = 1;
     private boolean mFromSavedInstanceState;
@@ -72,7 +78,22 @@ public class NavigationDrawerFragment extends Fragment {
         mRecyclerView.setClipToPadding(false);
 
         ArrayList<NavigationDrawerItem> recyclerViewItems = new ArrayList<>();
-        recyclerViewItems.add(new NavigationDrawerItem());
+        createDrawerItems(recyclerViewItems);
+
+        mAdapter = new NavigationDrawerAdapter(getActivity(), recyclerViewItems);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(mAdapter);
+        return v;
+    }
+
+    private void createDrawerItems(ArrayList<NavigationDrawerItem> recyclerViewItems) {
+        recyclerViewItems.add(new NavigationDrawerItem(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GenericItem item = (GenericItem) v.getTag(R.id.id_view_search_result_item);
+                DebugLog.d(item.toString());
+            }
+        }));
 
         recyclerViewItems.add(new NavigationDrawerItem("Blocks", R.drawable.stone, new View.OnClickListener() {
             @Override
@@ -84,12 +105,12 @@ public class NavigationDrawerFragment extends Fragment {
         recyclerViewItems.add(new NavigationDrawerItem("Items", R.drawable.stone_pick));
         recyclerViewItems.add(new NavigationDrawerItem("Potions", R.drawable.potion));
         recyclerViewItems.add(new NavigationDrawerItem("Settings", R.drawable.settings));
-        recyclerViewItems.add(new NavigationDrawerItem("About", R.drawable.info));
-
-        mAdapter = new NavigationDrawerAdapter(getActivity(), recyclerViewItems);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerView.setAdapter(mAdapter);
-        return v;
+        recyclerViewItems.add(new NavigationDrawerItem("About", R.drawable.info, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFragment(AboutFragment.newInstance());
+            }
+        }));
     }
 
     public void setUp(int fragmentId, DrawerLayout drawerLayout, Toolbar actionBarToolbar) {
@@ -152,14 +173,12 @@ public class NavigationDrawerFragment extends Fragment {
 
     }
 
-    private void selectItem(int position) {
+    private void openFragment(Fragment fragment) {
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
-
-        //show content
-        if (mDrawerLayout != null) {
-            mDrawerLayout.closeDrawers();
+        if (mainFragmentController != null) {
+            mainFragmentController.openFragment(AboutFragment.newInstance());
         }
     }
 
@@ -174,4 +193,11 @@ public class NavigationDrawerFragment extends Fragment {
         return ((ActionBarActivity) getActivity()).getSupportActionBar();
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof IMainFragmentController) {
+            mainFragmentController = (IMainFragmentController) activity;
+        }
+    }
 }

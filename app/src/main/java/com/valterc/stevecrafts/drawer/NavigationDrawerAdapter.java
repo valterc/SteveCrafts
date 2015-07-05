@@ -63,10 +63,10 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         notifyItemRangeRemoved(1, count);
     }
 
-    public void addSearchResults(ArrayList<GenericItem> searchResultItems){
+    public void addSearchResults(ArrayList<GenericItem> searchResultItems, View.OnClickListener clickListener){
         int index = 0;
         for (GenericItem item : searchResultItems){
-            this.items.add(++index, new NavigationDrawerItem(item));
+            this.items.add(++index, new NavigationDrawerItem(item, clickListener));
         }
         notifyItemRangeInserted(1, index);
     }

@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.valterc.stevecrafts.R;
+import com.valterc.stevecrafts.data.model.GenericItem;
 import com.valterc.stevecrafts.drawer.NavigationDrawerItem;
 
 /**
@@ -14,6 +15,8 @@ public class SearchResultViewHolder extends NavigationDrawerItemViewHolder imple
 
     private ImageView imageView;
     private TextView textView;
+    private View.OnClickListener clickListener;
+    private GenericItem genericItem;
 
     public SearchResultViewHolder(View itemView) {
         super(itemView);
@@ -26,10 +29,15 @@ public class SearchResultViewHolder extends NavigationDrawerItemViewHolder imple
     public void update(NavigationDrawerItem item) {
         this.imageView.setImageBitmap(item.getGenericItem().getImage());
         this.textView.setText(item.getGenericItem().getLocalizedName());
+        this.clickListener = item.getClickListener();
+        this.genericItem = item.getGenericItem();
     }
 
     @Override
     public void onClick(View v) {
-
+        if (clickListener != null){
+            v.setTag(R.id.id_view_search_result_item, genericItem);
+            clickListener.onClick(v);
+        }
     }
 }
