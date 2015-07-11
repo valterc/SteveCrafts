@@ -20,6 +20,7 @@ public class NavigationDrawerItem {
     private String menuItemTitle;
     private int menuItemImageResource;
     private View.OnClickListener clickListener;
+    private boolean clearSearch;
 
     public NavigationDrawerItem(View.OnClickListener clickListener) {
         this.type = TYPE_SEARCH;
@@ -41,7 +42,7 @@ public class NavigationDrawerItem {
     }
 
     public NavigationDrawerItem(String menuItemTitle, int imageResource) {
-       this(menuItemTitle, imageResource, null);
+        this(menuItemTitle, imageResource, null);
     }
 
     public NavigationDrawerItem(String menuItemTitle, int imageResource, View.OnClickListener clickListener) {
@@ -91,4 +92,11 @@ public class NavigationDrawerItem {
         this.clickListener = clickListener;
     }
 
+    public boolean isClearSearch() {
+        return clearSearch;
+    }
+
+    public void setClearSearch(boolean clearSearch) {
+        this.clearSearch = clearSearch;
+    }
 }

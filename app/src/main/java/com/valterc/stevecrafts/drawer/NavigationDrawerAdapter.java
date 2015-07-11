@@ -61,17 +61,20 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
 
         count -= this.items.size();
         notifyItemRangeRemoved(1, count);
+
+        this.items.get(0).setClearSearch(true);
+        notifyItemRangeChanged(0, 1);
     }
 
-    public void addSearchResults(ArrayList<GenericItem> searchResultItems, View.OnClickListener clickListener){
+    public void addSearchResults(ArrayList<GenericItem> searchResultItems, View.OnClickListener clickListener) {
         int index = 0;
-        for (GenericItem item : searchResultItems){
+        for (GenericItem item : searchResultItems) {
             this.items.add(++index, new NavigationDrawerItem(item, clickListener));
         }
         notifyItemRangeInserted(1, index);
     }
 
-    public void addSearchNoResults(){
+    public void addSearchNoResults() {
         this.items.add(1, new NavigationDrawerItem(true));
         notifyItemInserted(1);
     }

@@ -21,17 +21,24 @@ public class SearchViewHolder extends NavigationDrawerItemViewHolder implements 
     private NavigationDrawerAdapter adapter;
     private String query;
     private View.OnClickListener clickListener;
+    private EditText editTextSearch;
 
     public SearchViewHolder(View itemView, NavigationDrawerAdapter adapter) {
         super(itemView);
         this.adapter = adapter;
-        EditText editTextSearch = (EditText) itemView.findViewById(R.id.editTextSearch);
+        editTextSearch = (EditText) itemView.findViewById(R.id.editTextSearch);
         editTextSearch.addTextChangedListener(this);
     }
 
     @Override
     public void update(NavigationDrawerItem item) {
         this.clickListener = item.getClickListener();
+        if (item.isClearSearch()) {
+            item.setClearSearch(false);
+            editTextSearch.removeTextChangedListener(this);
+            editTextSearch.getEditableText().clear();
+            editTextSearch.addTextChangedListener(this);
+        }
     }
 
     @Override

@@ -92,6 +92,7 @@ public class NavigationDrawerFragment extends Fragment {
         recyclerViewItems.add(new NavigationDrawerItem(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mAdapter.clearSearchResults();
                 GenericItem item = (GenericItem) v.getTag(R.id.id_view_search_result_item);
                 openFragment(GenericItemFragmentFactory.GetFragment(item));
             }
