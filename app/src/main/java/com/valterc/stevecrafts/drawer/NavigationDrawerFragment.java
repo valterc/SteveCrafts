@@ -93,6 +93,7 @@ public class NavigationDrawerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mAdapter.clearSearchResults();
+                mAdapter.clearSearchText();
                 GenericItem item = (GenericItem) v.getTag(R.id.id_view_search_result_item);
                 openFragment(GenericItemFragmentFactory.GetFragment(item));
             }
@@ -181,7 +182,7 @@ public class NavigationDrawerFragment extends Fragment {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
 
-        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
 
         if (mainFragmentController != null && fragment != null) {

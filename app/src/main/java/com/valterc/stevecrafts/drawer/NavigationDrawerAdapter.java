@@ -61,7 +61,9 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
 
         count -= this.items.size();
         notifyItemRangeRemoved(1, count);
+    }
 
+    public void clearSearchText(){
         this.items.get(0).setClearSearch(true);
         notifyItemRangeChanged(0, 1);
     }
