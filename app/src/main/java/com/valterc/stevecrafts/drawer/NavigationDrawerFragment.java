@@ -2,6 +2,7 @@ package com.valterc.stevecrafts.drawer;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -15,12 +16,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.about.AboutFragment;
 import com.valterc.stevecrafts.data.model.GenericItem;
 import com.valterc.stevecrafts.main.IMainFragmentController;
-import com.vcutils.utils.DebugLog;
+import com.valterc.stevecrafts.utils.GenericItemFragmentFactory;
 
 import java.util.ArrayList;
 
@@ -91,7 +93,7 @@ public class NavigationDrawerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 GenericItem item = (GenericItem) v.getTag(R.id.id_view_search_result_item);
-                DebugLog.d(item.toString());
+                openFragment(GenericItemFragmentFactory.GetFragment(item));
             }
         }));
 
@@ -177,8 +179,12 @@ public class NavigationDrawerFragment extends Fragment {
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
-        if (mainFragmentController != null) {
-            mainFragmentController.openFragment(AboutFragment.newInstance());
+
+        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+
+        if (mainFragmentController != null && fragment != null) {
+            mainFragmentController.openFragment(fragment);
         }
     }
 

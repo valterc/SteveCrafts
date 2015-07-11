@@ -1,4 +1,4 @@
-package com.valterc.stevecrafts.block;
+package com.valterc.stevecrafts.item;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -11,14 +11,14 @@ import com.valterc.stevecrafts.R;
 /**
  * Created by Valter on 05/07/2015.
  */
-public class BlockFragment extends Fragment {
+public class ItemFragment extends Fragment {
 
-    public static BlockFragment newInstance() {
-        BlockFragment fragment = new BlockFragment();
+    public static ItemFragment newInstance() {
+        ItemFragment fragment = new ItemFragment();
         return fragment;
     }
 
-    public BlockFragment() {
+    public ItemFragment() {
 
     }
 
@@ -29,7 +29,7 @@ public class BlockFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_block, container, false);
+        return inflater.inflate(R.layout.fragment_item, container, false);
     }
 
 }
