@@ -5,4 +5,39 @@
     <string name="model_item">Item</string>
     <string name="model_potion">Potion</string>
 
+    <string name="model_physics">Physics</string>
+    <string name="model_transparent">Transparent</string>
+    <string name="model_luminance">Luminance</string>
+    <string name="model_blast_resistance">Blast resistance</string>
+    <string name="model_flamable">Flammable</string>
+    <string name="model_stackable">Stackable</string>
+
+    <string name="model_block_type_solid">Solid</string>
+    <string name="model_block_type_non_solid">Non Solid</string>
+    <string name="model_block_type_tile_entity">Tile Entity</string>
+    <string name="model_block_type_food">Food</string>
+    <string name="model_block_type_tool">Tool</string>
+    <string name="model_block_type_plant">Plant</string>
+    <string name="model_block_type_fluid">Fluid</string>
+
+    <string name="model_block_category_natural">Natural</string>
+    <string name="model_block_category_manufactured">Manufactured</string>
+    <string name="model_block_category_ore">Ore</string>
+    <string name="model_block_category_mineral">Mineral</string>
+    <string name="model_block_category_utility">Utility</string>
+    <string name="model_block_category_mechanism">Mechanism</string>
+    <string name="model_block_category_plant">Plant</string>
+    <string name="model_block_category_liquid">Liquid</string>
+    <string name="model_block_category_nether">Nether</string>
+    <string name="model_block_category_end">End</string>
+    <string name="model_block_category_creative_only">Creative Only</string>
+    <string name="model_block_category_pocket_edition">Pocket Edition</string>
+    <string name="model_block_category_console_edition_only">Console Edition Only</string>
+    <string name="model_block_category_technical">Technical</string>
+    <string name="model_block_category_pocket_edition_only">Pocket Edition Only</string>
+    <string name="model_block_category_upcoming">Upcoming</string>
+    <string name="model_block_category_removed">Removed</string>
+    <string name="model_block_category_unimplemented">Unimplemented</string>
+
+
 </resources>

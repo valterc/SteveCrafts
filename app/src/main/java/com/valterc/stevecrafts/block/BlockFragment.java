@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.model.Block;
-import com.vcutils.utils.DebugLog;
 import com.vcutils.views.PixelImageView;
 
 /**
@@ -49,7 +48,6 @@ public class BlockFragment extends Fragment {
         }
 
         this.block = SteveCraftsApp.getDataManager().getBlock(blockId);
-        DebugLog.d(this.block.getLocalizedName());
     }
 
     @Override
@@ -58,10 +56,26 @@ public class BlockFragment extends Fragment {
 
         PixelImageView imageView = (PixelImageView) view.findViewById(R.id.imageViewBlockImage);
         TextView textViewBlockName = (TextView) view.findViewById(R.id.textViewBlockName);
+        TextView textViewBlockType = (TextView) view.findViewById(R.id.textViewBlockType);
+        TextView textViewBlockCategory = (TextView) view.findViewById(R.id.textViewBlockCategory);
+        TextView textViewBlockPhysics = (TextView) view.findViewById(R.id.textViewBlockPhysics);
+        TextView textViewBlockTransparent = (TextView) view.findViewById(R.id.textViewBlockTransparent);
+        TextView textViewBlockLuminance = (TextView) view.findViewById(R.id.textViewBlockLuminance);
+        TextView textViewBlockBlastResistance = (TextView) view.findViewById(R.id.textViewBlockBlastResistance);
+        TextView textViewBlockStackable = (TextView) view.findViewById(R.id.textViewBlockStackable);
+        TextView textViewBlockFlamable = (TextView) view.findViewById(R.id.textViewBlockFlamable);
 
         Bitmap blockImage = SteveCraftsApp.getDataManager().getBlockImage(block.getId());
         imageView.setImageBitmap(blockImage);
         textViewBlockName.setText(block.getLocalizedName());
+        textViewBlockType.setText(block.getLocalizedType(getActivity()));
+        textViewBlockCategory.setText(block.getLocalizedCategory(getActivity()));
+        textViewBlockPhysics.setText(block.getLocalizedPhysics(getActivity()));
+        textViewBlockTransparent.setText(block.getLocalizedTransparent(getActivity()));
+        textViewBlockLuminance.setText(block.getLocalizedLuminance(getActivity()));
+        textViewBlockBlastResistance.setText(block.getLocalizedBlastResistance());
+        textViewBlockStackable.setText(block.getLocalizedStackable(getActivity()));
+        textViewBlockFlamable.setText(block.getLocalizedFlamable(getActivity()));
 
         return view;
     }

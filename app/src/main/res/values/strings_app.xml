@@ -19,5 +19,8 @@
     <string name="try_again">Try again</string>
     <string name="search">Search</string>
     <string name="search_here">Search…</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="partial">Partial</string>
 
 </resources>

@@ -1,8 +1,10 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 
+import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 import com.vcutils.utils.ImageUtils;
 
@@ -231,6 +233,118 @@ public class Block {
                 return getNamePl();
         }
         return getNameEn();
+    }
+
+    public String getLocalizedType(Context c) {
+
+        switch (getType()) {
+            case Type.Solid:
+                return c.getResources().getString(R.string.model_block_type_solid);
+            case Type.NonSolid:
+                return c.getResources().getString(R.string.model_block_type_non_solid);
+            case Type.TileEntity:
+                return c.getResources().getString(R.string.model_block_type_tile_entity);
+            case Type.Food:
+                return c.getResources().getString(R.string.model_block_type_food);
+            case Type.Tool:
+                return c.getResources().getString(R.string.model_block_type_tool);
+            case Type.Plant:
+                return c.getResources().getString(R.string.model_block_type_plant);
+            case Type.Fluid:
+                return c.getResources().getString(R.string.model_block_type_fluid);
+        }
+
+        return null;
+    }
+
+    public String getLocalizedCategory(Context c) {
+
+        switch (getCategory()) {
+            case Category.Natural:
+                return c.getResources().getString(R.string.model_block_category_natural);
+            case Category.Manufactured:
+                return c.getResources().getString(R.string.model_block_category_manufactured);
+            case Category.Ore:
+                return c.getResources().getString(R.string.model_block_category_ore);
+            case Category.Mineral:
+                return c.getResources().getString(R.string.model_block_category_mineral);
+            case Category.Utility:
+                return c.getResources().getString(R.string.model_block_category_utility);
+            case Category.Mechanism:
+                return c.getResources().getString(R.string.model_block_category_mechanism);
+            case Category.Plant:
+                return c.getResources().getString(R.string.model_block_category_plant);
+            case Category.Liquid:
+                return c.getResources().getString(R.string.model_block_category_liquid);
+            case Category.Nether:
+                return c.getResources().getString(R.string.model_block_category_nether);
+            case Category.End:
+                return c.getResources().getString(R.string.model_block_category_end);
+            case Category.CreativeOnly:
+                return c.getResources().getString(R.string.model_block_category_creative_only);
+            case Category.PocketEdition:
+                return c.getResources().getString(R.string.model_block_category_pocket_edition);
+            case Category.ConsoleEditionOnly:
+                return c.getResources().getString(R.string.model_block_category_console_edition_only);
+            case Category.Technical:
+                return c.getResources().getString(R.string.model_block_category_technical);
+            case Category.PocketEditionOnly:
+                return c.getResources().getString(R.string.model_block_category_pocket_edition_only);
+            case Category.Upcoming:
+                return c.getResources().getString(R.string.model_block_category_upcoming);
+            case Category.Removed:
+                return c.getResources().getString(R.string.model_block_category_removed);
+            case Category.Unimplemented:
+                return c.getResources().getString(R.string.model_block_category_unimplemented);
+        }
+
+        return null;
+    }
+
+    public String getLocalizedPhysics(Context c) {
+        if (physics == 0) {
+            return c.getResources().getString(R.string.no);
+        } else {
+            return c.getResources().getString(R.string.yes);
+        }
+    }
+
+    public String getLocalizedTransparent(Context c) {
+        if (transparency == 0) {
+            return c.getResources().getString(R.string.no);
+        } else if (transparency == 1) {
+            return c.getResources().getString(R.string.yes);
+        } else {
+            return c.getResources().getString(R.string.partial);
+        }
+    }
+
+    public String getLocalizedLuminance(Context c) {
+        if (luminance == 0) {
+            return c.getResources().getString(R.string.no);
+        } else {
+            return Integer.toString(luminance);
+        }
+    }
+
+    public String getLocalizedBlastResistance() {
+        return Integer.toString(blastResistance);
+    }
+
+    public String getLocalizedStackable(Context c) {
+        if (stackable == 0) {
+            return c.getResources().getString(R.string.no);
+        } else {
+            return c.getResources().getString(R.string.yes) + ", " +Integer.toString(stackable);
+        }
+    }
+
+    public String getLocalizedFlamable(Context c) {
+        if (flamable == 0) {
+            return c.getResources().getString(R.string.no);
+        } else {
+            return c.getResources().getString(R.string.yes);
+        }
     }
 
 
