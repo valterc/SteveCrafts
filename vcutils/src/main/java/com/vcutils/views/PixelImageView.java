@@ -97,8 +97,10 @@ public class PixelImageView extends ImageView {
 
         Bitmap bmp = BitmapFactory.decodeResource(this.getResources(), resId, options);
 
-        if (bmp == null)
+        if (bmp == null) {
+            super.setImageBitmap(null);
             return;
+        }
 
         float scaleWidth = realWidth / (float) bmp.getWidth();
         float scaleHeight = realHeight / (float) bmp.getHeight();
@@ -117,6 +119,11 @@ public class PixelImageView extends ImageView {
 
     @Override
     public void setImageBitmap(Bitmap bitmap) {
+
+        if (bitmap == null) {
+            super.setImageBitmap(null);
+            return;
+        }
 
         lastImageResource = -1;
         lastImageBitmap = bitmap;

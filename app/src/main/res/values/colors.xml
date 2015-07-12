@@ -15,6 +15,7 @@
     <color name="background_white">#eee</color>
     <color name="minecraftItemGuiColor">#8e8e8e</color>
     <color name="colorHighlight">#8e8e8e</color>
+    <color name="colorHighlightSoft">#aeaeae</color>
 
     <color name="red">#FF2222</color>
 

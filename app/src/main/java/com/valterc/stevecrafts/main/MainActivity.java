@@ -11,9 +11,9 @@ import android.view.Gravity;
 import com.valterc.external.tumblr.TumblrAPI;
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
+import com.valterc.stevecrafts.block.BlockFragment;
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 import com.valterc.stevecrafts.drawer.NavigationDrawerFragment;
-import com.valterc.stevecrafts.main.fragment.MainFragment;
 import com.vcutils.tasks.MultipurposeAsyncTask;
 import com.vcutils.tasks.MultipurposeAsyncTaskData;
 import com.vcutils.utils.DebugLog;
@@ -42,6 +42,7 @@ public class MainActivity extends ActionBarActivity implements IMainFragmentCont
             public Void runOnBackground() {
                 SteveCraftsApi api = new SteveCraftsApi();
                 try {
+
                     /*
                     DebugLog.d("BEGIN API CALL");
                     SteveCraftsData data = api.getData();
@@ -80,7 +81,7 @@ public class MainActivity extends ActionBarActivity implements IMainFragmentCont
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mActionBarToolbar);
 
-        openFragment(MainFragment.newInstance());
+        openFragment(BlockFragment.newInstance("1") /*MainFragment.newInstance()*/);
     }
 
     @Override
@@ -101,7 +102,6 @@ public class MainActivity extends ActionBarActivity implements IMainFragmentCont
         }
         return mActionBarToolbar;
     }
-
 
     @Override
     public void openFragment(Fragment fragment) {
