@@ -81,7 +81,7 @@ public class MainActivity extends ActionBarActivity implements IMainFragmentCont
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mActionBarToolbar);
 
-        openFragment(BlockFragment.newInstance("1") /*MainFragment.newInstance()*/);
+        openFragment(BlockFragment.newInstance("3") /*MainFragment.newInstance()*/);
     }
 
     @Override

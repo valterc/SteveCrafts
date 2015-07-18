@@ -4,6 +4,8 @@
     <string name="model_block">Block</string>
     <string name="model_item">Item</string>
     <string name="model_potion">Potion</string>
+    <string name="model_silktouch">Silktouch</string>
+    <string name="model_anytool">Recommended tool, you can use any</string>
 
     <string name="model_physics">Physics</string>
     <string name="model_transparent">Transparent</string>

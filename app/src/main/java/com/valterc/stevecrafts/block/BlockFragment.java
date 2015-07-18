@@ -3,14 +3,15 @@ package com.valterc.stevecrafts.block;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
+import com.valterc.stevecrafts.breaks.MultipleBreaksFragment;
 import com.valterc.stevecrafts.data.model.Block;
 import com.valterc.stevecrafts.data.model.Breaks;
 import com.vcutils.views.PixelImageView;
@@ -43,7 +44,7 @@ public class BlockFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String blockId = "0";
+        String blockId = "2"; //Stone
 
         if (savedInstanceState != null) {
             blockId = savedInstanceState.getString(ARGUMENT_BLOCK_ID);
@@ -70,7 +71,7 @@ public class BlockFragment extends Fragment {
         TextView textViewBlockFlamable = (TextView) view.findViewById(R.id.textViewBlockFlamable);
         TextView textViewBlockCannotBeMined = (TextView) view.findViewById(R.id.textViewBlockCannotBeMined);
         TextView textViewBlockCanBeMined = (TextView) view.findViewById(R.id.textViewBlockCanBeMined);
-        ViewPager viewPagerBlockBreaks = (ViewPager) view.findViewById(R.id.viewPagerBlockBreaks);
+        FrameLayout frameBreaks = (FrameLayout) view.findViewById(R.id.frameBreaks);
 
         Bitmap blockImage = SteveCraftsApp.getDataManager().getBlockImage(block.getId());
         imageView.setImageBitmap(blockImage);
@@ -89,9 +90,16 @@ public class BlockFragment extends Fragment {
         if (breaksOfBlock == null || breaksOfBlock.isEmpty()) {
             textViewBlockCannotBeMined.setVisibility(View.VISIBLE);
             textViewBlockCanBeMined.setVisibility(View.GONE);
-            viewPagerBlockBreaks.setVisibility(View.GONE);
+            frameBreaks.setVisibility(View.GONE);
         } else {
+            textViewBlockCannotBeMined.setVisibility(View.GONE);
 
+            String[] breaksIds = new String[breaksOfBlock.size()];
+            for (int i = 0; i < breaksOfBlock.size(); i++) {
+                breaksIds[i] = breaksOfBlock.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameBreaks, MultipleBreaksFragment.newInstance(breaksIds)).commit();
         }
 
         return view;

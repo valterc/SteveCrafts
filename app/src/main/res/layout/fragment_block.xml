@@ -333,12 +333,13 @@
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
-                <android.support.v4.view.ViewPager
-                    android:id="@+id/viewPagerBlockBreaks"
+                <FrameLayout
+                    android:id="@+id/frameBreaks"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
 
-                    />
+
 
             </LinearLayout>
 
