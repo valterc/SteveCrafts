@@ -652,6 +652,133 @@ public class DataSource {
         return potion;
     }
 
+    public CraftingRecipe getCraftingRecipe(String id) {
+        CraftingRecipe craftingRecipe = null;
+
+        Cursor c = getDatabase().query(
+                "crafting_recipes",
+                new String[]{
+                        "id",
+                        "type",
+                        "craft_id",
+                        "count",
+                        "slot_0_id",
+                        "slot_0_type",
+                        "slot_0_count",
+                        "slot_1_id",
+                        "slot_1_type",
+                        "slot_1_count",
+                        "slot_2_id",
+                        "slot_2_type",
+                        "slot_2_count",
+                        "slot_3_id",
+                        "slot_3_type",
+                        "slot_3_count",
+                        "slot_4_id",
+                        "slot_4_type",
+                        "slot_4_count",
+                        "slot_5_id",
+                        "slot_5_type",
+                        "slot_5_count",
+                        "slot_6_id",
+                        "slot_6_type",
+                        "slot_6_count",
+                        "slot_7_id",
+                        "slot_7_type",
+                        "slot_7_count",
+                        "slot_8_id",
+                        "slot_8_type",
+                        "slot_8_count",
+                        "timestamp",
+                }, "id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            craftingRecipe = new CraftingRecipe(c);
+        }
+
+        c.close();
+
+        return craftingRecipe;
+    }
+
+    public Breaks getBreaks(String id) {
+        Breaks breaks = null;
+
+        Cursor c = getDatabase().query(
+                "breaks",
+                new String[]{
+                        "id",
+                        "item_id",
+                        "block_id",
+                        "silktouch",
+                        "anytool",
+                        "drop_id",
+                        "drop_type",
+                        "drop_count",
+                        "drop_count_min",
+                        "drop_count_max",
+                        "timestamp",
+                }, "id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            breaks = new Breaks(c);
+        }
+
+        c.close();
+        return breaks;
+    }
+
+    public Brewing getBrewing(String id) {
+        Brewing brewing = null;
+
+        Cursor c = getDatabase().query(
+                "brewings",
+                new String[]{
+                        "id",
+                        "ingredient_id",
+                        "begin_item_type",
+                        "begin_item_id",
+                        "result_item_id",
+                        "timestamp",
+                }, "id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            brewing = new Brewing(c);
+        }
+
+        c.close();
+
+        return brewing;
+    }
+
+    public Smelting getSmelting(String id) {
+
+        Smelting smelting = null;
+
+        Cursor c = getDatabase().query(
+                "smeltings",
+                new String[]{
+                        "id",
+                        "ingredient_type",
+                        "ingredient_id",
+                        "result_type",
+                        "result_id",
+                        "result_count",
+                        "experience",
+                        "dont_recommend",
+                        "timestamp",
+                }, "id = ?", new String[]{id}, null, null, null, null);
+
+        if (c.moveToFirst()) {
+            smelting = new Smelting(c);
+        }
+
+        c.close();
+
+        return smelting;
+    }
+
+
     public int getLastId(String table) {
         int maxId = 0;
 

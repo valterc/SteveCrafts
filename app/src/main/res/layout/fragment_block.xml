@@ -109,23 +109,23 @@
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
                         android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
                         android:text="@string/model_physics"
                         android:textColor="@color/subsubTitleColor"
-                        android:textSize="9pt"
-                        android:gravity="end"/>
+                        android:textSize="9pt"/>
 
                     <TextView
                         android:id="@+id/textViewBlockPhysics"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:fontFamily="sans-serif-light"
                         android:text="Yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
@@ -145,21 +145,21 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
                         android:fontFamily="sans-serif-light"
+                        android:gravity="end"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
                         android:text="@string/model_transparent"
                         android:textColor="@color/subsubTitleColor"
-                        android:textSize="9pt"
-                        android:gravity="end"/>
+                        android:textSize="9pt"/>
 
                     <TextView
                         android:id="@+id/textViewBlockTransparent"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:fontFamily="sans-serif-light"
                         android:text="Yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
@@ -179,21 +179,21 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
                         android:fontFamily="sans-serif-light"
+                        android:gravity="end"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
                         android:text="@string/model_luminance"
                         android:textColor="@color/subsubTitleColor"
-                        android:textSize="9pt"
-                        android:gravity="end"/>
+                        android:textSize="9pt"/>
 
                     <TextView
                         android:id="@+id/textViewBlockLuminance"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:fontFamily="sans-serif-light"
                         android:text="Yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
@@ -213,21 +213,21 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
                         android:fontFamily="sans-serif-light"
+                        android:gravity="end"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
                         android:text="@string/model_blast_resistance"
                         android:textColor="@color/subsubTitleColor"
-                        android:textSize="9pt"
-                        android:gravity="end"/>
+                        android:textSize="9pt"/>
 
                     <TextView
                         android:id="@+id/textViewBlockBlastResistance"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:fontFamily="sans-serif-light"
                         android:text="Yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
@@ -247,21 +247,21 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
                         android:fontFamily="sans-serif-light"
+                        android:gravity="end"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
                         android:text="@string/model_stackable"
                         android:textColor="@color/subsubTitleColor"
-                        android:textSize="9pt"
-                        android:gravity="end"/>
+                        android:textSize="9pt"/>
 
                     <TextView
                         android:id="@+id/textViewBlockStackable"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:fontFamily="sans-serif-light"
                         android:text="Yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
@@ -281,21 +281,21 @@
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
                         android:fontFamily="sans-serif-light"
+                        android:gravity="end"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
                         android:text="@string/model_flamable"
                         android:textColor="@color/subsubTitleColor"
-                        android:textSize="9pt"
-                        android:gravity="end"/>
+                        android:textSize="9pt"/>
 
                     <TextView
                         android:id="@+id/textViewBlockFlamable"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:fontFamily="sans-serif-light"
                         android:text="Yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
@@ -304,7 +304,43 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
 
+                <TextView
+                    android:id="@+id/textViewBlockCannotBeMined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="This block cannot be mined!"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanBeMined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Can be mined with"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPagerBlockBreaks"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 

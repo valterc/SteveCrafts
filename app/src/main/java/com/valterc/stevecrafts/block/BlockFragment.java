@@ -3,6 +3,7 @@ package com.valterc.stevecrafts.block;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,10 @@ import android.widget.TextView;
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.model.Block;
+import com.valterc.stevecrafts.data.model.Breaks;
 import com.vcutils.views.PixelImageView;
+
+import java.util.ArrayList;
 
 /**
  * Created by Valter on 05/07/2015.
@@ -64,6 +68,9 @@ public class BlockFragment extends Fragment {
         TextView textViewBlockBlastResistance = (TextView) view.findViewById(R.id.textViewBlockBlastResistance);
         TextView textViewBlockStackable = (TextView) view.findViewById(R.id.textViewBlockStackable);
         TextView textViewBlockFlamable = (TextView) view.findViewById(R.id.textViewBlockFlamable);
+        TextView textViewBlockCannotBeMined = (TextView) view.findViewById(R.id.textViewBlockCannotBeMined);
+        TextView textViewBlockCanBeMined = (TextView) view.findViewById(R.id.textViewBlockCanBeMined);
+        ViewPager viewPagerBlockBreaks = (ViewPager) view.findViewById(R.id.viewPagerBlockBreaks);
 
         Bitmap blockImage = SteveCraftsApp.getDataManager().getBlockImage(block.getId());
         imageView.setImageBitmap(blockImage);
@@ -76,6 +83,16 @@ public class BlockFragment extends Fragment {
         textViewBlockBlastResistance.setText(block.getLocalizedBlastResistance());
         textViewBlockStackable.setText(block.getLocalizedStackable(getActivity()));
         textViewBlockFlamable.setText(block.getLocalizedFlamable(getActivity()));
+
+        ArrayList<Breaks> breaksOfBlock = SteveCraftsApp.getDataManager().getBreaksOfBlock(block.getId());
+
+        if (breaksOfBlock == null || breaksOfBlock.isEmpty()) {
+            textViewBlockCannotBeMined.setVisibility(View.VISIBLE);
+            textViewBlockCanBeMined.setVisibility(View.GONE);
+            viewPagerBlockBreaks.setVisibility(View.GONE);
+        } else {
+
+        }
 
         return view;
     }

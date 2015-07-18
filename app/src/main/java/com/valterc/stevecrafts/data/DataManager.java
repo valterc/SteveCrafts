@@ -5,9 +5,13 @@ import android.graphics.Bitmap;
 
 import com.valterc.stevecrafts.data.api.SteveCraftsData;
 import com.valterc.stevecrafts.data.model.Block;
+import com.valterc.stevecrafts.data.model.Breaks;
+import com.valterc.stevecrafts.data.model.Brewing;
+import com.valterc.stevecrafts.data.model.CraftingRecipe;
 import com.valterc.stevecrafts.data.model.GenericItem;
 import com.valterc.stevecrafts.data.model.Item;
 import com.valterc.stevecrafts.data.model.Potion;
+import com.valterc.stevecrafts.data.model.Smelting;
 import com.valterc.stevecrafts.data.storage.DataSource;
 
 import java.util.ArrayList;
@@ -235,4 +239,23 @@ public class DataManager {
         return dataSource.getPotionImage(id);
     }
 
+    public ArrayList<Breaks> getBreaksOfBlock(String id){
+        return dataSource.getBreaksDoneOfBlock(id);
+    }
+
+    public CraftingRecipe getCraftingRecipe(String breaksId) {
+        return dataSource.getCraftingRecipe(breaksId);
+    }
+
+    public Breaks getBreaks(String breaksId) {
+        return dataSource.getBreaks(breaksId);
+    }
+
+    public Brewing getBrewing(String breaksId) {
+        return dataSource.getBrewing(breaksId);
+    }
+
+    public Smelting getSmelting(String breaksId) {
+        return dataSource.getSmelting(breaksId);
+    }
 }
