@@ -51,7 +51,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="sans-serif-light"
-                    android:text="Stone"
+                    android:text="@string/model_block"
                     android:textColor="@color/titleColor"
                     android:textSize="11pt"/>
 
@@ -69,7 +69,7 @@
                         android:layout_weight=".5"
                         android:fontFamily="sans-serif-light"
                         android:gravity="center"
-                        android:text="Stone"
+                        android:text="@string/model_block"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
 
@@ -82,7 +82,7 @@
                         android:layout_weight=".5"
                         android:fontFamily="sans-serif-light"
                         android:gravity="center"
-                        android:text="Stone"
+                        android:text="@string/model_block"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
 
@@ -126,7 +126,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:text="Yes"
+                        android:text="@string/yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
 
@@ -160,7 +160,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:text="Yes"
+                        android:text="@string/yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
 
@@ -194,7 +194,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:text="Yes"
+                        android:text="@string/yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
 
@@ -228,7 +228,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:text="Yes"
+                        android:text="@string/yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
 
@@ -262,7 +262,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:text="Yes"
+                        android:text="@string/yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
 
@@ -296,7 +296,7 @@
                         android:fontFamily="sans-serif-light"
                         android:paddingEnd="5dp"
                         android:paddingStart="5dp"
-                        android:text="Yes"
+                        android:text="@string/yes"
                         android:textColor="@color/subTitleColor"
                         android:textSize="9pt"/>
 
@@ -318,7 +318,7 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="This block cannot be mined!"
+                    android:text="@string/model_block_cannot_mined"
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
@@ -329,7 +329,7 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Can be mined with"
+                    android:text="@string/model_block_can_mined"
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
@@ -355,7 +355,7 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="This Block cannot be crafted!"
+                    android:text="@string/model_block_cannot_crafted"
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
@@ -366,12 +366,86 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="Can be crafted with"
+                    android:text="@string/model_block_can_crafted"
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
                 <FrameLayout
                     android:id="@+id/frameCraftingRecipes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewBlockCannotCraft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_cannot_craft"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanCraft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_can_craft"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameCrafts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewBlockCannotBeSmelted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_cannot_craft"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanBeSmelted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_can_craft"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameSmeltings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </FrameLayout>

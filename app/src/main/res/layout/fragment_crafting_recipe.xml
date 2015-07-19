@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#0000FF"
+    android:background="@drawable/item_background_soft_gray"
     android:orientation="horizontal"
     android:paddingBottom="10dp"
     android:paddingTop="10dp"
@@ -14,8 +14,7 @@
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="#FF0000">
+        android:layout_margin="10dp">
 
         <TableRow
             android:layout_width="wrap_content"
@@ -30,8 +29,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/item_gui"
-                    android:padding="15dp"
-                    android:src="@drawable/stone"/>
+                    android:padding="15dp"/>
 
                 <TextView
                     android:id="@+id/textViewCraftingRecipeSlot0Count"
@@ -41,11 +39,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowDx="-1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:textColor="#ffEBEBEB"
                     android:textSize="11pt"/>
 
             </RelativeLayout>
@@ -59,8 +57,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/item_gui"
-                    android:padding="15dp"
-                    android:src="@drawable/stone"/>
+                    android:padding="15dp"/>
 
                 <TextView
                     android:id="@+id/textViewCraftingRecipeSlot1Count"
@@ -70,11 +67,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowDx="-1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:textColor="#ffEBEBEB"
                     android:textSize="11pt"/>
 
             </RelativeLayout>
@@ -88,8 +85,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/item_gui"
-                    android:padding="15dp"
-                    android:src="@drawable/stone"/>
+                    android:padding="15dp"/>
 
                 <TextView
                     android:id="@+id/textViewCraftingRecipeSlot2Count"
@@ -99,11 +95,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowDx="-1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:textColor="#ffEBEBEB"
                     android:textSize="11pt"/>
 
             </RelativeLayout>
@@ -124,8 +120,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/item_gui"
-                    android:padding="15dp"
-                    android:src="@drawable/stone"/>
+                    android:padding="15dp"/>
 
                 <TextView
                     android:id="@+id/textViewCraftingRecipeSlot3Count"
@@ -135,11 +130,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowDx="-1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:textColor="#ffEBEBEB"
                     android:textSize="11pt"/>
 
             </RelativeLayout>
@@ -153,8 +148,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/item_gui"
-                    android:padding="15dp"
-                    android:src="@drawable/stone"/>
+                    android:padding="15dp"/>
 
                 <TextView
                     android:id="@+id/textViewCraftingRecipeSlot4Count"
@@ -164,11 +158,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowDx="-1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:textColor="#ffEBEBEB"
                     android:textSize="11pt"/>
 
             </RelativeLayout>
@@ -182,8 +176,7 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:background="@drawable/item_gui"
-                    android:padding="15dp"
-                    android:src="@drawable/stone"/>
+                    android:padding="15dp" />
 
                 <TextView
                     android:id="@+id/textViewCraftingRecipeSlot5Count"
@@ -193,11 +186,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowDx="-1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:textColor="#ffEBEBEB"
                     android:textSize="11pt"/>
 
             </RelativeLayout>
@@ -228,11 +221,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowDx="-1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:textColor="#ffEBEBEB"
                     android:textSize="11pt"/>
 
             </RelativeLayout>
@@ -257,11 +250,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowDx="-1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:textColor="#ffEBEBEB"
                     android:textSize="11pt"/>
 
             </RelativeLayout>
@@ -286,11 +279,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="-5dp"
                     android:layout_marginEnd="5dp"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowDx="-1"
                     android:shadowDy="1"
                     android:shadowRadius="2"
-                    android:textColor="#ffEBEBEB"
                     android:textSize="11pt"/>
 
             </RelativeLayout>
@@ -304,7 +297,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="center_vertical"
-        android:layout_margin="10dp" android:background="#00FF00">
+        android:layout_margin="10dp" >
 
         <com.vcutils.views.PixelImageView
             android:id="@+id/imageViewResult"
@@ -322,11 +315,11 @@
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="-5dp"
             android:layout_marginEnd="5dp"
-            android:shadowColor="#FF212121"
+            android:textColor="@color/minecraftTextColor"
+            android:shadowColor="@color/minecraftTextShadowColor"
             android:shadowDx="-1"
             android:shadowDy="1"
             android:shadowRadius="2"
-            android:textColor="#ffEBEBEB"
             android:textSize="11pt"/>
 
     </RelativeLayout>

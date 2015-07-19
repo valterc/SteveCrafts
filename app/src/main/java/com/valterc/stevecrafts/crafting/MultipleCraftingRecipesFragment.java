@@ -52,7 +52,7 @@ public class MultipleCraftingRecipesFragment extends Fragment {
         viewPagerBlockBreaks.getLayoutParams().height = (int) ScalingUtils.convertDpToPixel(280);
         viewPagerBlockBreaks.setLayoutParams(viewPagerBlockBreaks.getLayoutParams());
 
-        viewPagerBlockBreaks.setAdapter(new CraftingRecipesFragmentAdapter(getFragmentManager(), ids));
+        viewPagerBlockBreaks.setAdapter(new CraftingRecipesFragmentAdapter(getChildFragmentManager(), ids));
         pageIndicator.setViewPager(viewPagerBlockBreaks);
 
         pageIndicator.setFillColor(Color.GRAY);

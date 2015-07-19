@@ -10,6 +10,8 @@
     <color name="subTitleColor">#616161</color>
     <color name="subsubTitleColor">#929292</color>
     <color name="textColor">#525252</color>
+    <color name="minecraftTextColor">#ffF1F1F1</color>
+    <color name="minecraftTextShadowColor">#FF202020</color>
 
     <!-- BACKGROUND -->
     <color name="background_white">#eee</color>

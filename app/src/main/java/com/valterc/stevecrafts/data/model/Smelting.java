@@ -57,7 +57,7 @@ public class Smelting {
         this.resultType = cursor.getInt(cursor.getColumnIndex("result_type"));
         this.resultId = cursor.getString(cursor.getColumnIndex("result_id"));
         this.resultCount = cursor.getInt(cursor.getColumnIndex("result_count"));
-        this.experience = cursor.getDouble(cursor.getColumnIndex("exp"));
+        this.experience = cursor.getDouble(cursor.getColumnIndex("experience"));
         this.dontRecommend = cursor.getInt(cursor.getColumnIndex("dont_recommend"));
         this.timestamp = cursor.getLong(cursor.getColumnIndex("timestamp"));
 

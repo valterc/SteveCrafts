@@ -7,6 +7,8 @@ import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
+import com.vcutils.utils.DebugLog;
+
 /**
  * Created by Valter on 23/05/2014.
  */
@@ -20,24 +22,8 @@ public class PixelImageView extends ImageView {
 
     public PixelImageView(Context context) {
         super(context);
-        ViewTreeObserver vto = getViewTreeObserver();
-        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            @Override
-            public boolean onPreDraw() {
-                ViewTreeObserver vto = getViewTreeObserver();
-                vto.removeOnPreDrawListener(this);
-                realWidth = getMeasuredHeight();
-                realHeight = getMeasuredWidth();
+        lastImageResource = -1;
 
-                setImageResource(lastImageResource);
-
-                return true;
-            }
-        });
-    }
-
-    public PixelImageView(Context context, AttributeSet attrs) {
-        super(context, attrs);
         ViewTreeObserver vto = getViewTreeObserver();
         vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
@@ -49,7 +35,29 @@ public class PixelImageView extends ImageView {
 
                 if (lastImageResource != -1) {
                     setImageResource(lastImageResource);
-                } else {
+                }
+
+                return true;
+            }
+        });
+    }
+
+    public PixelImageView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        lastImageResource = -1;
+
+        ViewTreeObserver vto = getViewTreeObserver();
+        vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                ViewTreeObserver vto = getViewTreeObserver();
+                vto.removeOnPreDrawListener(this);
+                realWidth = getMeasuredHeight();
+                realHeight = getMeasuredWidth();
+
+                if (lastImageResource != -1) {
+                    setImageResource(lastImageResource);
+                } else if (lastImageBitmap != null) {
                     setImageBitmap(lastImageBitmap);
                 }
 
@@ -60,6 +68,8 @@ public class PixelImageView extends ImageView {
 
     public PixelImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        lastImageResource = -1;
+
         ViewTreeObserver vto = getViewTreeObserver();
         vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override
@@ -71,7 +81,7 @@ public class PixelImageView extends ImageView {
 
                 if (lastImageResource != -1) {
                     setImageResource(lastImageResource);
-                } else {
+                } else if (lastImageBitmap != null) {
                     setImageBitmap(lastImageBitmap);
                 }
 
@@ -80,9 +90,10 @@ public class PixelImageView extends ImageView {
         });
     }
 
-
     @Override
     public void setImageResource(int resId) {
+
+        DebugLog.d("RES: " + resId);
 
         lastImageResource = resId;
         lastImageBitmap = null;
@@ -144,6 +155,7 @@ public class PixelImageView extends ImageView {
         Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, (int) finalWidth, (int) finalHeight, false);
         super.setImageBitmap(scaledBitmap);
     }
+
 
     public boolean isUseFilter() {
         return useFilter;

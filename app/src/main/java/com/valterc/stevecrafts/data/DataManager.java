@@ -251,19 +251,28 @@ public class DataManager {
         return dataSource.getBreaks(breaksId);
     }
 
-    public Brewing getBrewing(String breaksId) {
-        return dataSource.getBrewing(breaksId);
+    public Brewing getBrewing(String brewingId) {
+        return dataSource.getBrewing(brewingId);
     }
 
-    public Smelting getSmelting(String breaksId) {
-        return dataSource.getSmelting(breaksId);
+    public Smelting getSmelting(String smeltingId) {
+        return dataSource.getSmelting(smeltingId);
     }
 
     public ArrayList<CraftingRecipe> getCraftingRecipesForBlock(String blockId) {
         return dataSource.getCraftingRecipesForBlock(blockId);
     }
 
+    public ArrayList<CraftingRecipe> getCraftingRecipesThatUseBlock(String blockId) {
+        return dataSource.getCraftingRecipesThatUseBlock(blockId);
+    }
+
     public ArrayList<CraftingRecipe> getCraftingRecipesForItem(String itemId) {
         return dataSource.getCraftingRecipesForItem(itemId);
     }
+
+    public ArrayList<CraftingRecipe> getCraftingRecipesThatUseItem(String itemId) {
+        return dataSource.getCraftingRecipesThatUseItem(itemId);
+    }
+
 }

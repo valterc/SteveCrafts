@@ -948,14 +948,14 @@ public class DataSource {
                         "slot_8_type",
                         "slot_8_count",
                         "timestamp",
-                }, "slot_0_type = 0 AND slot_0_id = ? OR" +
-                        "slot_1_type = 0 AND slot_1_id = ? OR" +
-                        "slot_2_type = 0 AND slot_2_id = ? OR" +
-                        "slot_3_type = 0 AND slot_3_id = ? OR" +
-                        "slot_4_type = 0 AND slot_4_id = ? OR" +
-                        "slot_5_type = 0 AND slot_5_id = ? OR" +
-                        "slot_6_type = 0 AND slot_6_id = ? OR" +
-                        "slot_7_type = 0 AND slot_7_id = ? OR" +
+                }, "slot_0_type = 0 AND slot_0_id = ? OR " +
+                        "slot_1_type = 0 AND slot_1_id = ? OR " +
+                        "slot_2_type = 0 AND slot_2_id = ? OR " +
+                        "slot_3_type = 0 AND slot_3_id = ? OR " +
+                        "slot_4_type = 0 AND slot_4_id = ? OR " +
+                        "slot_5_type = 0 AND slot_5_id = ? OR " +
+                        "slot_6_type = 0 AND slot_6_id = ? OR " +
+                        "slot_7_type = 0 AND slot_7_id = ? OR " +
                         "slot_8_type = 0 AND slot_8_id = ?",
                 new String[]{id, id, id, id, id, id, id, id, id},
                 null, null, null, null);
@@ -1010,14 +1010,14 @@ public class DataSource {
                         "slot_8_type",
                         "slot_8_count",
                         "timestamp",
-                }, "slot_0_type = 1 AND slot_0_id = ? OR" +
-                        "slot_1_type = 1 AND slot_1_id = ? OR" +
-                        "slot_2_type = 1 AND slot_2_id = ? OR" +
-                        "slot_3_type = 1 AND slot_3_id = ? OR" +
-                        "slot_4_type = 1 AND slot_4_id = ? OR" +
-                        "slot_5_type = 1 AND slot_5_id = ? OR" +
-                        "slot_6_type = 1 AND slot_6_id = ? OR" +
-                        "slot_7_type = 1 AND slot_7_id = ? OR" +
+                }, "slot_0_type = 1 AND slot_0_id = ? OR " +
+                        "slot_1_type = 1 AND slot_1_id = ? OR " +
+                        "slot_2_type = 1 AND slot_2_id = ? OR " +
+                        "slot_3_type = 1 AND slot_3_id = ? OR " +
+                        "slot_4_type = 1 AND slot_4_id = ? OR " +
+                        "slot_5_type = 1 AND slot_5_id = ? OR " +
+                        "slot_6_type = 1 AND slot_6_id = ? OR " +
+                        "slot_7_type = 1 AND slot_7_id = ? OR " +
                         "slot_8_type = 1 AND slot_8_id = ?",
                 new String[]{id, id, id, id, id, id, id, id, id},
                 null, null, null, null);

@@ -7,6 +7,13 @@
     <string name="model_silktouch">Silktouch</string>
     <string name="model_anytool">Recommended tool, you can use any</string>
 
+    <string name="model_block_cannot_mined">This block cannot be mined!</string>
+    <string name="model_block_can_mined">Can be mined with</string>
+    <string name="model_block_cannot_crafted">This Block cannot be crafted!</string>
+    <string name="model_block_can_crafted">Can be crafted with</string>
+    <string name="model_block_cannot_craft">This Block cannot be used to craft items!</string>
+    <string name="model_block_can_craft">Can be used to craft</string>
+
     <string name="model_physics">Physics</string>
     <string name="model_transparent">Transparent</string>
     <string name="model_luminance">Luminance</string>

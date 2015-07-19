@@ -79,8 +79,8 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="-5dp"
                     android:textSize="11pt"
-                    android:textColor="#ffEBEBEB"
-                    android:shadowColor="#FF212121"
+                    android:textColor="@color/minecraftTextColor"
+                    android:shadowColor="@color/minecraftTextShadowColor"
                     android:shadowRadius="2"
                     android:shadowDx="-1"
                     android:shadowDy="1"/>

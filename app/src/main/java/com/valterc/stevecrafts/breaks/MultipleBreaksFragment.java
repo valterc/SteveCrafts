@@ -52,7 +52,7 @@ public class MultipleBreaksFragment extends Fragment {
         viewPagerBlockBreaks.getLayoutParams().height = (int)ScalingUtils.convertDpToPixel(210);
         viewPagerBlockBreaks.setLayoutParams(viewPagerBlockBreaks.getLayoutParams());
 
-        viewPagerBlockBreaks.setAdapter(new BreaksFragmentAdapter(getFragmentManager(), ids));
+        viewPagerBlockBreaks.setAdapter(new BreaksFragmentAdapter(getChildFragmentManager(), ids));
         pageIndicator.setViewPager(viewPagerBlockBreaks);
 
         pageIndicator.setFillColor(Color.GRAY);

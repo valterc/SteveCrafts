@@ -96,13 +96,15 @@ public class CraftingRecipeFragment extends Fragment {
 
                 imageViewSlots[i].setImageBitmap(bitmap);
                 textViewSlotsCount[i].setText(slot.getCount() + "");
+            } else {
+                imageViewSlots[i].setImageBitmap(null);
             }
         }
 
         if (craftingRecipe.getType() == 0) {
-            imageViewResult.setImageBitmap(SteveCraftsApp.getDataManager().getBlockImage(craftingRecipe.getId()));
+            imageViewResult.setImageBitmap(SteveCraftsApp.getDataManager().getBlockImage(craftingRecipe.getCraftId()));
         } else {
-            imageViewResult.setImageBitmap(SteveCraftsApp.getDataManager().getItemImage(craftingRecipe.getId()));
+            imageViewResult.setImageBitmap(SteveCraftsApp.getDataManager().getItemImage(craftingRecipe.getCraftId()));
         }
 
         textViewResult.setText(craftingRecipe.getCount() + "");

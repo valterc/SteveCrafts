@@ -16,6 +16,7 @@ import com.valterc.stevecrafts.crafting.MultipleCraftingRecipesFragment;
 import com.valterc.stevecrafts.data.model.Block;
 import com.valterc.stevecrafts.data.model.Breaks;
 import com.valterc.stevecrafts.data.model.CraftingRecipe;
+import com.valterc.stevecrafts.smelting.SmeltingFragment;
 import com.vcutils.views.PixelImageView;
 
 import java.util.ArrayList;
@@ -80,6 +81,13 @@ public class BlockFragment extends Fragment {
         TextView textViewBlockCanBeCrafted = (TextView) view.findViewById(R.id.textViewBlockCanBeCrafted);
         FrameLayout frameCraftingRecipes = (FrameLayout) view.findViewById(R.id.frameCraftingRecipes);
 
+        TextView textViewBlockCannotCraft = (TextView) view.findViewById(R.id.textViewBlockCannotCraft);
+        TextView textViewBlockCanCraft = (TextView) view.findViewById(R.id.textViewBlockCanCraft);
+        FrameLayout frameCrafts = (FrameLayout) view.findViewById(R.id.frameCrafts);
+
+        TextView textViewBlockCannotBeSmelted = (TextView) view.findViewById(R.id.textViewBlockCannotBeSmelted);
+        TextView textViewBlockCanBeSmelted = (TextView) view.findViewById(R.id.textViewBlockCanBeSmelted);
+        FrameLayout frameSmeltings = (FrameLayout) view.findViewById(R.id.frameSmeltings);
 
         Bitmap blockImage = SteveCraftsApp.getDataManager().getBlockImage(block.getId());
         imageView.setImageBitmap(blockImage);
@@ -125,6 +133,24 @@ public class BlockFragment extends Fragment {
 
             getChildFragmentManager().beginTransaction().replace(R.id.frameCraftingRecipes, MultipleCraftingRecipesFragment.newInstance(craftingRecipesId)).commit();
         }
+
+        ArrayList<CraftingRecipe> crafts = SteveCraftsApp.getDataManager().getCraftingRecipesThatUseBlock(block.getId());
+        if (crafts == null || crafts.isEmpty()) {
+            textViewBlockCannotCraft.setVisibility(View.VISIBLE);
+            textViewBlockCanCraft.setVisibility(View.GONE);
+            frameCrafts.setVisibility(View.GONE);
+        } else {
+            textViewBlockCannotCraft.setVisibility(View.GONE);
+
+            String[] craftingRecipesId = new String[crafts.size()];
+            for (int i = 0; i < crafts.size(); i++) {
+                craftingRecipesId[i] = crafts.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameCrafts, MultipleCraftingRecipesFragment.newInstance(craftingRecipesId)).commit();
+        }
+
+        getChildFragmentManager().beginTransaction().replace(R.id.frameSmeltings, SmeltingFragment.newInstance("1")).commit();
 
         return view;
     }
