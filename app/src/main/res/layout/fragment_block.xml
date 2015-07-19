@@ -339,9 +339,45 @@
                     android:layout_height="wrap_content">
                 </FrameLayout>
 
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewBlockCannotBeCrafted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="This Block cannot be crafted!"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanBeCrafted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Can be crafted with"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameCraftingRecipes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
 
             </LinearLayout>
+
 
         </LinearLayout>
 

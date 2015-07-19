@@ -12,8 +12,10 @@ import android.widget.TextView;
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.breaks.MultipleBreaksFragment;
+import com.valterc.stevecrafts.crafting.MultipleCraftingRecipesFragment;
 import com.valterc.stevecrafts.data.model.Block;
 import com.valterc.stevecrafts.data.model.Breaks;
+import com.valterc.stevecrafts.data.model.CraftingRecipe;
 import com.vcutils.views.PixelImageView;
 
 import java.util.ArrayList;
@@ -69,9 +71,15 @@ public class BlockFragment extends Fragment {
         TextView textViewBlockBlastResistance = (TextView) view.findViewById(R.id.textViewBlockBlastResistance);
         TextView textViewBlockStackable = (TextView) view.findViewById(R.id.textViewBlockStackable);
         TextView textViewBlockFlamable = (TextView) view.findViewById(R.id.textViewBlockFlamable);
+
         TextView textViewBlockCannotBeMined = (TextView) view.findViewById(R.id.textViewBlockCannotBeMined);
         TextView textViewBlockCanBeMined = (TextView) view.findViewById(R.id.textViewBlockCanBeMined);
         FrameLayout frameBreaks = (FrameLayout) view.findViewById(R.id.frameBreaks);
+
+        TextView textViewBlockCannotBeCrafted = (TextView) view.findViewById(R.id.textViewBlockCannotBeCrafted);
+        TextView textViewBlockCanBeCrafted = (TextView) view.findViewById(R.id.textViewBlockCanBeCrafted);
+        FrameLayout frameCraftingRecipes = (FrameLayout) view.findViewById(R.id.frameCraftingRecipes);
+
 
         Bitmap blockImage = SteveCraftsApp.getDataManager().getBlockImage(block.getId());
         imageView.setImageBitmap(blockImage);
@@ -86,7 +94,6 @@ public class BlockFragment extends Fragment {
         textViewBlockFlamable.setText(block.getLocalizedFlamable(getActivity()));
 
         ArrayList<Breaks> breaksOfBlock = SteveCraftsApp.getDataManager().getBreaksOfBlock(block.getId());
-
         if (breaksOfBlock == null || breaksOfBlock.isEmpty()) {
             textViewBlockCannotBeMined.setVisibility(View.VISIBLE);
             textViewBlockCanBeMined.setVisibility(View.GONE);
@@ -100,6 +107,23 @@ public class BlockFragment extends Fragment {
             }
 
             getChildFragmentManager().beginTransaction().replace(R.id.frameBreaks, MultipleBreaksFragment.newInstance(breaksIds)).commit();
+        }
+
+
+        ArrayList<CraftingRecipe> craftingRecipes = SteveCraftsApp.getDataManager().getCraftingRecipesForBlock(block.getId());
+        if (craftingRecipes == null || craftingRecipes.isEmpty()) {
+            textViewBlockCannotBeCrafted.setVisibility(View.VISIBLE);
+            textViewBlockCanBeCrafted.setVisibility(View.GONE);
+            frameCraftingRecipes.setVisibility(View.GONE);
+        } else {
+            textViewBlockCannotBeCrafted.setVisibility(View.GONE);
+
+            String[] craftingRecipesId = new String[craftingRecipes.size()];
+            for (int i = 0; i < craftingRecipes.size(); i++) {
+                craftingRecipesId[i] = craftingRecipes.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameCraftingRecipes, MultipleCraftingRecipesFragment.newInstance(craftingRecipesId)).commit();
         }
 
         return view;

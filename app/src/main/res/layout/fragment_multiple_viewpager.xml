@@ -5,13 +5,13 @@
                 android:orientation="vertical">
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPagerBreaks"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="wrap_content"
         />
 
     <com.viewpagerindicator.CirclePageIndicator
-        android:id="@+id/circlePageIndicatorBreaks"
+        android:id="@+id/circlePageIndicator"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -243,8 +243,8 @@ public class DataManager {
         return dataSource.getBreaksDoneOfBlock(id);
     }
 
-    public CraftingRecipe getCraftingRecipe(String breaksId) {
-        return dataSource.getCraftingRecipe(breaksId);
+    public CraftingRecipe getCraftingRecipe(String craftingRecipeId) {
+        return dataSource.getCraftingRecipe(craftingRecipeId);
     }
 
     public Breaks getBreaks(String breaksId) {
@@ -257,5 +257,13 @@ public class DataManager {
 
     public Smelting getSmelting(String breaksId) {
         return dataSource.getSmelting(breaksId);
+    }
+
+    public ArrayList<CraftingRecipe> getCraftingRecipesForBlock(String blockId) {
+        return dataSource.getCraftingRecipesForBlock(blockId);
+    }
+
+    public ArrayList<CraftingRecipe> getCraftingRecipesForItem(String itemId) {
+        return dataSource.getCraftingRecipesForItem(itemId);
     }
 }

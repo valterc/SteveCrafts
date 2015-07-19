@@ -1,4 +1,4 @@
-package com.valterc.stevecrafts.breaks;
+package com.valterc.stevecrafts.crafting;
 
 import android.app.Fragment;
 import android.graphics.Color;
@@ -13,23 +13,23 @@ import com.vcutils.utils.ScalingUtils;
 import com.viewpagerindicator.CirclePageIndicator;
 
 /**
- * Created by Valter on 18/07/2015.
+ * Created by Valter on 19/07/2015.
  */
-public class MultipleBreaksFragment extends Fragment {
+public class MultipleCraftingRecipesFragment extends Fragment {
 
-    private static final String ARGUMENT_BREAKS_ID = "breaks_ids";
+    private static final String ARGUMENT_CRAFTING_RECIPES_ID = "crafting_recipes_ids";
 
-    public static MultipleBreaksFragment newInstance(String[] ids) {
-        MultipleBreaksFragment fragment = new MultipleBreaksFragment();
+    public static MultipleCraftingRecipesFragment newInstance(String[] ids) {
+        MultipleCraftingRecipesFragment fragment = new MultipleCraftingRecipesFragment();
         Bundle args = new Bundle();
-        args.putStringArray(ARGUMENT_BREAKS_ID, ids);
+        args.putStringArray(ARGUMENT_CRAFTING_RECIPES_ID, ids);
         fragment.setArguments(args);
         return fragment;
     }
 
     private String[] ids;
 
-    public MultipleBreaksFragment() {
+    public MultipleCraftingRecipesFragment() {
     }
 
     @Override
@@ -37,9 +37,9 @@ public class MultipleBreaksFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState != null) {
-            ids = savedInstanceState.getStringArray(ARGUMENT_BREAKS_ID);
+            ids = savedInstanceState.getStringArray(ARGUMENT_CRAFTING_RECIPES_ID);
         } else {
-            ids = getArguments().getStringArray(ARGUMENT_BREAKS_ID);
+            ids = getArguments().getStringArray(ARGUMENT_CRAFTING_RECIPES_ID);
         }
     }
 
@@ -49,10 +49,10 @@ public class MultipleBreaksFragment extends Fragment {
         ViewPager viewPagerBlockBreaks = (ViewPager) view.findViewById(R.id.viewPager);
         CirclePageIndicator pageIndicator = (CirclePageIndicator) view.findViewById(R.id.circlePageIndicator);
 
-        viewPagerBlockBreaks.getLayoutParams().height = (int)ScalingUtils.convertDpToPixel(210);
+        viewPagerBlockBreaks.getLayoutParams().height = (int) ScalingUtils.convertDpToPixel(280);
         viewPagerBlockBreaks.setLayoutParams(viewPagerBlockBreaks.getLayoutParams());
 
-        viewPagerBlockBreaks.setAdapter(new BreaksFragmentAdapter(getFragmentManager(), ids));
+        viewPagerBlockBreaks.setAdapter(new CraftingRecipesFragmentAdapter(getFragmentManager(), ids));
         pageIndicator.setViewPager(viewPagerBlockBreaks);
 
         pageIndicator.setFillColor(Color.GRAY);
@@ -64,7 +64,7 @@ public class MultipleBreaksFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        outState.putStringArray(ARGUMENT_BREAKS_ID, ids);
+        outState.putStringArray(ARGUMENT_CRAFTING_RECIPES_ID, ids);
         super.onSaveInstanceState(outState);
     }
 
