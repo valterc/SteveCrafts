@@ -16,7 +16,8 @@ import com.valterc.stevecrafts.crafting.MultipleCraftingRecipesFragment;
 import com.valterc.stevecrafts.data.model.Block;
 import com.valterc.stevecrafts.data.model.Breaks;
 import com.valterc.stevecrafts.data.model.CraftingRecipe;
-import com.valterc.stevecrafts.smelting.SmeltingFragment;
+import com.valterc.stevecrafts.data.model.Smelting;
+import com.valterc.stevecrafts.smelting.MultipleSmeltingsFragment;
 import com.vcutils.views.PixelImageView;
 
 import java.util.ArrayList;
@@ -89,6 +90,10 @@ public class BlockFragment extends Fragment {
         TextView textViewBlockCanBeSmelted = (TextView) view.findViewById(R.id.textViewBlockCanBeSmelted);
         FrameLayout frameSmeltings = (FrameLayout) view.findViewById(R.id.frameSmeltings);
 
+        TextView textViewBlockCannotBeResultOfSmeltings = (TextView) view.findViewById(R.id.textViewBlockCannotBeResultOfSmeltings);
+        TextView textViewBlockCanBeResultOfSmeltings = (TextView) view.findViewById(R.id.textViewBlockCanBeResultOfSmeltings);
+        FrameLayout frameResultOfSmeltings = (FrameLayout) view.findViewById(R.id.frameResultOfSmeltings);
+
         Bitmap blockImage = SteveCraftsApp.getDataManager().getBlockImage(block.getId());
         imageView.setImageBitmap(blockImage);
         textViewBlockName.setText(block.getLocalizedName());
@@ -150,7 +155,37 @@ public class BlockFragment extends Fragment {
             getChildFragmentManager().beginTransaction().replace(R.id.frameCrafts, MultipleCraftingRecipesFragment.newInstance(craftingRecipesId)).commit();
         }
 
-        getChildFragmentManager().beginTransaction().replace(R.id.frameSmeltings, SmeltingFragment.newInstance("1")).commit();
+        ArrayList<Smelting> smelts = SteveCraftsApp.getDataManager().getSmeltingsWithBlock(block.getId());
+        if (smelts == null || smelts.isEmpty()) {
+            textViewBlockCannotBeSmelted.setVisibility(View.VISIBLE);
+            textViewBlockCanBeSmelted.setVisibility(View.GONE);
+            frameSmeltings.setVisibility(View.GONE);
+        } else {
+            textViewBlockCannotBeSmelted.setVisibility(View.GONE);
+
+            String[] smeltingsId = new String[smelts.size()];
+            for (int i = 0; i < smelts.size(); i++) {
+                smeltingsId[i] = smelts.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameSmeltings, MultipleSmeltingsFragment.newInstance(smeltingsId)).commit();
+        }
+
+        ArrayList<Smelting> smeltsFor = SteveCraftsApp.getDataManager().getSmeltingsForBlock(block.getId());
+        if (smeltsFor == null || smeltsFor.isEmpty()) {
+            textViewBlockCannotBeResultOfSmeltings.setVisibility(View.VISIBLE);
+            textViewBlockCanBeResultOfSmeltings.setVisibility(View.GONE);
+            frameResultOfSmeltings.setVisibility(View.GONE);
+        } else {
+            textViewBlockCannotBeResultOfSmeltings.setVisibility(View.GONE);
+
+            String[] smeltingsId = new String[smeltsFor.size()];
+            for (int i = 0; i < smeltsFor.size(); i++) {
+                smeltingsId[i] = smeltsFor.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameResultOfSmeltings, MultipleSmeltingsFragment.newInstance(smeltingsId)).commit();
+        }
 
         return view;
     }

@@ -122,7 +122,7 @@ public class DataSource {
                         "name_fr",
                         "name_pl",
                         "timestamp",
-                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedNameColumn() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
+                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedNameColumn() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "10");
 
         while (c.moveToNext()) {
             blocks.add(new Block(c));
@@ -156,7 +156,34 @@ public class DataSource {
                         "name_fr",
                         "name_pl",
                         "timestamp",
-                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedNameColumn() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
+                }, "lower(name_en) = ? OR lower(" + getLocalizedNameColumn() + ") = ?", new String[]{query, query}, null, null, null, "5");
+
+        while (c.moveToNext()) {
+            items.add(new Item(c));
+        }
+
+        c.close();
+
+        c = getDatabase().query(
+                "items",
+                new String[]{
+                        "id",
+                        "minecraft_id",
+                        "minecraft_datavalue",
+                        "durability",
+                        "stackable",
+                        "damage",
+                        "armor",
+                        "type",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedNameColumn() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "10");
 
         while (c.moveToNext()) {
             items.add(new Item(c));

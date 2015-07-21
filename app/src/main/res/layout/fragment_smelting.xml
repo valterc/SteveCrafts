@@ -26,10 +26,14 @@
             android:src="@drawable/stone"/>
 
         <com.vcutils.views.PixelImageView
+            android:id="@+id/imageViewSmeltingFire"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_margin="5dp"
-            android:padding="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
             android:src="@drawable/minecraft_furnace_fire"/>
 
     </LinearLayout>
@@ -38,13 +42,14 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight=".3"
-        android:gravity="center">
+        android:layout_marginTop="5dp">
 
         <com.vcutils.views.PixelImageView
+            android:id="@+id/imageViewSmeltingArrow"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_margin="5dp"
-            android:padding="15dp"
+            android:padding="5dp"
             android:src="@drawable/minecraft_arrow"/>
 
     </LinearLayout>

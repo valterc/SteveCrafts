@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.model.Smelting;
+import com.vcutils.views.PixelImageView;
 
 /**
  * Created by Valter on 19/07/2015.
@@ -48,6 +49,26 @@ public class SmeltingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_smelting, container, false);
+
+        PixelImageView imageViewSmeltingFire = (PixelImageView) view.findViewById(R.id.imageViewSmeltingFire);
+        PixelImageView imageViewSmeltingArrow = (PixelImageView) view.findViewById(R.id.imageViewSmeltingArrow);
+        PixelImageView imageViewInput = (PixelImageView) view.findViewById(R.id.imageViewSmeltingInput);
+        PixelImageView imageViewResult = (PixelImageView) view.findViewById(R.id.imageViewSmeltingResult);
+
+        imageViewSmeltingFire.setImageResource(R.drawable.minecraft_furnace_fire);
+        imageViewSmeltingArrow.setImageResource(R.drawable.minecraft_arrow);
+
+        if (smelting.getIngredientType() == 0){
+            imageViewInput.setImageBitmap(SteveCraftsApp.getDataManager().getBlockImage(smelting.getIngredientId()));
+        } else {
+            imageViewInput.setImageBitmap(SteveCraftsApp.getDataManager().getItemImage(smelting.getIngredientId()));
+        }
+
+        if (smelting.getResultType() == 0){
+            imageViewResult.setImageBitmap(SteveCraftsApp.getDataManager().getBlockImage(smelting.getResultId()));
+        } else {
+            imageViewResult.setImageBitmap(SteveCraftsApp.getDataManager().getItemImage(smelting.getResultId()));
+        }
 
         return view;
     }

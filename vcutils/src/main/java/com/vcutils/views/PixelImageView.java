@@ -7,8 +7,6 @@ import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
-import com.vcutils.utils.DebugLog;
-
 /**
  * Created by Valter on 23/05/2014.
  */
@@ -92,8 +90,6 @@ public class PixelImageView extends ImageView {
 
     @Override
     public void setImageResource(int resId) {
-
-        DebugLog.d("RES: " + resId);
 
         lastImageResource = resId;
         lastImageBitmap = null;

@@ -287,4 +287,20 @@ public class DataManager {
         return dataSource.getCraftingRecipesThatUseItem(itemId);
     }
 
+    public ArrayList<Smelting> getSmeltingsForBlock(String blockId) {
+        return dataSource.getSmeltingsForBlock(blockId);
+    }
+
+    public ArrayList<Smelting> getSmeltingsForItem(String itemId) {
+        return dataSource.getSmeltingsForItem(itemId);
+    }
+
+    public ArrayList<Smelting> getSmeltingsWithBlock(String blockId) {
+        return dataSource.getSmeltingsWithBlock(blockId);
+    }
+
+    public ArrayList<Smelting> getSmeltingsWithItem(String itemId) {
+        return dataSource.getSmeltingsWithItem(itemId);
+    }
+
 }

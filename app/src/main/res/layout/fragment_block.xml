@@ -429,7 +429,7 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="@string/model_block_cannot_craft"
+                    android:text="@string/model_block_cannot_smelt"
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
@@ -440,12 +440,49 @@
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="@string/model_block_can_craft"
+                    android:text="@string/model_block_can_smelt"
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
                 <FrameLayout
                     android:id="@+id/frameSmeltings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewBlockCannotBeResultOfSmeltings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_cannot_result_smelt"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanBeResultOfSmeltings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_can_result_smelt"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameResultOfSmeltings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </FrameLayout>
