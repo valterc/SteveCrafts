@@ -43,7 +43,7 @@ public class DataSource {
         dataSQLiteHelper.backupDatabaseTo(Environment.getExternalStorageDirectory().getPath() + "/data");
     }
 
-    public String getLocalizedTableName() {
+    public String getLocalizedNameColumn() {
         switch (Locale.getDefault().getISO3Language()) {
             case "eng":
                 return "name_en";
@@ -91,7 +91,38 @@ public class DataSource {
                         "name_fr",
                         "name_pl",
                         "timestamp",
-                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedTableName() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
+                }, "lower(name_en) = ? OR lower(" + getLocalizedNameColumn() + ") = ?", new String[]{query, query}, null, null, null, "5");
+
+        while (c.moveToNext()) {
+            blocks.add(new Block(c));
+        }
+
+        c.close();
+
+        c = getDatabase().query(
+                "blocks",
+                new String[]{
+                        "id",
+                        "minecraft_blockid",
+                        "minecraft_datavalue",
+                        "minecraft_id",
+                        "type",
+                        "category",
+                        "physics",
+                        "transparency",
+                        "luminance",
+                        "blast_resistance",
+                        "stackable",
+                        "flamable",
+                        //"image",
+                        "name_en",
+                        "name_pt",
+                        "name_de",
+                        "name_es",
+                        "name_fr",
+                        "name_pl",
+                        "timestamp",
+                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedNameColumn() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
 
         while (c.moveToNext()) {
             blocks.add(new Block(c));
@@ -125,7 +156,7 @@ public class DataSource {
                         "name_fr",
                         "name_pl",
                         "timestamp",
-                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedTableName() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
+                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedNameColumn() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
 
         while (c.moveToNext()) {
             items.add(new Item(c));
@@ -156,7 +187,7 @@ public class DataSource {
                         "name_fr",
                         "name_pl",
                         "timestamp",
-                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedTableName() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
+                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedNameColumn() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
 
         while (c.moveToNext()) {
             potions.add(new Potion(c));

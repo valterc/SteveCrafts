@@ -165,6 +165,18 @@ public class DataManager {
                 String lhsName = lhs.getName().toLowerCase();
                 String rhsName = rhs.getName().toLowerCase();
 
+                if (lhsLocalizedName.equals(processedQuery) && !rhsLocalizedName.equals(processedQuery)) {
+                    return -1;
+                } else if (!lhsLocalizedName.equals(processedQuery) && rhsLocalizedName.equals(processedQuery)) {
+                    return 1;
+                }
+
+                if (lhsName.equals(processedQuery) && !rhsName.equals(processedQuery)) {
+                    return -1;
+                } else if (!lhsName.equals(processedQuery) && rhsName.equals(processedQuery)) {
+                    return 1;
+                }
+
                 if (lhsLocalizedName.startsWith(processedQuery) && !rhsLocalizedName.startsWith(processedQuery)) {
                     return -1;
                 } else if (!lhsLocalizedName.startsWith(processedQuery) && rhsLocalizedName.startsWith(processedQuery)) {
