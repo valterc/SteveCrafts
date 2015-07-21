@@ -48,7 +48,7 @@ public class BlockFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String blockId = "2"; //Stone
+        String blockId = "2";
 
         if (savedInstanceState != null) {
             blockId = savedInstanceState.getString(ARGUMENT_BLOCK_ID);

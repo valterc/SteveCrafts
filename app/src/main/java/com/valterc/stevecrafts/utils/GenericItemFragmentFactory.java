@@ -18,7 +18,7 @@ public abstract class GenericItemFragmentFactory {
             case GenericItem.TYPE_BLOCK:
                 return BlockFragment.newInstance(item.getId());
             case GenericItem.TYPE_ITEM:
-                return ItemFragment.newInstance();
+                return ItemFragment.newInstance(item.getId());
             case GenericItem.TYPE_POTION:
                 return PotionFragment.newInstance();
         }
