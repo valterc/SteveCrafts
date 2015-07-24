@@ -1,7 +1,384 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/item_background_gray"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.vcutils.views.PixelImageView
+                    android:id="@+id/imageViewItemImage"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/item_gui"
+                    android:padding="15dp"
+                    android:src="@drawable/stone"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/item_background_soft_gray"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/textViewItemName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/model_item"
+                    android:textColor="@color/titleColor"
+                    android:textSize="11pt"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textViewItemType"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center"
+                        android:text="@string/model_item"
+                        android:textColor="@color/subTitleColor"
+                        android:textSize="9pt"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp">
+
+                <!-- Stackable -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="@string/model_stackable"
+                        android:textColor="@color/subsubTitleColor"
+                        android:textSize="9pt"/>
+
+                    <TextView
+                        android:id="@+id/textViewitemStackable"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="@string/yes"
+                        android:textColor="@color/subTitleColor"
+                        android:textSize="9pt"/>
+
+                </LinearLayout>
+
+                <!-- Damage -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="@string/model_damage"
+                        android:textColor="@color/subsubTitleColor"
+                        android:textSize="9pt"/>
+
+                    <TextView
+                        android:id="@+id/textViewBlockTransparent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="@string/yes"
+                        android:textColor="@color/subTitleColor"
+                        android:textSize="9pt"/>
+
+                </LinearLayout>
+
+                <!-- Armor -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="@string/model_armor"
+                        android:textColor="@color/subsubTitleColor"
+                        android:textSize="9pt"/>
+
+                    <TextView
+                        android:id="@+id/textViewBlockLuminance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="@string/yes"
+                        android:textColor="@color/subTitleColor"
+                        android:textSize="9pt"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutMined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewBlockCannotBeMined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_cannot_mined"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanBeMined"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_can_mined"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameBreaks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewBlockCannotBeCrafted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_cannot_crafted"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanBeCrafted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_can_crafted"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameCraftingRecipes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewBlockCannotCraft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_cannot_craft"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanCraft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_can_craft"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameCrafts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewBlockCannotBeSmelted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_cannot_smelt"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanBeSmelted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_can_smelt"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameSmeltings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:id="@+id/textViewBlockCannotBeResultOfSmeltings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_cannot_result_smelt"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <TextView
+                    android:id="@+id/textViewBlockCanBeResultOfSmeltings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_block_can_result_smelt"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameResultOfSmeltings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </LinearLayout>

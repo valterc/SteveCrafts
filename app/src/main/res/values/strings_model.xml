@@ -24,6 +24,8 @@
     <string name="model_blast_resistance">Blast resistance</string>
     <string name="model_flamable">Flammable</string>
     <string name="model_stackable">Stackable</string>
+    <string name="model_damage">Damage</string>
+    <string name="model_armor">Armor</string>
 
     <string name="model_block_type_solid">Solid</string>
     <string name="model_block_type_non_solid">Non Solid</string>

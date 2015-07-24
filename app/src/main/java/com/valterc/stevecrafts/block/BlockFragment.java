@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.valterc.stevecrafts.R;
@@ -74,6 +75,7 @@ public class BlockFragment extends Fragment {
         TextView textViewBlockStackable = (TextView) view.findViewById(R.id.textViewBlockStackable);
         TextView textViewBlockFlamable = (TextView) view.findViewById(R.id.textViewBlockFlamable);
 
+        LinearLayout linearLayoutMined = (LinearLayout) view.findViewById(R.id.linearLayoutMined);
         TextView textViewBlockCannotBeMined = (TextView) view.findViewById(R.id.textViewBlockCannotBeMined);
         TextView textViewBlockCanBeMined = (TextView) view.findViewById(R.id.textViewBlockCanBeMined);
         FrameLayout frameBreaks = (FrameLayout) view.findViewById(R.id.frameBreaks);
@@ -108,6 +110,7 @@ public class BlockFragment extends Fragment {
 
         ArrayList<Breaks> breaksOfBlock = SteveCraftsApp.getDataManager().getBreaksOfBlock(block.getId());
         if (breaksOfBlock == null || breaksOfBlock.isEmpty()) {
+            linearLayoutMined.setVisibility(View.GONE);
             textViewBlockCannotBeMined.setVisibility(View.VISIBLE);
             textViewBlockCanBeMined.setVisibility(View.GONE);
             frameBreaks.setVisibility(View.GONE);
