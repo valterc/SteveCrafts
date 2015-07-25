@@ -1,8 +1,10 @@
 package com.valterc.stevecrafts.data.model;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 
+import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 import com.vcutils.utils.ImageUtils;
 
@@ -176,6 +178,29 @@ public class Item {
         return getNameEn();
     }
 
+    public String getLocalizedType(Context c) {
+
+        switch (getType()) {
+            case Type.RawMaterial : return c.getResources().getString(R.string.model_item);
+            case Type.Manufactured : return c.getResources().getString(R.string.model_item);
+            case Type.Food : return c.getResources().getString(R.string.model_item);
+            case Type.Plant : return c.getResources().getString(R.string.model_item);
+            case Type.Dye : return c.getResources().getString(R.string.model_item);
+            case Type.Tool : return c.getResources().getString(R.string.model_item);
+            case Type.Informative : return c.getResources().getString(R.string.model_item);
+            case Type.Weapon : return c.getResources().getString(R.string.model_item);
+            case Type.Armor : return c.getResources().getString(R.string.model_item);
+            case Type.Vehicle : return c.getResources().getString(R.string.model_item);
+            case Type.Utility : return c.getResources().getString(R.string.model_item);
+            case Type.Decoration : return c.getResources().getString(R.string.model_item);
+            case Type.CreativeOnly : return c.getResources().getString(R.string.model_item);
+            case Type.PocketEditionOnly : return c.getResources().getString(R.string.model_item);
+            case Type.Unused : return c.getResources().getString(R.string.model_item);
+            case Type.Unimplemented : return c.getResources().getString(R.string.model_item);
+        }
+
+        return null;
+    }
 
     // =====================
     // Internal types

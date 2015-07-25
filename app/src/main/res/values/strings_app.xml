@@ -20,6 +20,7 @@
     <string name="search">Search</string>
     <string name="search_here">Search…</string>
     <string name="yes">Yes</string>
+    <string name="yes_more">Yes, %s</string>
     <string name="no">No</string>
     <string name="partial">Partial</string>
 

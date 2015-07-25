@@ -54,5 +54,21 @@
     <string name="model_block_category_removed">Removed</string>
     <string name="model_block_category_unimplemented">Unimplemented</string>
 
+    <string name="model_item_type_raw_material">Raw Material</string>
+    <string name="model_item_type_manufactured">Solid</string>
+    <string name="model_item_type_food">Solid</string>
+    <string name="model_item_type_plant">Solid</string>
+    <string name="model_item_type_dye">Solid</string>
+    <string name="model_item_type_tool">Solid</string>
+    <string name="model_item_type_informative">Solid</string>
+    <string name="model_item_type_weapon">Solid</string>
+    <string name="model_item_type_armor">Solid</string>
+    <string name="model_item_type_vehicle">Solid</string>
+    <string name="model_item_type_utility">Solid</string>
+    <string name="model_item_type_decoration">Solid</string>
+    <string name="model_item_type_creative_only">Solid</string>
+    <string name="model_item_type_pocket_edition_only">Solid</string>
+    <string name="model_item_type_unused">Solid</string>
+    <string name="model_item_type_unimplemented">Solid</string>
 
 </resources>

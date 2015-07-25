@@ -125,7 +125,6 @@ public class BlockFragment extends Fragment {
             getChildFragmentManager().beginTransaction().replace(R.id.frameBreaks, MultipleBreaksFragment.newInstance(breaksIds)).commit();
         }
 
-
         ArrayList<CraftingRecipe> craftingRecipes = SteveCraftsApp.getDataManager().getCraftingRecipesForBlock(block.getId());
         if (craftingRecipes == null || craftingRecipes.isEmpty()) {
             textViewBlockCannotBeCrafted.setVisibility(View.VISIBLE);
