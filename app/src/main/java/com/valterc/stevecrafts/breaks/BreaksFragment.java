@@ -1,5 +1,6 @@
 package com.valterc.stevecrafts.breaks;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
+import com.valterc.stevecrafts.block.BlockFragment;
 import com.valterc.stevecrafts.data.model.Breaks;
+import com.valterc.stevecrafts.item.ItemFragment;
+import com.valterc.stevecrafts.main.IMainFragmentController;
 import com.vcutils.views.PixelImageView;
 
 public class BreaksFragment extends Fragment {
@@ -25,6 +29,7 @@ public class BreaksFragment extends Fragment {
         return fragment;
     }
 
+    private IMainFragmentController mainFragmentController;
     private Breaks breaks;
 
     public BreaksFragment() {
@@ -82,6 +87,31 @@ public class BreaksFragment extends Fragment {
             textViewDropCount.setText(breaks.getDropCount() + "");
         }
 
+        imageViewTool.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainFragmentController.openFragment(ItemFragment.newInstance(breaks.getItemId()));
+            }
+        });
+
+        imageViewBlock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainFragmentController.openFragment(BlockFragment.newInstance(breaks.getBlockId()));
+            }
+        });
+
+        imageViewDrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (breaks.getDropType() == 1) {
+                    mainFragmentController.openFragment(ItemFragment.newInstance(breaks.getDropId()));
+                } else {
+                    mainFragmentController.openFragment(BlockFragment.newInstance(breaks.getDropId()));
+                }
+            }
+        });
+
         return view;
     }
 
@@ -91,4 +121,11 @@ public class BreaksFragment extends Fragment {
         super.onSaveInstanceState(outState);
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof IMainFragmentController) {
+            mainFragmentController = (IMainFragmentController) activity;
+        }
+    }
 }
