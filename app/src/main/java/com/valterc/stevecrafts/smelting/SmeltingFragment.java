@@ -1,5 +1,6 @@
 package com.valterc.stevecrafts.smelting;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +9,10 @@ import android.view.ViewGroup;
 
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
+import com.valterc.stevecrafts.block.BlockFragment;
 import com.valterc.stevecrafts.data.model.Smelting;
+import com.valterc.stevecrafts.item.ItemFragment;
+import com.valterc.stevecrafts.main.IMainFragmentController;
 import com.vcutils.views.PixelImageView;
 
 /**
@@ -26,6 +30,7 @@ public class SmeltingFragment extends Fragment {
         return fragment;
     }
 
+    private IMainFragmentController mainFragmentController;
     private Smelting smelting;
 
     public SmeltingFragment() {
@@ -70,6 +75,28 @@ public class SmeltingFragment extends Fragment {
             imageViewResult.setImageBitmap(SteveCraftsApp.getDataManager().getItemImage(smelting.getResultId()));
         }
 
+        imageViewInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (smelting.getIngredientType() == 1){
+                    mainFragmentController.openFragment(ItemFragment.newInstance(smelting.getIngredientId()));
+                } else {
+                    mainFragmentController.openFragment(BlockFragment.newInstance(smelting.getIngredientId()));
+                }
+            }
+        });
+
+        imageViewResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (smelting.getResultType() == 1){
+                    mainFragmentController.openFragment(ItemFragment.newInstance(smelting.getResultId()));
+                } else {
+                    mainFragmentController.openFragment(BlockFragment.newInstance(smelting.getResultId()));
+                }
+            }
+        });
+
         return view;
     }
 
@@ -77,6 +104,14 @@ public class SmeltingFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         outState.putString(ARGUMENT_SMELTING_ID, smelting.getId());
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof IMainFragmentController) {
+            mainFragmentController = (IMainFragmentController) activity;
+        }
     }
 
 }
