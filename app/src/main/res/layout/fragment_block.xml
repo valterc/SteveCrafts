@@ -313,17 +313,6 @@
                 android:layout_marginTop="5dp">
 
                 <TextView
-                    android:id="@+id/textViewBlockCannotBeMined"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_cannot_mined"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
-
-                <TextView
                     android:id="@+id/textViewBlockCanBeMined"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -343,22 +332,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutBlockCannotBeCrafted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_background_soft_gray"
                 android:orientation="vertical"
                 android:layout_marginTop="5dp">
-
-                <TextView
-                    android:id="@+id/textViewBlockCannotBeCrafted"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_cannot_crafted"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
 
                 <TextView
                     android:id="@+id/textViewBlockCanBeCrafted"
@@ -380,22 +359,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutBlockCannotCraft"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_background_soft_gray"
                 android:orientation="vertical"
                 android:layout_marginTop="5dp">
-
-                <TextView
-                    android:id="@+id/textViewBlockCannotCraft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_cannot_craft"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
 
                 <TextView
                     android:id="@+id/textViewBlockCanCraft"
@@ -417,22 +386,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutBlockCannotBeSmelted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_background_soft_gray"
                 android:orientation="vertical"
                 android:layout_marginTop="5dp">
-
-                <TextView
-                    android:id="@+id/textViewBlockCannotBeSmelted"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_cannot_smelt"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
 
                 <TextView
                     android:id="@+id/textViewBlockCanBeSmelted"
@@ -454,22 +413,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutBlockCannotBeResultOfSmeltings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_background_soft_gray"
                 android:orientation="vertical"
                 android:layout_marginTop="5dp">
-
-                <TextView
-                    android:id="@+id/textViewBlockCannotBeResultOfSmeltings"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_cannot_result_smelt"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
 
                 <TextView
                     android:id="@+id/textViewBlockCanBeResultOfSmeltings"

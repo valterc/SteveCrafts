@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -76,25 +75,12 @@ public class BlockFragment extends Fragment {
         TextView textViewBlockFlamable = (TextView) view.findViewById(R.id.textViewBlockFlamable);
 
         LinearLayout linearLayoutMined = (LinearLayout) view.findViewById(R.id.linearLayoutMined);
-        TextView textViewBlockCannotBeMined = (TextView) view.findViewById(R.id.textViewBlockCannotBeMined);
-        TextView textViewBlockCanBeMined = (TextView) view.findViewById(R.id.textViewBlockCanBeMined);
-        FrameLayout frameBreaks = (FrameLayout) view.findViewById(R.id.frameBreaks);
 
-        TextView textViewBlockCannotBeCrafted = (TextView) view.findViewById(R.id.textViewBlockCannotBeCrafted);
-        TextView textViewBlockCanBeCrafted = (TextView) view.findViewById(R.id.textViewBlockCanBeCrafted);
-        FrameLayout frameCraftingRecipes = (FrameLayout) view.findViewById(R.id.frameCraftingRecipes);
+        LinearLayout linearLayoutBlockCannotBeCrafted = (LinearLayout) view.findViewById(R.id.linearLayoutBlockCannotBeCrafted);
+        LinearLayout linearLayoutBlockCannotCraft = (LinearLayout) view.findViewById(R.id.linearLayoutBlockCannotCraft);
 
-        TextView textViewBlockCannotCraft = (TextView) view.findViewById(R.id.textViewBlockCannotCraft);
-        TextView textViewBlockCanCraft = (TextView) view.findViewById(R.id.textViewBlockCanCraft);
-        FrameLayout frameCrafts = (FrameLayout) view.findViewById(R.id.frameCrafts);
-
-        TextView textViewBlockCannotBeSmelted = (TextView) view.findViewById(R.id.textViewBlockCannotBeSmelted);
-        TextView textViewBlockCanBeSmelted = (TextView) view.findViewById(R.id.textViewBlockCanBeSmelted);
-        FrameLayout frameSmeltings = (FrameLayout) view.findViewById(R.id.frameSmeltings);
-
-        TextView textViewBlockCannotBeResultOfSmeltings = (TextView) view.findViewById(R.id.textViewBlockCannotBeResultOfSmeltings);
-        TextView textViewBlockCanBeResultOfSmeltings = (TextView) view.findViewById(R.id.textViewBlockCanBeResultOfSmeltings);
-        FrameLayout frameResultOfSmeltings = (FrameLayout) view.findViewById(R.id.frameResultOfSmeltings);
+        LinearLayout linearLayoutBlockCannotBeSmelted = (LinearLayout) view.findViewById(R.id.linearLayoutBlockCannotBeSmelted);
+        LinearLayout linearLayoutBlockCannotBeResultOfSmeltings = (LinearLayout) view.findViewById(R.id.linearLayoutBlockCannotBeResultOfSmeltings);
 
         Bitmap blockImage = SteveCraftsApp.getDataManager().getBlockImage(block.getId());
         imageView.setImageBitmap(blockImage);
@@ -111,11 +97,7 @@ public class BlockFragment extends Fragment {
         ArrayList<Breaks> breaksOfBlock = SteveCraftsApp.getDataManager().getBreaksOfBlock(block.getId());
         if (breaksOfBlock == null || breaksOfBlock.isEmpty()) {
             linearLayoutMined.setVisibility(View.GONE);
-            textViewBlockCannotBeMined.setVisibility(View.VISIBLE);
-            textViewBlockCanBeMined.setVisibility(View.GONE);
-            frameBreaks.setVisibility(View.GONE);
         } else {
-            textViewBlockCannotBeMined.setVisibility(View.GONE);
 
             String[] breaksIds = new String[breaksOfBlock.size()];
             for (int i = 0; i < breaksOfBlock.size(); i++) {
@@ -127,11 +109,8 @@ public class BlockFragment extends Fragment {
 
         ArrayList<CraftingRecipe> craftingRecipes = SteveCraftsApp.getDataManager().getCraftingRecipesForBlock(block.getId());
         if (craftingRecipes == null || craftingRecipes.isEmpty()) {
-            textViewBlockCannotBeCrafted.setVisibility(View.VISIBLE);
-            textViewBlockCanBeCrafted.setVisibility(View.GONE);
-            frameCraftingRecipes.setVisibility(View.GONE);
+            linearLayoutBlockCannotBeCrafted.setVisibility(View.GONE);
         } else {
-            textViewBlockCannotBeCrafted.setVisibility(View.GONE);
 
             String[] craftingRecipesId = new String[craftingRecipes.size()];
             for (int i = 0; i < craftingRecipes.size(); i++) {
@@ -143,11 +122,8 @@ public class BlockFragment extends Fragment {
 
         ArrayList<CraftingRecipe> crafts = SteveCraftsApp.getDataManager().getCraftingRecipesThatUseBlock(block.getId());
         if (crafts == null || crafts.isEmpty()) {
-            textViewBlockCannotCraft.setVisibility(View.VISIBLE);
-            textViewBlockCanCraft.setVisibility(View.GONE);
-            frameCrafts.setVisibility(View.GONE);
+            linearLayoutBlockCannotCraft.setVisibility(View.GONE);
         } else {
-            textViewBlockCannotCraft.setVisibility(View.GONE);
 
             String[] craftingRecipesId = new String[crafts.size()];
             for (int i = 0; i < crafts.size(); i++) {
@@ -159,11 +135,8 @@ public class BlockFragment extends Fragment {
 
         ArrayList<Smelting> smelts = SteveCraftsApp.getDataManager().getSmeltingsWithBlock(block.getId());
         if (smelts == null || smelts.isEmpty()) {
-            textViewBlockCannotBeSmelted.setVisibility(View.VISIBLE);
-            textViewBlockCanBeSmelted.setVisibility(View.GONE);
-            frameSmeltings.setVisibility(View.GONE);
+            linearLayoutBlockCannotBeSmelted.setVisibility(View.GONE);
         } else {
-            textViewBlockCannotBeSmelted.setVisibility(View.GONE);
 
             String[] smeltingsId = new String[smelts.size()];
             for (int i = 0; i < smelts.size(); i++) {
@@ -175,11 +148,8 @@ public class BlockFragment extends Fragment {
 
         ArrayList<Smelting> smeltsFor = SteveCraftsApp.getDataManager().getSmeltingsForBlock(block.getId());
         if (smeltsFor == null || smeltsFor.isEmpty()) {
-            textViewBlockCannotBeResultOfSmeltings.setVisibility(View.VISIBLE);
-            textViewBlockCanBeResultOfSmeltings.setVisibility(View.GONE);
-            frameResultOfSmeltings.setVisibility(View.GONE);
+            linearLayoutBlockCannotBeResultOfSmeltings.setVisibility(View.GONE);
         } else {
-            textViewBlockCannotBeResultOfSmeltings.setVisibility(View.GONE);
 
             String[] smeltingsId = new String[smeltsFor.size()];
             for (int i = 0; i < smeltsFor.size(); i++) {
