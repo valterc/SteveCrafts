@@ -18,6 +18,8 @@ import com.valterc.stevecrafts.crafting.MultipleCraftingRecipesFragment;
 import com.valterc.stevecrafts.data.model.Breaks;
 import com.valterc.stevecrafts.data.model.CraftingRecipe;
 import com.valterc.stevecrafts.data.model.Item;
+import com.valterc.stevecrafts.data.model.Smelting;
+import com.valterc.stevecrafts.smelting.MultipleSmeltingsFragment;
 import com.vcutils.views.RepeatingImageView;
 
 import java.util.ArrayList;
@@ -78,6 +80,9 @@ public class ItemFragment extends Fragment {
 
         LinearLayout linearLayoutCanBeCrafted = (LinearLayout) view.findViewById(R.id.linearLayoutCanBeCrafted);
         LinearLayout linearLayoutCanCraft = (LinearLayout) view.findViewById(R.id.linearLayoutCanCraft);
+
+        LinearLayout linearLayoutCanBeSmelted = (LinearLayout) view.findViewById(R.id.linearLayoutCanBeSmelted);
+        LinearLayout linearLayoutResultOfSmeltings = (LinearLayout) view.findViewById(R.id.linearLayoutResultOfSmeltings);
 
         textViewItemName.setText(item.getLocalizedName());
         textViewItemType.setText(item.getLocalizedType(getActivity()));
@@ -149,6 +154,32 @@ public class ItemFragment extends Fragment {
             getChildFragmentManager().beginTransaction().replace(R.id.frameCrafts, MultipleCraftingRecipesFragment.newInstance(craftingRecipesId)).commit();
         }
 
+        ArrayList<Smelting> smeltings = SteveCraftsApp.getDataManager().getSmeltingsWithItem(item.getId());
+        if (smeltings == null || smeltings.isEmpty()) {
+            linearLayoutCanBeSmelted.setVisibility(View.GONE);
+        } else {
+
+            String[] smeltingId = new String[smeltings.size()];
+            for (int i = 0; i < smeltings.size(); i++) {
+                smeltingId[i] = smeltings.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameSmeltings, MultipleSmeltingsFragment.newInstance(smeltingId)).commit();
+        }
+
+
+        ArrayList<Smelting> smelts = SteveCraftsApp.getDataManager().getSmeltingsForItem(item.getId());
+        if (smelts == null || smelts.isEmpty()) {
+            linearLayoutResultOfSmeltings.setVisibility(View.GONE);
+        } else {
+
+            String[] smeltingId = new String[smelts.size()];
+            for (int i = 0; i < smelts.size(); i++) {
+                smeltingId[i] = smelts.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameResultOfSmeltings, MultipleSmeltingsFragment.newInstance(smeltingId)).commit();
+        }
 
         return view;
     }

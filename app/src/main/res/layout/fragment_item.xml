@@ -299,6 +299,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutCanBeSmelted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -306,18 +307,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textViewBlockCannotBeSmelted"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_cannot_smelt"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
-
-                <TextView
-                    android:id="@+id/textViewBlockCanBeSmelted"
+                    android:id="@+id/textViewItemCanBeSmelted"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
@@ -336,6 +326,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutResultOfSmeltings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -343,18 +334,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textViewBlockCannotBeResultOfSmeltings"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_cannot_result_smelt"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
-
-                <TextView
-                    android:id="@+id/textViewBlockCanBeResultOfSmeltings"
+                    android:id="@+id/textViewItemCanBeResultOfSmeltings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
