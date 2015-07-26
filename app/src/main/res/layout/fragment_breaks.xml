@@ -20,26 +20,63 @@
             android:layout_height="100dp"
             android:layout_weight=".5"
             android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginStart="20dp">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:text="tool"
-                android:textColor="@color/subsubTitleColor"
-                android:textSize="6pt"/>
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <com.vcutils.views.PixelImageView
-                android:id="@+id/imageViewBreaksTool"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/item_gui"
-                android:padding="15dp"
-                android:src="@drawable/stone"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/model_tool"
+                    android:textColor="@color/subsubTitleColor"
+                    android:textSize="6pt"/>
+
+                <com.vcutils.views.PixelImageView
+                    android:id="@+id/imageViewBreaksTool"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/item_gui"
+                    android:padding="15dp"
+                    android:src="@drawable/stone"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/model_block"
+                    android:textColor="@color/subsubTitleColor"
+                    android:textSize="6pt"/>
+
+                <com.vcutils.views.PixelImageView
+                    android:id="@+id/imageViewBreaksBlock"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/item_gui"
+                    android:padding="15dp"
+                    android:src="@drawable/stone"/>
+
+            </LinearLayout>
 
         </LinearLayout>
+
+
+
 
 
         <LinearLayout
@@ -53,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:text="drops"
+                android:text="@string/model_drops"
                 android:textColor="@color/subsubTitleColor"
                 android:textSize="6pt"/>
 
@@ -76,14 +113,14 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginBottom="-5dp"
-                    android:textSize="11pt"
-                    android:textColor="@color/minecraftTextColor"
+                    android:layout_marginEnd="5dp"
                     android:shadowColor="@color/minecraftTextShadowColor"
-                    android:shadowRadius="2"
                     android:shadowDx="-1"
-                    android:shadowDy="1"/>
+                    android:shadowDy="1"
+                    android:shadowRadius="2"
+                    android:textColor="@color/minecraftTextColor"
+                    android:textSize="11pt"/>
 
             </RelativeLayout>
 

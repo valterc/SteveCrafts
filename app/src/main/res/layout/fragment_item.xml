@@ -118,6 +118,39 @@
 
                 </LinearLayout>
 
+                <!-- Durability -->
+                <LinearLayout
+                    android:id="@+id/linearLayoutDurability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:paddingBottom="5dp"
+                        android:text="@string/model_durability"
+                        android:textColor="@color/subsubTitleColor"
+                        android:textSize="9pt"/>
+
+                    <TextView
+                        android:id="@+id/textViewItemDurability"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="@string/yes"
+                        android:textColor="@color/subTitleColor"
+                        android:textSize="9pt"/>
+
+                </LinearLayout>
+
                 <!-- Damage -->
                 <LinearLayout
                     android:id="@+id/linearLayoutDamage"
@@ -185,7 +218,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutMined"
+                android:id="@+id/linearLayoutResultOfMine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -193,24 +226,13 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textViewBlockCannotBeMined"
+                    android:id="@+id/textViewItemCanBeResultOfMine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="@string/model_block_cannot_mined"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
-
-                <TextView
-                    android:id="@+id/textViewBlockCanBeMined"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_can_mined"
+                    android:text="@string/model_item_can_result_mine"
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
@@ -223,22 +245,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutCanBeCrafted"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/item_background_soft_gray"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewBlockCannotBeCrafted"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_cannot_crafted"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
 
                 <TextView
                     android:id="@+id/textViewBlockCanBeCrafted"
@@ -260,22 +272,12 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutCanCraft"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/item_background_soft_gray"
                 android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewBlockCannotCraft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_cannot_craft"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
 
                 <TextView
                     android:id="@+id/textViewBlockCanCraft"

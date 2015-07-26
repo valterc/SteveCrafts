@@ -6,6 +6,10 @@
     <string name="model_potion">Potion</string>
     <string name="model_silktouch">Silktouch</string>
     <string name="model_anytool">Recommended tool, you can use any</string>
+    <string name="model_durability">Durability</string>
+    <string name="model_x_uses">%s uses</string>
+    <string name="model_tool">Tool</string>
+    <string name="model_drops">Drops</string>
 
     <string name="model_block_cannot_mined">This block cannot be mined</string>
     <string name="model_block_can_mined">Can be mined with</string>
@@ -17,6 +21,8 @@
     <string name="model_block_can_smelt">Can be smelted for</string>
     <string name="model_block_cannot_result_smelt">This Block cannot be a result of smelting</string>
     <string name="model_block_can_result_smelt">Result of smelting</string>
+
+    <string name="model_item_can_result_mine">Can be result of mining</string>
 
     <string name="model_physics">Physics</string>
     <string name="model_transparent">Transparent</string>
@@ -55,20 +61,20 @@
     <string name="model_block_category_unimplemented">Unimplemented</string>
 
     <string name="model_item_type_raw_material">Raw Material</string>
-    <string name="model_item_type_manufactured">Solid</string>
-    <string name="model_item_type_food">Solid</string>
-    <string name="model_item_type_plant">Solid</string>
-    <string name="model_item_type_dye">Solid</string>
-    <string name="model_item_type_tool">Solid</string>
-    <string name="model_item_type_informative">Solid</string>
-    <string name="model_item_type_weapon">Solid</string>
-    <string name="model_item_type_armor">Solid</string>
-    <string name="model_item_type_vehicle">Solid</string>
-    <string name="model_item_type_utility">Solid</string>
-    <string name="model_item_type_decoration">Solid</string>
-    <string name="model_item_type_creative_only">Solid</string>
-    <string name="model_item_type_pocket_edition_only">Solid</string>
-    <string name="model_item_type_unused">Solid</string>
-    <string name="model_item_type_unimplemented">Solid</string>
+    <string name="model_item_type_manufactured">Manufactured</string>
+    <string name="model_item_type_food">Food</string>
+    <string name="model_item_type_plant">Plant</string>
+    <string name="model_item_type_dye">Dye</string>
+    <string name="model_item_type_tool">Tool</string>
+    <string name="model_item_type_informative">Informative</string>
+    <string name="model_item_type_weapon">Weapon</string>
+    <string name="model_item_type_armor">Armor</string>
+    <string name="model_item_type_vehicle">Vehicle</string>
+    <string name="model_item_type_utility">Utility</string>
+    <string name="model_item_type_decoration">Decoration</string>
+    <string name="model_item_type_creative_only">Creative Only</string>
+    <string name="model_item_type_pocket_edition_only">Pocket Edition Only</string>
+    <string name="model_item_type_unused">Unused</string>
+    <string name="model_item_type_unimplemented">Unimplemented</string>
 
 </resources>

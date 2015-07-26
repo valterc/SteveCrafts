@@ -49,6 +49,7 @@ public class BreaksFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_breaks, container, false);
         PixelImageView imageViewTool = (PixelImageView) view.findViewById(R.id.imageViewBreaksTool);
+        PixelImageView imageViewBlock = (PixelImageView) view.findViewById(R.id.imageViewBreaksBlock);
         PixelImageView imageViewDrop = (PixelImageView) view.findViewById(R.id.imageViewBreaksDrop);
         TextView textViewSilktouch = (TextView) view.findViewById(R.id.textViewSilktouch);
         TextView textViewAnytool = (TextView) view.findViewById(R.id.textViewAnytool);
@@ -63,6 +64,7 @@ public class BreaksFragment extends Fragment {
         }
 
         imageViewTool.setImageBitmap(SteveCraftsApp.getDataManager().getItemImage(breaks.getItemId()));
+        imageViewBlock.setImageBitmap(SteveCraftsApp.getDataManager().getBlockImage(breaks.getBlockId()));
 
         if (breaks.getDropType() == 1) {
             imageViewDrop.setImageBitmap(SteveCraftsApp.getDataManager().getItemImage(breaks.getDropId()));

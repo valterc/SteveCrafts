@@ -255,6 +255,10 @@ public class DataManager {
         return dataSource.getBreaksDoneOfBlock(id);
     }
 
+    public ArrayList<Breaks> getBreaksThatDropItem(String itemId){
+        return dataSource.getBreaksThatDropItem(itemId);
+    }
+
     public CraftingRecipe getCraftingRecipe(String craftingRecipeId) {
         return dataSource.getCraftingRecipe(craftingRecipeId);
     }
