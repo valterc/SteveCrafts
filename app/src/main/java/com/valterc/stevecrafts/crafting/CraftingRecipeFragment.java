@@ -1,5 +1,6 @@
 package com.valterc.stevecrafts.crafting;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
@@ -11,7 +12,10 @@ import android.widget.TextView;
 
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
+import com.valterc.stevecrafts.block.BlockFragment;
 import com.valterc.stevecrafts.data.model.CraftingRecipe;
+import com.valterc.stevecrafts.item.ItemFragment;
+import com.valterc.stevecrafts.main.IMainFragmentController;
 import com.vcutils.views.PixelImageView;
 
 /**
@@ -29,6 +33,7 @@ public class CraftingRecipeFragment extends Fragment {
         return fragment;
     }
 
+    private IMainFragmentController mainFragmentController;
     private CraftingRecipe craftingRecipe;
 
     public CraftingRecipeFragment() {
@@ -83,11 +88,10 @@ public class CraftingRecipeFragment extends Fragment {
             textViewSlotsCount[i].setTypeface(tf);
         }
 
-
         for (int i = 0; i < craftingRecipe.getSlots().length; i++) {
             CraftingRecipe.Slot slot = craftingRecipe.getSlots()[i];
             if (slot != null) {
-                Bitmap bitmap = null;
+                Bitmap bitmap;
                 if (slot.getType() == 0) {
                     bitmap = SteveCraftsApp.getDataManager().getBlockImage(slot.getId());
                 } else {
@@ -96,6 +100,7 @@ public class CraftingRecipeFragment extends Fragment {
 
                 imageViewSlots[i].setImageBitmap(bitmap);
                 textViewSlotsCount[i].setText(slot.getCount() + "");
+                imageViewSlots[i].setTag(i);
             } else {
                 imageViewSlots[i].setImageBitmap(null);
             }
@@ -109,6 +114,36 @@ public class CraftingRecipeFragment extends Fragment {
 
         textViewResult.setText(craftingRecipe.getCount() + "");
 
+
+        imageViewResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (craftingRecipe.getType() == 1) {
+                    mainFragmentController.openFragment(ItemFragment.newInstance(craftingRecipe.getCraftId()));
+                } else {
+                    mainFragmentController.openFragment(BlockFragment.newInstance(craftingRecipe.getCraftId()));
+                }
+            }
+        });
+
+        View.OnClickListener slotClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Integer index = (Integer) v.getTag();
+                if (index != null) {
+                    if (craftingRecipe.getSlots()[index].getType() == 1) {
+                        mainFragmentController.openFragment(ItemFragment.newInstance(craftingRecipe.getSlots()[index].getId()));
+                    } else {
+                        mainFragmentController.openFragment(BlockFragment.newInstance(craftingRecipe.getSlots()[index].getId()));
+                    }
+                }
+            }
+        };
+
+        for (int i = 0; i < imageViewSlots.length; i++) {
+            imageViewSlots[i].setOnClickListener(slotClickListener);
+        }
+
         return view;
     }
 
@@ -116,6 +151,14 @@ public class CraftingRecipeFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         outState.putString(ARGUMENT_CRAFTING_RECIPE_ID, craftingRecipe.getId());
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof IMainFragmentController) {
+            mainFragmentController = (IMainFragmentController) activity;
+        }
     }
 
 }
