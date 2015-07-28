@@ -214,7 +214,7 @@ public class DataSource {
                         "name_fr",
                         "name_pl",
                         "timestamp",
-                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedNameColumn() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "5");
+                }, "lower(name_en) LIKE ? OR lower(" + getLocalizedNameColumn() + ") LIKE ?", new String[]{processedQuery, processedQuery}, null, null, null, "10");
 
         while (c.moveToNext()) {
             potions.add(new Potion(c));

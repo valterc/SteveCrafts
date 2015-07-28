@@ -10,6 +10,8 @@
     <string name="model_x_uses">%s uses</string>
     <string name="model_tool">Tool</string>
     <string name="model_drops">Drops</string>
+    <string name="model_x_seconds">%s seconds</string>
+    <string name="model_instant">Instant</string>
 
     <string name="model_block_cannot_mined">This block cannot be mined</string>
     <string name="model_block_can_mined">Can be mined with</string>
@@ -32,6 +34,10 @@
     <string name="model_stackable">Stackable</string>
     <string name="model_damage">Damage</string>
     <string name="model_armor">Armor</string>
+    <string name="model_duration">Duration</string>
+    <string name="model_health">Health</string>
+    <string name="model_speed">Speed</string>
+    <string name="model_attack">Attack</string>
 
     <string name="model_block_type_solid">Solid</string>
     <string name="model_block_type_non_solid">Non Solid</string>

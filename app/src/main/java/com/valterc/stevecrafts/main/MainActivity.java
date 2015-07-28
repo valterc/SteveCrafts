@@ -13,7 +13,7 @@ import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 import com.valterc.stevecrafts.drawer.NavigationDrawerFragment;
-import com.valterc.stevecrafts.item.ItemFragment;
+import com.valterc.stevecrafts.potion.PotionFragment;
 import com.vcutils.tasks.MultipurposeAsyncTask;
 import com.vcutils.tasks.MultipurposeAsyncTaskData;
 import com.vcutils.utils.DebugLog;
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements IMainFragmentCont
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mActionBarToolbar);
 
-        openFragment(ItemFragment.newInstance("3") /*MainFragment.newInstance()*/);
+        openFragment(PotionFragment.newInstance("3") /*MainFragment.newInstance()*/);
     }
 
     @Override
