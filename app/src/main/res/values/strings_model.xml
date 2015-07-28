@@ -12,6 +12,8 @@
     <string name="model_drops">Drops</string>
     <string name="model_x_seconds">%s seconds</string>
     <string name="model_instant">Instant</string>
+    <string name="model_ingredient">Ingredient</string>
+    <string name="model_base">Base</string>
 
     <string name="model_block_cannot_mined">This block cannot be mined</string>
     <string name="model_block_can_mined">Can be mined with</string>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/item_background_soft_gray"
+              android:orientation="horizontal"
+              android:paddingBottom="10dp"
+              android:paddingTop="10dp"
+              tools:context="com.valterc.stevecrafts.brewing.BrewingRecipeFragment">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/model_ingredient"
+            android:textColor="@color/subsubTitleColor"
+            android:textSize="6pt"/>
+
+        <com.vcutils.views.PixelImageView
+            android:id="@+id/imageViewBrewingIngredient"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/item_gui"
+            android:padding="15dp"
+            android:src="@drawable/stone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/model_base"
+            android:textColor="@color/subsubTitleColor"
+            android:textSize="6pt"
+            android:layout_marginTop="10dp"/>
+
+        <com.vcutils.views.PixelImageView
+            android:id="@+id/imageViewBrewingBase"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/item_gui"
+            android:padding="15dp"
+            android:src="@drawable/stone"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".3"
+        android:layout_marginTop="5dp"
+        android:gravity="center">
+
+        <com.vcutils.views.PixelImageView
+            android:id="@+id/imageViewSmeltingArrow"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:src="@drawable/minecraft_arrow"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
+        android:gravity="center">
+
+        <com.vcutils.views.PixelImageView
+            android:id="@+id/imageViewBrewingResult"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/item_gui"
+            android:padding="15dp"
+            android:src="@drawable/stone"/>
+
+    </LinearLayout>
+
+</LinearLayout>
