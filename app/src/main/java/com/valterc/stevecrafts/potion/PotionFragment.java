@@ -10,8 +10,12 @@ import android.widget.TextView;
 
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
+import com.valterc.stevecrafts.breaks.MultipleBreaksFragment;
+import com.valterc.stevecrafts.data.model.Brewing;
 import com.valterc.stevecrafts.data.model.Potion;
 import com.vcutils.views.PixelImageView;
+
+import java.util.ArrayList;
 
 /**
  * Created by Valter on 05/07/2015.
@@ -66,6 +70,9 @@ public class PotionFragment extends Fragment {
         LinearLayout linearLayoutPotionAttack = (LinearLayout) view.findViewById(R.id.linearLayoutPotionAttack);
         TextView textViewPotionAttack = (TextView) view.findViewById(R.id.textViewPotionAttack);
 
+        LinearLayout linearLayoutBrewing = (LinearLayout) view.findViewById(R.id.linearLayoutBrewing);
+        LinearLayout linearLayoutCanBeUsedToBrew = (LinearLayout) view.findViewById(R.id.linearLayoutCanBeUsedToBrew);
+
         imageViewPotionImage.setImageBitmap(SteveCraftsApp.getDataManager().getPotionImage(potion.getId()));
         textViewPotionName.setText(potion.getLocalizedName());
         textViewPotionDuration.setText(potion.getDuration() == 0 ? getString(R.string.model_instant) : String.format(getString(R.string.model_x_seconds), potion.getDuration()));
@@ -86,6 +93,19 @@ public class PotionFragment extends Fragment {
             linearLayoutPotionAttack.setVisibility(View.GONE);
         } else {
             textViewPotionAttack.setText((potion.getAttack() > 0 ? "+" : "") + potion.getAttack() + "%");
+        }
+
+        ArrayList<Brewing> brewings = SteveCraftsApp.getDataManager().getBrewing();
+        if (brewings == null || brewings.isEmpty()) {
+            linearLayoutBrewing.setVisibility(View.GONE);
+        } else {
+
+            String[] brewingId = new String[brewings.size()];
+            for (int i = 0; i < brewings.size(); i++) {
+                brewingId[i] = brewings.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameBrewing, MultipleBreaksFragment.newInstance(brewingId)).commit();
         }
 
         return view;

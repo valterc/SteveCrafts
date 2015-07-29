@@ -28,6 +28,9 @@
 
     <string name="model_item_can_result_mine">Can be result of mining</string>
 
+    <string name="model_potion_brewing">Can be brewed</string>
+    <string name="model_potion_can_brew">Can be used to brew</string>
+
     <string name="model_physics">Physics</string>
     <string name="model_transparent">Transparent</string>
     <string name="model_luminance">Luminance</string>

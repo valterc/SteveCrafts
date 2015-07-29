@@ -218,7 +218,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutResultOfMine"
+                android:id="@+id/linearLayoutBrewing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -226,18 +226,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textViewItemCanBeResultOfMine"
+                    android:id="@+id/textViewItemCanBeBrewed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="@string/model_item_can_result_mine"
+                    android:text="@string/model_potion_brewing"
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
                 <FrameLayout
-                    android:id="@+id/frameBreaks"
+                    android:id="@+id/frameBrewing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </FrameLayout>
@@ -245,7 +245,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutCanBeCrafted"
+                android:id="@+id/linearLayoutCanBeUsedToBrew"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -253,72 +253,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textViewBlockCanBeCrafted"
+                    android:id="@+id/textViewBlockCanBeUsedToBrew"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
                     android:gravity="center"
                     android:padding="8dp"
-                    android:text="@string/model_block_can_crafted"
+                    android:text="@string/model_potion_can_brew"
                     android:textColor="@color/subTitleColor"
                     android:textSize="9pt"/>
 
                 <FrameLayout
-                    android:id="@+id/frameCraftingRecipes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayoutCanCraft"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/item_background_soft_gray"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewBlockCanCraft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_can_craft"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
-
-                <FrameLayout
-                    android:id="@+id/frameCrafts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayoutCanBeSmelted"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/item_background_soft_gray"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewItemCanBeSmelted"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/model_block_can_smelt"
-                    android:textColor="@color/subTitleColor"
-                    android:textSize="9pt"/>
-
-                <FrameLayout
-                    android:id="@+id/frameSmeltings"
+                    android:id="@+id/frameBrews"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </FrameLayout>

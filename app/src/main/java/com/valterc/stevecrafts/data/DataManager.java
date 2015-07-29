@@ -307,4 +307,20 @@ public class DataManager {
         return dataSource.getSmeltingsWithItem(itemId);
     }
 
+    public ArrayList<Brewing> getBrewingsForPotion(String potionId){
+        return dataSource.getBrewingsForPotion(potionId);
+    }
+
+    public ArrayList<Brewing> getBrewingsWithIngredient(String itemId){
+        return dataSource.getBrewingsWithIngredient(itemId);
+    }
+
+    public ArrayList<Brewing> getBrewingsWithBasePotion(String potionId){
+        return dataSource.getBrewingsWithBasePotion(potionId);
+    }
+
+    public ArrayList<Brewing> getBrewingsWithBaseItem(String itemId){
+        return dataSource.getBrewingsWithBaseItem(itemId);
+    }
+
 }
