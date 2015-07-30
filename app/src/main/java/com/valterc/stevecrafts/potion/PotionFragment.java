@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
-import com.valterc.stevecrafts.breaks.MultipleBreaksFragment;
+import com.valterc.stevecrafts.brewing.MultipleBrewingsFragment;
 import com.valterc.stevecrafts.data.model.Brewing;
 import com.valterc.stevecrafts.data.model.Potion;
 import com.vcutils.views.PixelImageView;
@@ -95,7 +95,7 @@ public class PotionFragment extends Fragment {
             textViewPotionAttack.setText((potion.getAttack() > 0 ? "+" : "") + potion.getAttack() + "%");
         }
 
-        ArrayList<Brewing> brewings = SteveCraftsApp.getDataManager().getBrewing();
+        ArrayList<Brewing> brewings = SteveCraftsApp.getDataManager().getBrewingsForPotion(potion.getId());
         if (brewings == null || brewings.isEmpty()) {
             linearLayoutBrewing.setVisibility(View.GONE);
         } else {
@@ -105,7 +105,20 @@ public class PotionFragment extends Fragment {
                 brewingId[i] = brewings.get(i).getId();
             }
 
-            getChildFragmentManager().beginTransaction().replace(R.id.frameBrewing, MultipleBreaksFragment.newInstance(brewingId)).commit();
+            getChildFragmentManager().beginTransaction().replace(R.id.frameBrewing, MultipleBrewingsFragment.newInstance(brewingId)).commit();
+        }
+
+        ArrayList<Brewing> brews = SteveCraftsApp.getDataManager().getBrewingsWithBasePotion(potion.getId());
+        if (brews == null || brews.isEmpty()) {
+            linearLayoutCanBeUsedToBrew.setVisibility(View.GONE);
+        } else {
+
+            String[] brewingId = new String[brews.size()];
+            for (int i = 0; i < brews.size(); i++) {
+                brewingId[i] = brews.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameBrews, MultipleBrewingsFragment.newInstance(brewingId)).commit();
         }
 
         return view;

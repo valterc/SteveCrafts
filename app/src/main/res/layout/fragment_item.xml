@@ -352,6 +352,32 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linearLayoutCanBeUsedToBrew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/item_background_soft_gray"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewBlockCanBeUsedToBrew"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/model_potion_can_brew"
+                    android:textColor="@color/subTitleColor"
+                    android:textSize="9pt"/>
+
+                <FrameLayout
+                    android:id="@+id/frameBrews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </FrameLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 

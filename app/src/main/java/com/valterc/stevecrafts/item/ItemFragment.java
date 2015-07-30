@@ -14,8 +14,10 @@ import android.widget.TextView;
 import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.breaks.MultipleBreaksFragment;
+import com.valterc.stevecrafts.brewing.MultipleBrewingsFragment;
 import com.valterc.stevecrafts.crafting.MultipleCraftingRecipesFragment;
 import com.valterc.stevecrafts.data.model.Breaks;
+import com.valterc.stevecrafts.data.model.Brewing;
 import com.valterc.stevecrafts.data.model.CraftingRecipe;
 import com.valterc.stevecrafts.data.model.Item;
 import com.valterc.stevecrafts.data.model.Smelting;
@@ -83,6 +85,8 @@ public class ItemFragment extends Fragment {
 
         LinearLayout linearLayoutCanBeSmelted = (LinearLayout) view.findViewById(R.id.linearLayoutCanBeSmelted);
         LinearLayout linearLayoutResultOfSmeltings = (LinearLayout) view.findViewById(R.id.linearLayoutResultOfSmeltings);
+
+        LinearLayout linearLayoutCanBeUsedToBrew = (LinearLayout) view.findViewById(R.id.linearLayoutCanBeUsedToBrew);
 
         textViewItemName.setText(item.getLocalizedName());
         textViewItemType.setText(item.getLocalizedType(getActivity()));
@@ -180,6 +184,20 @@ public class ItemFragment extends Fragment {
 
             getChildFragmentManager().beginTransaction().replace(R.id.frameResultOfSmeltings, MultipleSmeltingsFragment.newInstance(smeltingId)).commit();
         }
+
+        ArrayList<Brewing> brews = SteveCraftsApp.getDataManager().getBrewingsWithIngredient(item.getId());
+        if (brews == null || brews.isEmpty()) {
+            linearLayoutCanBeUsedToBrew.setVisibility(View.GONE);
+        } else {
+
+            String[] brewingId = new String[brews.size()];
+            for (int i = 0; i < brews.size(); i++) {
+                brewingId[i] = brews.get(i).getId();
+            }
+
+            getChildFragmentManager().beginTransaction().replace(R.id.frameBrews, MultipleBrewingsFragment.newInstance(brewingId)).commit();
+        }
+
 
         return view;
     }
