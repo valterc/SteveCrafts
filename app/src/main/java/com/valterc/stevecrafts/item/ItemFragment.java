@@ -112,10 +112,10 @@ public class ItemFragment extends Fragment {
             repeatImageViewArmor.setDrawableCount((float) item.getArmor() / 2);
         }
 
-        if (item.getDamage() == 0) {
+        if (item.getAttackDamage() == 0) {
             linearLayoutDamage.setVisibility(View.GONE);
         } else {
-            repeatImageViewDamage.setDrawableCount((float)item.getDamage() / 2);
+            repeatImageViewDamage.setDrawableCount((float)item.getAttackDamage());
         }
 
         ArrayList<Breaks> breaks = SteveCraftsApp.getDataManager().getBreaksThatDropItem(item.getId());

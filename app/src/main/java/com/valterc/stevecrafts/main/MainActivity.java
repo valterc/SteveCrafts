@@ -3,10 +3,10 @@ package com.valterc.stevecrafts.main;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 
 import com.valterc.external.tumblr.TumblrAPI;
 import com.valterc.stevecrafts.R;
@@ -86,8 +86,8 @@ public class MainActivity extends AppCompatActivity implements IMainFragmentCont
 
     @Override
     public void onBackPressed() {
-        if (mDrawerLayout.isDrawerOpen(Gravity.START)) {
-            mDrawerLayout.closeDrawer(Gravity.START);
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }

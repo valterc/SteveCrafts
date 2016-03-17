@@ -29,7 +29,9 @@ public class Item {
      * 0 - No; Other - Value
      */
     private int stackable;
-    private int damage;
+    private double attack_damage;
+    private double attack_speed;
+    private double dps;
     private int armor;
 
     /**
@@ -55,7 +57,9 @@ public class Item {
         this.minecraftDataValue = json.getInt("minecraft_datavalue");
         this.durability = json.getInt("durability");
         this.stackable = json.getInt("stackable");
-        this.damage = json.getInt("damage");
+        this.attack_damage = json.getInt("attack_damage");
+        this.attack_speed = json.getInt("attack_speed");
+        this.dps = json.getInt("dps");
         this.armor = json.getInt("armor");
         this.type = json.getInt("type");
         this.image = ImageUtils.fromBase64String(json.getString("image"));
@@ -79,7 +83,9 @@ public class Item {
         this.minecraftDataValue = cursor.getInt(cursor.getColumnIndex("minecraft_datavalue"));
         this.durability = cursor.getInt(cursor.getColumnIndex("durability"));
         this.stackable = cursor.getInt(cursor.getColumnIndex("stackable"));
-        this.damage = cursor.getInt(cursor.getColumnIndex("damage"));
+        this.attack_damage = cursor.getInt(cursor.getColumnIndex("attack_damage"));
+        this.attack_speed = cursor.getInt(cursor.getColumnIndex("attack_speed"));
+        this.dps = cursor.getInt(cursor.getColumnIndex("dps"));
         this.armor = cursor.getInt(cursor.getColumnIndex("armor"));
         this.type = cursor.getInt(cursor.getColumnIndex("type"));
         if (cursor.getColumnIndex("image") != -1) {
@@ -114,8 +120,16 @@ public class Item {
         return stackable;
     }
 
-    public int getDamage() {
-        return damage;
+    public double getAttackDamage() {
+        return attack_damage;
+    }
+
+    public double getAttackSpeed() {
+        return attack_speed;
+    }
+
+    public double getDPS() {
+        return dps;
     }
 
     public int getArmor() {
