@@ -71,10 +71,14 @@ public class ItemFragment extends Fragment {
         TextView textViewItemType = (TextView) view.findViewById(R.id.textViewItemType);
         TextView textViewItemStackable = (TextView) view.findViewById(R.id.textViewItemStackable);
         TextView textViewItemDurability = (TextView) view.findViewById(R.id.textViewItemDurability);
+        TextView textViewItemAttackSpeed = (TextView) view.findViewById(R.id.textViewItemAttackSpeed);
         LinearLayout linearLayoutDurability = (LinearLayout) view.findViewById(R.id.linearLayoutDurability);
-        LinearLayout linearLayoutDamage = (LinearLayout) view.findViewById(R.id.linearLayoutDamage);
+        LinearLayout linearLayoutAttackDamage = (LinearLayout) view.findViewById(R.id.linearLayoutAttackDamage);
+        LinearLayout linearLayoutAttackSpeed = (LinearLayout) view.findViewById(R.id.linearLayoutAttackSpeed);
+        LinearLayout linearLayoutDPS = (LinearLayout) view.findViewById(R.id.linearLayoutDPS);
         LinearLayout linearLayoutArmor = (LinearLayout) view.findViewById(R.id.linearLayoutArmor);
-        RepeatingImageView repeatImageViewDamage = (RepeatingImageView) view.findViewById(R.id.repeatImageViewDamage);
+        RepeatingImageView repeatImageViewAttackDamage = (RepeatingImageView) view.findViewById(R.id.repeatImageViewAttackDamage);
+        RepeatingImageView repeatImageViewDPS = (RepeatingImageView) view.findViewById(R.id.repeatImageViewDPS);
         RepeatingImageView repeatImageViewArmor = (RepeatingImageView) view.findViewById(R.id.repeatImageViewArmor);
 
         LinearLayout linearLayoutResultOfMine = (LinearLayout) view.findViewById(R.id.linearLayoutResultOfMine);
@@ -112,10 +116,14 @@ public class ItemFragment extends Fragment {
             repeatImageViewArmor.setDrawableCount((float) item.getArmor() / 2);
         }
 
-        if (item.getAttackDamage() == 0) {
-            linearLayoutDamage.setVisibility(View.GONE);
+        if (item.getAttackDamage() == 1 && !item.getNameEn().contains("Hoe")) {
+            linearLayoutAttackDamage.setVisibility(View.GONE);
+            linearLayoutAttackSpeed.setVisibility(View.GONE);
+            linearLayoutDPS.setVisibility(View.GONE);
         } else {
-            repeatImageViewDamage.setDrawableCount((float)item.getAttackDamage());
+            repeatImageViewAttackDamage.setDrawableCount((float)item.getAttackDamage() / 2);
+            repeatImageViewDPS.setDrawableCount((float)item.getDPS() / 2);
+            textViewItemAttackSpeed.setText(item.getAttackSpeedAsString());
         }
 
         ArrayList<Breaks> breaks = SteveCraftsApp.getDataManager().getBreaksThatDropItem(item.getId());

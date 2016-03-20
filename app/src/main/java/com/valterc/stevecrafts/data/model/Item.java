@@ -83,9 +83,9 @@ public class Item {
         this.minecraftDataValue = cursor.getInt(cursor.getColumnIndex("minecraft_datavalue"));
         this.durability = cursor.getInt(cursor.getColumnIndex("durability"));
         this.stackable = cursor.getInt(cursor.getColumnIndex("stackable"));
-        this.attack_damage = cursor.getInt(cursor.getColumnIndex("attack_damage"));
-        this.attack_speed = cursor.getInt(cursor.getColumnIndex("attack_speed"));
-        this.dps = cursor.getInt(cursor.getColumnIndex("dps"));
+        this.attack_damage = cursor.getDouble(cursor.getColumnIndex("attack_damage"));
+        this.attack_speed = cursor.getDouble(cursor.getColumnIndex("attack_speed"));
+        this.dps = cursor.getDouble(cursor.getColumnIndex("dps"));
         this.armor = cursor.getInt(cursor.getColumnIndex("armor"));
         this.type = cursor.getInt(cursor.getColumnIndex("type"));
         if (cursor.getColumnIndex("image") != -1) {
@@ -126,6 +126,13 @@ public class Item {
 
     public double getAttackSpeed() {
         return attack_speed;
+    }
+
+    public String getAttackSpeedAsString() {
+        if (attack_speed == (long) attack_speed)
+            return String.format(Locale.getDefault(), "%d", (long) attack_speed);
+        else
+            return String.format(Locale.getDefault(), "%.1f", attack_speed);
     }
 
     public double getDPS() {
@@ -195,22 +202,38 @@ public class Item {
     public String getLocalizedType(Context c) {
 
         switch (getType()) {
-            case Type.RawMaterial : return c.getResources().getString(R.string.model_item_type_raw_material);
-            case Type.Manufactured : return c.getResources().getString(R.string.model_item_type_manufactured);
-            case Type.Food : return c.getResources().getString(R.string.model_item_type_food);
-            case Type.Plant : return c.getResources().getString(R.string.model_item_type_plant);
-            case Type.Dye : return c.getResources().getString(R.string.model_item_type_dye);
-            case Type.Tool : return c.getResources().getString(R.string.model_item_type_tool);
-            case Type.Informative : return c.getResources().getString(R.string.model_item_type_informative);
-            case Type.Weapon : return c.getResources().getString(R.string.model_item_type_weapon);
-            case Type.Armor : return c.getResources().getString(R.string.model_item_type_armor);
-            case Type.Vehicle : return c.getResources().getString(R.string.model_item_type_vehicle);
-            case Type.Utility : return c.getResources().getString(R.string.model_item_type_utility);
-            case Type.Decoration : return c.getResources().getString(R.string.model_item_type_decoration);
-            case Type.CreativeOnly : return c.getResources().getString(R.string.model_item_type_creative_only);
-            case Type.PocketEditionOnly : return c.getResources().getString(R.string.model_item_type_pocket_edition_only);
-            case Type.Unused : return c.getResources().getString(R.string.model_item_type_unused);
-            case Type.Unimplemented : return c.getResources().getString(R.string.model_item_type_unimplemented);
+            case Type.RawMaterial:
+                return c.getResources().getString(R.string.model_item_type_raw_material);
+            case Type.Manufactured:
+                return c.getResources().getString(R.string.model_item_type_manufactured);
+            case Type.Food:
+                return c.getResources().getString(R.string.model_item_type_food);
+            case Type.Plant:
+                return c.getResources().getString(R.string.model_item_type_plant);
+            case Type.Dye:
+                return c.getResources().getString(R.string.model_item_type_dye);
+            case Type.Tool:
+                return c.getResources().getString(R.string.model_item_type_tool);
+            case Type.Informative:
+                return c.getResources().getString(R.string.model_item_type_informative);
+            case Type.Weapon:
+                return c.getResources().getString(R.string.model_item_type_weapon);
+            case Type.Armor:
+                return c.getResources().getString(R.string.model_item_type_armor);
+            case Type.Vehicle:
+                return c.getResources().getString(R.string.model_item_type_vehicle);
+            case Type.Utility:
+                return c.getResources().getString(R.string.model_item_type_utility);
+            case Type.Decoration:
+                return c.getResources().getString(R.string.model_item_type_decoration);
+            case Type.CreativeOnly:
+                return c.getResources().getString(R.string.model_item_type_creative_only);
+            case Type.PocketEditionOnly:
+                return c.getResources().getString(R.string.model_item_type_pocket_edition_only);
+            case Type.Unused:
+                return c.getResources().getString(R.string.model_item_type_unused);
+            case Type.Unimplemented:
+                return c.getResources().getString(R.string.model_item_type_unimplemented);
         }
 
         return null;

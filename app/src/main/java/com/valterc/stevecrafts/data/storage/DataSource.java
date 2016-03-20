@@ -40,7 +40,7 @@ public class DataSource {
     }
 
     public void backupDatabase() {
-        dataSQLiteHelper.backupDatabaseTo(Environment.getExternalStorageDirectory().getPath() + "/data");
+        dataSQLiteHelper.backupDatabaseTo(Environment.getExternalStorageDirectory().getPath() + "/sc_data");
     }
 
     public String getLocalizedNameColumn() {
@@ -145,7 +145,9 @@ public class DataSource {
                         "minecraft_datavalue",
                         "durability",
                         "stackable",
-                        "damage",
+                        "attack_damage",
+                        "attack_speed",
+                        "dps",
                         "armor",
                         "type",
                         //"image",
@@ -172,7 +174,9 @@ public class DataSource {
                         "minecraft_datavalue",
                         "durability",
                         "stackable",
-                        "damage",
+                        "attack_damage",
+                        "attack_speed",
+                        "dps",
                         "armor",
                         "type",
                         //"image",
@@ -391,7 +395,9 @@ public class DataSource {
                         "minecraft_datavalue",
                         "durability",
                         "stackable",
-                        "damage",
+                        "attack_damage",
+                        "attack_speed",
+                        "dps",
                         "armor",
                         "type",
                         //"image",
@@ -547,7 +553,9 @@ public class DataSource {
                         "minecraft_datavalue",
                         "durability",
                         "stackable",
-                        "damage",
+                        "attack_damage",
+                        "attack_speed",
+                        "dps",
                         "armor",
                         "type",
                         //"image",
@@ -657,7 +665,9 @@ public class DataSource {
                         "minecraft_datavalue",
                         "durability",
                         "stackable",
-                        "damage",
+                        "attack_damage",
+                        "attack_speed",
+                        "dps",
                         "armor",
                         "type",
                         //"image",
@@ -1738,7 +1748,9 @@ public class DataSource {
                 "?, " + /*minecraft_datavalue*/
                 "?, " + /*durability*/
                 "?, " + /*stackable*/
-                "?, " + /*damage*/
+                "?, " + /*attack_damage*/
+                "?, " + /*attack_speed*/
+                "?, " + /*dps*/
                 "?, " + /*armor*/
                 "?, " + /*type*/
                 "?, " +  /*image*/
@@ -1765,7 +1777,9 @@ public class DataSource {
                 statement.bindLong(index++, item.getMinecraftDataValue());
                 statement.bindLong(index++, item.getDurability());
                 statement.bindLong(index++, item.getStackable());
-                statement.bindLong(index++, item.getDamage());
+                statement.bindDouble(index++, item.getAttackDamage());
+                statement.bindDouble(index++, item.getAttackSpeed());
+                statement.bindDouble(index++, item.getDPS());
                 statement.bindLong(index++, item.getArmor());
                 statement.bindLong(index++, item.getType());
 

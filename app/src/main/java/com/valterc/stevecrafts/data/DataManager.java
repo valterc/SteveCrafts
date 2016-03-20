@@ -93,7 +93,7 @@ public class DataManager {
         Collections.sort(genericItems, new Comparator<GenericItem>() {
             @Override
             public int compare(GenericItem lhs, GenericItem rhs) {
-                return (int) (rhs.getTimestamp() - lhs.getTimestamp());
+                return (int) (lhs.getTimestamp() - rhs.getTimestamp());
             }
         });
 

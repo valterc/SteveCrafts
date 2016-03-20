@@ -151,9 +151,9 @@
 
                 </LinearLayout>
 
-                <!-- Damage -->
+                <!-- Attack damage -->
                 <LinearLayout
-                    android:id="@+id/linearLayoutDamage"
+                    android:id="@+id/linearLayoutAttackDamage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -167,12 +167,77 @@
                         android:fontFamily="sans-serif-light"
                         android:gravity="end"
                         android:paddingBottom="5dp"
-                        android:text="@string/model_damage"
+                        android:text="@string/model_attack_damage"
                         android:textColor="@color/subsubTitleColor"
                         android:textSize="9pt"/>
 
                     <com.vcutils.views.RepeatingImageView
-                        android:id="@+id/repeatImageViewDamage"
+                        android:id="@+id/repeatImageViewAttackDamage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="26dp"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        app:drawable="@drawable/heart"
+                        app:drawableCount="5.5"
+                        app:drawablePadding="2dp"/>
+
+                </LinearLayout>
+
+                <!-- Attack speed -->
+                <LinearLayout
+                    android:id="@+id/linearLayoutAttackSpeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:paddingBottom="5dp"
+                        android:text="@string/model_attack_speed"
+                        android:textColor="@color/subsubTitleColor"
+                        android:textSize="9pt"/>
+
+                    <TextView
+                        android:id="@+id/textViewItemAttackSpeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
+                        android:text="@string/yes"
+                        android:textColor="@color/subTitleColor"
+                        android:textSize="9pt"/>
+
+                </LinearLayout>
+
+                <!-- Attack damage -->
+                <LinearLayout
+                    android:id="@+id/linearLayoutDPS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="end"
+                        android:paddingBottom="5dp"
+                        android:text="@string/model_dps"
+                        android:textColor="@color/subsubTitleColor"
+                        android:textSize="9pt"/>
+
+                    <com.vcutils.views.RepeatingImageView
+                        android:id="@+id/repeatImageViewDPS"
                         android:layout_width="wrap_content"
                         android:layout_height="26dp"
                         android:paddingEnd="5dp"

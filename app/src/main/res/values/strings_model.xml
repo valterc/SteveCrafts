@@ -38,6 +38,9 @@
     <string name="model_flamable">Flammable</string>
     <string name="model_stackable">Stackable</string>
     <string name="model_damage">Damage</string>
+    <string name="model_attack_damage">Attack damage</string>
+    <string name="model_attack_speed">Attack speed</string>
+    <string name="model_dps">Damage per second</string>
     <string name="model_armor">Armor</string>
     <string name="model_duration">Duration</string>
     <string name="model_health">Health</string>

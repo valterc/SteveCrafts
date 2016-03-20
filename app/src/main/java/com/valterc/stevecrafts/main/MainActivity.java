@@ -13,7 +13,7 @@ import com.valterc.stevecrafts.R;
 import com.valterc.stevecrafts.SteveCraftsApp;
 import com.valterc.stevecrafts.data.api.SteveCraftsApi;
 import com.valterc.stevecrafts.drawer.NavigationDrawerFragment;
-import com.valterc.stevecrafts.potion.PotionFragment;
+import com.valterc.stevecrafts.main.fragment.MainFragment;
 import com.vcutils.tasks.MultipurposeAsyncTask;
 import com.vcutils.tasks.MultipurposeAsyncTaskData;
 import com.vcutils.utils.DebugLog;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements IMainFragmentCont
                 SteveCraftsApi api = new SteveCraftsApi();
                 try {
 
-                    /*
+/*
                     DebugLog.d("BEGIN API CALL");
                     SteveCraftsData data = api.getData();
                     DebugLog.d("END API CALL -- SAVING DATA");
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements IMainFragmentCont
                     DebugLog.d("END SAVE DATA");
                     SteveCraftsApp.getDataManager().backupDatabase();
                     DebugLog.d("END BACKUP DATABASE");
-                    */
+*/
 
                     DebugLog.d(SteveCraftsApp.getDataManager().getBlock("69").getNameEn());
                     DebugLog.d(SteveCraftsApp.getDataManager().getItem("69").getNameEn());
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements IMainFragmentCont
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, mActionBarToolbar);
 
-        openFragment(PotionFragment.newInstance("3") /*MainFragment.newInstance()*/);
+        openFragment(/*PotionFragment.newInstance("3")*/ MainFragment.newInstance());
     }
 
     @Override
